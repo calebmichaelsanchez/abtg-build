@@ -452,7 +452,7 @@ h3 {
   font-stretch: normal; }
 
 h4 {
-  font-size: 18px; }
+  font-size: 14px; }
 
 .btn {
   display: inline-block;
@@ -527,6 +527,14 @@ em {
   height: 250px;
   background: url("/assets/footer-chalk-board-angle.jpg") no-repeat center center;
   background-size: cover; }
+.footer__info {
+  text-align: center;
+  font-size: 0; }
+.footer__item {
+  display: inline-block;
+  width: 33.33%;
+  padding: 40px 20px;
+  font-size: 14px; }
 
 .hero {
   width: 100%;
