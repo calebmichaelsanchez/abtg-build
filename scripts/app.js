@@ -23715,7 +23715,6 @@
 	      var _this2 = this;
 	
 	      _axios2.default.get("/" + this.props.url + "?format=json").then(function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          title: response.data.collection.title,
 	          description: response.data.collection.description,
@@ -23822,7 +23821,6 @@
 	      var _this2 = this;
 	
 	      (0, _axios2.default)("/" + this.props.url + "?format=json").then(function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          title: response.data.items[0].title,
 	          description: response.data.items[0].excerpt,
@@ -23932,7 +23930,6 @@
 	      var _this2 = this;
 	
 	      (0, _axios2.default)("/" + this.props.url + "?format=json").then(function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          title: response.data.upcoming[0].title,
 	          description: response.data.upcoming[0].excerpt,
