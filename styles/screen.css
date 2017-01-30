@@ -537,9 +537,15 @@ em {
 .footer__item {
   display: inline-block;
   width: 33.33%;
-  padding: 40px 20px; }
+  padding: 40px 20px;
+  font-size: 14px; }
   .footer__item p, .footer__item a {
     font-size: 14px; }
+.footer__title {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+  font-stretch: normal;
+  color: #cf4c49;
+  letter-spacing: .3rem; }
 
 .hero {
   width: 100%;
