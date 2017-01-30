@@ -418,6 +418,10 @@ a {
   text-decoration: none;
   font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
   font-stretch: normal; }
+  @media (min-width: 1024px) {
+    a {
+      font-size: 25px;
+      font-size: 1.75vw; } }
 
 h1 {
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
@@ -533,8 +537,9 @@ em {
 .footer__item {
   display: inline-block;
   width: 33.33%;
-  padding: 40px 20px;
-  font-size: 14px; }
+  padding: 40px 20px; }
+  .footer__item p, .footer__item a {
+    font-size: 14px; }
 
 .hero {
   width: 100%;
