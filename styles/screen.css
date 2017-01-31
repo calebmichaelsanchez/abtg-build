@@ -482,6 +482,8 @@ em {
 .nav {
   position: fixed;
   display: block;
+  top: 0;
+  left: 0;
   width: 100%;
   padding-top: 10vh;
   transition: 600ms ease;
@@ -535,13 +537,19 @@ em {
   text-align: center;
   font-size: 0;
   max-width: 920px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   margin-left: auto;
   margin-right: auto; }
 .footer__item {
   display: inline-block;
-  width: 50%;
-  padding: 40px 20px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 14px; }
+  @media (min-width: 1024px) {
+    .footer__item {
+      width: 50%; } }
   .footer__item p, .footer__item a {
     font-size: 14px; }
 .footer__title {
@@ -568,38 +576,50 @@ em {
     max-width: 500px; }
 
 .learn-more {
+  margin-left: auto;
+  margin-right: auto;
   display: block;
   position: relative;
   width: 100%;
   max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #cdc3c3;
-  padding: 120px 80px; }
+  padding: 11.79487% 7.98611%; }
   .learn-more:after {
     content: '';
     display: table;
     clear: both; }
   .learn-more__item {
     display: block;
-    max-width: 615px;
-    float: right;
-    clear: both; }
+    width: 100%;
+    max-width: 615px; }
+    @media (min-width: 768px) {
+      .learn-more__item {
+        float: right;
+        clear: both; } }
     .learn-more__item:first-of-type {
-      margin-bottom: 180px;
-      float: left; }
+      margin-bottom: 50px; }
+      @media (min-width: 768px) {
+        .learn-more__item:first-of-type {
+          float: left;
+          margin-bottom: 180px; } }
   .learn-more__cup {
-    display: block;
+    display: none;
     position: absolute;
     top: -100px;
     left: 765px;
     width: 696px; }
+    @media (min-width: 768px) {
+      .learn-more__cup {
+        display: block; } }
   .learn-more__beans {
     display: block;
     position: absolute;
     top: 510px;
     right: 836px;
     width: 630px; }
+    @media (min-width: 768px) {
+      .learn-more__beans {
+        display: block; } }
 
 .hero-divider {
   width: 100%;
@@ -614,7 +634,7 @@ em {
   font-size: 0; }
   .featured-blogs:before {
     content: '';
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -622,12 +642,18 @@ em {
     height: 100%;
     background: url("/assets/home-guitar-chalk-board.jpg") no-repeat center center;
     background-size: cover; }
+    @media (min-width: 768px) {
+      .featured-blogs:before {
+        display: block; } }
   .featured-blogs__inner {
     display: inline-block;
-    width: 59.72222%;
+    width: 100%;
     padding: 11.79487% 7.98611%;
     text-align: left;
     vertical-align: top; }
+    @media (min-width: 768px) {
+      .featured-blogs__inner {
+        width: 59.72222%; } }
   .featured-blogs__item:first-of-type {
     margin-bottom: 50px; }
 
