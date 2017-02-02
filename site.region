@@ -2,3 +2,4 @@
 <main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
  {squarespace.main-content}
 </main>
+<script>console.log({@|json-pretty})</script>

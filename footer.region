@@ -16,6 +16,7 @@
     </div>
 
     <!-- combo and minify scripts when not logged in -->
+    <!-- React does not like being combo-ed!!!!!!!!! -->
     <squarespace:script src="app.js" />
 
     <!-- other scripts, and footer code injection -->
