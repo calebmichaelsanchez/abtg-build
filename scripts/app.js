@@ -23768,13 +23768,23 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
+	  value: true
 	});
 	exports.strip = strip;
+	exports.toDollars = toDollars;
 	function strip(html) {
-	   var tmp = document.createElement("DIV");
-	   tmp.innerHTML = html;
-	   return tmp.textContent || tmp.innerText || "";
+	  var tmp = document.createElement("DIV");
+	  tmp.innerHTML = html;
+	  return tmp.textContent || tmp.innerText || "";
+	}
+	function toDollars(x) {
+	  if (x === 0) {
+	    return '0.00';
+	  }
+	  var price = x.toString();
+	  var dollars = price.slice(0, price.length - 2);
+	  var cents = price.slice(price.length - 2);
+	  return dollars + "." + cents;
 	}
 
 /***/ },
@@ -24095,6 +24105,8 @@
 	
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 	
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 204);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24156,7 +24168,9 @@
 	              key: item.id,
 	              title: item.title,
 	              image: item.assetUrl,
-	              excerpt: item.excerpt
+	              excerpt: item.excerpt,
+	              url: item.fullUrl,
+	              pricePerPound: (0, _helpers.toDollars)(item.variants[8].price)
 	            });
 	          })
 	        )
@@ -24204,20 +24218,61 @@
 	  function ProductItem(props) {
 	    _classCallCheck(this, ProductItem);
 	
-	    return _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
+	
+	    _this.state = {
+	      imageStatus: "loading"
+	    };
+	
+	    _this.imageLoaded = _this.imageLoaded.bind(_this);
+	    _this.imageErrored = _this.imageErrored.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(ProductItem, [{
+	    key: "imageLoaded",
+	    value: function imageLoaded() {
+	      this.setState({ imageStatus: "loaded" });
+	    }
+	  }, {
+	    key: "imageErrored",
+	    value: function imageErrored() {
+	      this.setState({ imageStatus: "errored" });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	      var imageStatus = this.state.imageStatus;
+	      var _props = this.props,
+	          pricePerPound = _props.pricePerPound,
+	          image = _props.image,
+	          title = _props.title,
+	          url = _props.url;
+	
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "products__item" },
-	        _react2.default.createElement("img", { src: this.props.image, alt: "", className: "products__image" }),
+	        "a",
+	        { href: url, className: "products__item products__item--" + imageStatus },
+	        _react2.default.createElement("img", {
+	          onLoad: this.imageLoaded,
+	          onError: this.imageErrored,
+	          src: image,
+	          className: "products__image"
+	        }),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "products__title" },
-	          this.props.title
+	          { className: "products__info" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "products__title" },
+	            title
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "products__price" },
+	            "$",
+	            pricePerPound,
+	            "/lb"
+	          )
 	        )
 	      );
 	    }

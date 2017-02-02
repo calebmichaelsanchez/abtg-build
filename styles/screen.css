@@ -730,21 +730,33 @@ img {
   text-align: left;
   padding-top: 125px;
   padding-bottom: 125px; }
-  .products .products__item {
+  .products__item {
     display: inline-block;
     text-align: center;
     width: 33.33%;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 50px; }
+    text-decoration: none;
+    margin-bottom: 50px;
+    transition: 600ms ease; }
     @media (min-width: 1024px) {
-      .products .products__item {
+      .products__item {
         margin-bottom: 100px; } }
-  .products .products__image {
+    .products__item--loading {
+      opacity: 0;
+      transform: translateY(20px); }
+    .products__item--loaded {
+      opacity: 1;
+      transform: translateY(0); }
+  .products__image {
     max-width: 178px; }
-  .products .products__title {
+  .products__title, .products__price {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal;
     font-size: 12.5px;
     text-transform: uppercase;
     letter-spacing: .25rem;
-    color: #fff;
-    margin-top: 40px; }
+    color: #fff; }
+  .products .products__title {
+    margin-top: 40px;
+    margin-bottom: 15px; }
