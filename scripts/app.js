@@ -24018,9 +24018,13 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _ProductList = __webpack_require__(/*! ./components/ProductList */ 208);
+	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 208);
 	
-	var _ProductList2 = _interopRequireDefault(_ProductList);
+	var _ProductsList2 = _interopRequireDefault(_ProductsList);
+	
+	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 211);
+	
+	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24065,24 +24069,66 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_ProductList2.default, { category: this.state.category, setFilter: this.setFilter, items: this.state.items });
+	      return _react2.default.createElement(_ProductsList2.default, { category: this.state.category, setFilter: this.setFilter, items: this.state.items });
 	    }
 	  }]);
 	
 	  return Store;
 	}(_react.Component);
 	
+	var Product = function (_Component2) {
+	  _inherits(Product, _Component2);
+	
+	  function Product() {
+	    _classCallCheck(this, Product);
+	
+	    var _this3 = _possibleConstructorReturn(this, (Product.__proto__ || Object.getPrototypeOf(Product)).call(this));
+	
+	    _this3.state = {
+	      item: {}
+	    };
+	    return _this3;
+	  }
+	
+	  _createClass(Product, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this4 = this;
+	
+	      (0, _axios2.default)(this.props.url + "?format=json").then(function (response) {
+	        console.log(response);
+	        _this4.setState({ item: response.data.item });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(_ProductItem2.default, { item: this.state.item });
+	    }
+	  }]);
+	
+	  return Product;
+	}(_react.Component);
+	
 	var ProductListContainer = document.getElementById("product-list");
+	var ProductItemContainer = document.getElementById("product-item");
+	var ProductItemUrl = void 0;
 	
 	if (ProductListContainer) {
 	  _reactDom2.default.render(_react2.default.createElement(Store, null), ProductListContainer);
 	}
+	if (ProductItemContainer) {
+	  ProductItemUrl = ProductItemContainer.dataset.url;
+	  _reactDom2.default.render(_react2.default.createElement(Product, { url: ProductItemUrl }), ProductItemContainer);
+	}
 
 /***/ },
 /* 208 */
-/*!********************************************!*\
-  !*** ./js/store/components/ProductList.js ***!
-  \********************************************/
+/*!*********************************************!*\
+  !*** ./js/store/components/ProductsList.js ***!
+  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24097,9 +24143,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ProductItem = __webpack_require__(/*! ./ProductItem */ 209);
+	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 209);
 	
-	var _ProductItem2 = _interopRequireDefault(_ProductItem);
+	var _ProductsItem2 = _interopRequireDefault(_ProductsItem);
 	
 	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 210);
 	
@@ -24123,19 +24169,19 @@
 	  "espresso": "Espresso"
 	};
 	
-	var ProductList = function (_Component) {
-	  _inherits(ProductList, _Component);
+	var ProductsList = function (_Component) {
+	  _inherits(ProductsList, _Component);
 	
-	  function ProductList(props) {
-	    _classCallCheck(this, ProductList);
+	  function ProductsList(props) {
+	    _classCallCheck(this, ProductsList);
 	
-	    var _this = _possibleConstructorReturn(this, (ProductList.__proto__ || Object.getPrototypeOf(ProductList)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ProductsList.__proto__ || Object.getPrototypeOf(ProductsList)).call(this, props));
 	
 	    _this.filterList = _this.filterList.bind(_this);
 	    return _this;
 	  }
 	
-	  _createClass(ProductList, [{
+	  _createClass(ProductsList, [{
 	    key: "filterList",
 	    value: function filterList(category) {
 	      return function (item) {
@@ -24164,7 +24210,7 @@
 	          ),
 	          items.filter(this.filterList(category)).map(function (item) {
 	            console.log(item);
-	            return _react2.default.createElement(_ProductItem2.default, {
+	            return _react2.default.createElement(_ProductsItem2.default, {
 	              key: item.id,
 	              title: item.title,
 	              image: item.assetUrl,
@@ -24178,16 +24224,16 @@
 	    }
 	  }]);
 	
-	  return ProductList;
+	  return ProductsList;
 	}(_react.Component);
 	
-	exports.default = ProductList;
+	exports.default = ProductsList;
 
 /***/ },
 /* 209 */
-/*!********************************************!*\
-  !*** ./js/store/components/ProductItem.js ***!
-  \********************************************/
+/*!*********************************************!*\
+  !*** ./js/store/components/ProductsItem.js ***!
+  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24212,13 +24258,13 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ProductItem = function (_Component) {
-	  _inherits(ProductItem, _Component);
+	var ProductsItem = function (_Component) {
+	  _inherits(ProductsItem, _Component);
 	
-	  function ProductItem(props) {
-	    _classCallCheck(this, ProductItem);
+	  function ProductsItem(props) {
+	    _classCallCheck(this, ProductsItem);
 	
-	    var _this = _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ProductsItem.__proto__ || Object.getPrototypeOf(ProductsItem)).call(this, props));
 	
 	    _this.state = {
 	      imageStatus: "loading"
@@ -24229,7 +24275,7 @@
 	    return _this;
 	  }
 	
-	  _createClass(ProductItem, [{
+	  _createClass(ProductsItem, [{
 	    key: "imageLoaded",
 	    value: function imageLoaded() {
 	      this.setState({ imageStatus: "loaded" });
@@ -24247,7 +24293,8 @@
 	          pricePerPound = _props.pricePerPound,
 	          image = _props.image,
 	          title = _props.title,
-	          url = _props.url;
+	          url = _props.url,
+	          excerpt = _props.excerpt;
 	
 	      return _react2.default.createElement(
 	        "a",
@@ -24273,15 +24320,29 @@
 	            pricePerPound,
 	            "/lb"
 	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "products__overlay" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "products__overlay-title" },
+	            title
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "products__overlay-excerpt" },
+	            (0, _helpers.strip)(excerpt)
+	          )
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return ProductItem;
+	  return ProductsItem;
 	}(_react.Component);
 	
-	exports.default = ProductItem;
+	exports.default = ProductsItem;
 
 /***/ },
 /* 210 */
@@ -24361,6 +24422,13 @@
 	              return _this2.props.setFilter("espresso");
 	            } },
 	          "Espresso"
+	        ),
+	        _react2.default.createElement(
+	          "li",
+	          { className: "categories__item", onClick: function onClick() {
+	              return _this2.props.setFilter("coffee-club");
+	            } },
+	          "Coffee Club"
 	        )
 	      );
 	    }
@@ -24370,6 +24438,97 @@
 	}(_react.Component);
 	
 	exports.default = CategoryList;
+
+/***/ },
+/* 211 */
+/*!********************************************!*\
+  !*** ./js/store/components/ProductItem.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 204);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ProductItem = function (_Component) {
+	  _inherits(ProductItem, _Component);
+	
+	  function ProductItem(props) {
+	    _classCallCheck(this, ProductItem);
+	
+	    var _this = _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
+	
+	    _this.state = {
+	      imageStatus: "loading"
+	    };
+	
+	    _this.imageLoaded = _this.imageLoaded.bind(_this);
+	    _this.imageErrored = _this.imageErrored.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(ProductItem, [{
+	    key: "imageLoaded",
+	    value: function imageLoaded() {
+	      this.setState({ imageStatus: "loaded" });
+	    }
+	  }, {
+	    key: "imageErrored",
+	    value: function imageErrored() {
+	      this.setState({ imageStatus: "errored" });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var imageStatus = this.state.imageStatus;
+	      var _props$item = this.props.item,
+	          assetUrl = _props$item.assetUrl,
+	          title = _props$item.title;
+	
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "product product--" + imageStatus },
+	        _react2.default.createElement("img", {
+	          onLoad: this.imageLoaded,
+	          onError: this.imageErrored,
+	          src: assetUrl,
+	          className: "product__image"
+	        }),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "product__info" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "product__title" },
+	            title
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ProductItem;
+	}(_react.Component);
+	
+	exports.default = ProductItem;
 
 /***/ }
 /******/ ]);
