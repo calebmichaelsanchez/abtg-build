@@ -24069,7 +24069,11 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_ProductsList2.default, { category: this.state.category, setFilter: this.setFilter, items: this.state.items });
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { category: this.state.category, setFilter: this.setFilter, items: this.state.items }) : null
+	      );
 	    }
 	  }]);
 	
@@ -24209,7 +24213,6 @@
 	            titles[category]
 	          ),
 	          items.filter(this.filterList(category)).map(function (item) {
-	            console.log(item);
 	            return _react2.default.createElement(_ProductsItem2.default, {
 	              key: item.id,
 	              title: item.title,
