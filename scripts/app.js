@@ -24101,7 +24101,6 @@
 	      var _this4 = this;
 	
 	      (0, _axios2.default)(this.props.url + "?format=json").then(function (response) {
-	        console.log(response);
 	        _this4.setState({ item: response.data.item });
 	      }).catch(function (response) {
 	        console.log(response);
@@ -24110,7 +24109,11 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_ProductItem2.default, { item: this.state.item });
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        Object.keys(this.state.item).length === 0 && this.state.item.constructor === Object ? null : _react2.default.createElement(_ProductItem2.default, { item: this.state.item })
+	      );
 	    }
 	  }]);
 	
@@ -24481,7 +24484,8 @@
 	    var _this = _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
 	
 	    _this.state = {
-	      imageStatus: "loading"
+	      imageStatus: "loading",
+	      price: null
 	    };
 	
 	    _this.imageLoaded = _this.imageLoaded.bind(_this);
@@ -24502,10 +24506,12 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props.item);
 	      var imageStatus = this.state.imageStatus;
 	      var _props$item = this.props.item,
+	          title = _props$item.title,
 	          assetUrl = _props$item.assetUrl,
-	          title = _props$item.title;
+	          excerpt = _props$item.excerpt;
 	
 	      return _react2.default.createElement(
 	        "div",
@@ -24514,15 +24520,20 @@
 	          onLoad: this.imageLoaded,
 	          onError: this.imageErrored,
 	          src: assetUrl,
-	          className: "product__image"
+	          className: "product__item product__image"
 	        }),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "product__info" },
+	          { className: "product__item product__info" },
 	          _react2.default.createElement(
 	            "div",
 	            { className: "product__title" },
 	            title
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "product__excerpt" },
+	            (0, _helpers.strip)(excerpt)
 	          )
 	        )
 	      );
