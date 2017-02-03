@@ -24465,6 +24465,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Select = __webpack_require__(/*! ./Select */ 212);
+	
+	var _Select2 = _interopRequireDefault(_Select);
+	
 	var _helpers = __webpack_require__(/*! ../../util/helpers */ 204);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24485,7 +24489,12 @@
 	
 	    _this.state = {
 	      imageStatus: "loading",
-	      price: null
+	      price: null,
+	      options: {
+	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
+	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
+	      }
 	    };
 	
 	    _this.imageLoaded = _this.imageLoaded.bind(_this);
@@ -24507,11 +24516,14 @@
 	    key: "render",
 	    value: function render() {
 	      console.log(this.props.item);
-	      var imageStatus = this.state.imageStatus;
+	      var _state = this.state,
+	          imageStatus = _state.imageStatus,
+	          options = _state.options;
 	      var _props$item = this.props.item,
 	          title = _props$item.title,
 	          assetUrl = _props$item.assetUrl,
-	          excerpt = _props$item.excerpt;
+	          excerpt = _props$item.excerpt,
+	          variantOptionOrdering = _props$item.variantOptionOrdering;
 	
 	      return _react2.default.createElement(
 	        "div",
@@ -24534,6 +24546,18 @@
 	            "div",
 	            { className: "product__excerpt" },
 	            (0, _helpers.strip)(excerpt)
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "product__variants" },
+	            _react2.default.createElement(_Select2.default, { title: "Quanity", options: options["Quantity"] }),
+	            variantOptionOrdering.map(function (select, index) {
+	              return _react2.default.createElement(_Select2.default, {
+	                key: index,
+	                title: select,
+	                options: options[select]
+	              });
+	            })
 	          )
 	        )
 	      );
@@ -24544,6 +24568,124 @@
 	}(_react.Component);
 	
 	exports.default = ProductItem;
+
+/***/ },
+/* 212 */
+/*!***************************************!*\
+  !*** ./js/store/components/Select.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Select = function (_Component) {
+	  _inherits(Select, _Component);
+	
+	  function Select(props) {
+	    _classCallCheck(this, Select);
+	
+	    var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
+	
+	    _this.state = {
+	      open: false,
+	      title: ""
+	    };
+	
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.toggleSelect = _this.toggleSelect.bind(_this);
+	    _this.setSquarespaceSelectValue = _this.setSquarespaceSelectValue.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(Select, [{
+	    key: "handleClick",
+	    value: function handleClick(event) {
+	      var value = event.target.innerHTML;
+	      this.setState({ title: value });
+	      this.setSquarespaceSelectValue(this.props.title, value);
+	      this.toggleSelect();
+	    }
+	  }, {
+	    key: "toggleSelect",
+	    value: function toggleSelect() {
+	      this.setState({ open: !this.state.open });
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.setState({ title: this.props.title });
+	      this.selectCollection = document.querySelectorAll("[data-variant-option-name]");
+	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
+	    }
+	  }, {
+	    key: "setSquarespaceSelectValue",
+	    value: function setSquarespaceSelectValue(select, value) {
+	      for (var i = 0; i < this.selectArray.length; i++) {
+	        if (this.selectArray[i].dataset.variantOptionName === select) {
+	          this.selectArray[i].value = value;
+	        }
+	      }
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var title = this.state.title;
+	      var options = this.props.options;
+	
+	      var open = this.state.open ? "select--open" : "";
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "select " + open },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "select__title", onClick: this.toggleSelect },
+	          title
+	        ),
+	        _react2.default.createElement(
+	          "ul",
+	          { className: "select__list" },
+	          options.map(function (item, index) {
+	            return _react2.default.createElement(
+	              "li",
+	              {
+	                key: item + "-" + index,
+	                className: "select__item",
+	                onClick: _this2.handleClick
+	              },
+	              item
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Select;
+	}(_react.Component);
+	
+	exports.default = Select;
 
 /***/ }
 /******/ ]);
