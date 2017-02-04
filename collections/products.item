@@ -1,9 +1,17 @@
-<div id="product-item" data-url="{item.fullUrl}"></div>
-<div class="product-cart-info">
+<div id="product-item" data-url="{item.fullUrl}">
   {.section item}
-    {@|product-price}
-    {@|product-status}
-    {@|product-checkout}
+  <div class="product">
+    <img src="{assetUrl}" class="product__item product__image" />
+    <div class="product__item product__info">
+      <div class="product__title">{title}</div>
+      <div class="product__excerpt">{excerpt}</div>
+      <div class="product__variants">
+        {@|product-price}
+        {@|product-status}
+        {@|product-checkout}
+      </div>
+    </div>
+  </div>
   {.end}
 </div>
-<script>console.log({@|json-pretty})</script>
+

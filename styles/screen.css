@@ -372,14 +372,14 @@ html {
   overflow-y: auto; }
 
 body {
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+  font-stretch: normal;
   background-color: #cdc3c3;
   color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
-  font-stretch: normal; }
+  -webkit-touch-callout: none; }
 
 html,
 body {
@@ -399,6 +399,10 @@ main:not(#welcome) {
 *:before,
 *:after {
   box-sizing: inherit; }
+
+.site-container {
+  overflow-x: hidden;
+  overflow-y: auto; }
 
 .site-title-heading:after {
   display: none; }

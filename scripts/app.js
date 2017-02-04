@@ -72,6 +72,7 @@
 	
 	  function onScroll() {
 	    latestKnownScroll = window.scrollY;
+	    console.log(latestKnownScroll);
 	    requestTick();
 	  }
 	
@@ -24127,10 +24128,10 @@
 	if (ProductListContainer) {
 	  _reactDom2.default.render(_react2.default.createElement(Store, null), ProductListContainer);
 	}
-	if (ProductItemContainer) {
-	  ProductItemUrl = ProductItemContainer.dataset.url;
-	  _reactDom2.default.render(_react2.default.createElement(Product, { url: ProductItemUrl }), ProductItemContainer);
-	}
+	// if (ProductItemContainer) {
+	//   ProductItemUrl = ProductItemContainer.dataset.url;
+	//   ReactDOM.render(<Product url={ProductItemUrl} />, ProductItemContainer);
+	// }
 
 /***/ },
 /* 208 */
@@ -24492,8 +24493,8 @@
 	      price: null,
 	      options: {
 	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
-	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
+	        Size: ["Select Size", "1/2 lb.", "1 lb.", "5 lb."],
+	        Grind: ["Select Grind", "Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
 	      }
 	    };
 	
@@ -24633,7 +24634,7 @@
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.setState({ title: this.props.title });
+	      this.setState({ title: this.props.options[0] });
 	      this.selectCollection = document.querySelectorAll("[data-variant-option-name]");
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
 	    }
