@@ -24128,10 +24128,10 @@
 	if (ProductListContainer) {
 	  _reactDom2.default.render(_react2.default.createElement(Store, null), ProductListContainer);
 	}
-	// if (ProductItemContainer) {
-	//   ProductItemUrl = ProductItemContainer.dataset.url;
-	//   ReactDOM.render(<Product url={ProductItemUrl} />, ProductItemContainer);
-	// }
+	if (ProductItemContainer) {
+	  ProductItemUrl = ProductItemContainer.dataset.url;
+	  _reactDom2.default.render(_react2.default.createElement(Product, { url: ProductItemUrl }), ProductItemContainer);
+	}
 
 /***/ },
 /* 208 */
@@ -24644,6 +24644,7 @@
 	      for (var i = 0; i < this.selectArray.length; i++) {
 	        if (this.selectArray[i].dataset.variantOptionName === select) {
 	          this.selectArray[i].value = value;
+	          this.selectArray[i].onChange();
 	        }
 	      }
 	    }
