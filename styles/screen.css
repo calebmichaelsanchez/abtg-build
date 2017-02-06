@@ -876,6 +876,8 @@ img {
         font-size: 1.65vw; } }
   .product-cart-info {
     display: block; }
+    .product-cart-info .product-price {
+      color: #fff; }
   .product__variants {
     font-size: 0;
     text-align: left; }
@@ -921,3 +923,9 @@ img {
     .select__item:hover {
       color: #fff;
       background-color: #cf4c49; }
+
+#sqs-shopping-cart-wrapper {
+  padding: 100px 32px; }
+
+#sqs-shopping-cart-wrapper {
+  padding: 100px 32px; }

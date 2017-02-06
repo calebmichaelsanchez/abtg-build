@@ -23773,6 +23773,7 @@
 	});
 	exports.strip = strip;
 	exports.toDollars = toDollars;
+	exports.procEvent = procEvent;
 	function strip(html) {
 	  var tmp = document.createElement("DIV");
 	  tmp.innerHTML = html;
@@ -23786,6 +23787,11 @@
 	  var dollars = price.slice(0, price.length - 2);
 	  var cents = price.slice(price.length - 2);
 	  return dollars + "." + cents;
+	}
+	function procEvent(element, eventType) {
+	  // function to fire event on an element
+	  var event = new Event(eventType);
+	  element.dispatchEvent(event);
 	}
 
 /***/ },
@@ -24551,7 +24557,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "product__variants" },
-	            _react2.default.createElement(_Select2.default, { title: "Quanity", options: options["Quantity"] }),
+	            _react2.default.createElement(_Select2.default, { title: "Quantity", options: options["Quantity"] }),
 	            variantOptionOrdering.map(function (select, index) {
 	              return _react2.default.createElement(_Select2.default, {
 	                key: index,
@@ -24589,6 +24595,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 204);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -24615,6 +24623,7 @@
 	    _this.handleClick = _this.handleClick.bind(_this);
 	    _this.toggleSelect = _this.toggleSelect.bind(_this);
 	    _this.setSquarespaceSelectValue = _this.setSquarespaceSelectValue.bind(_this);
+	    _this.setQuantityInputValue = _this.setQuantityInputValue.bind(_this);
 	    return _this;
 	  }
 	
@@ -24623,7 +24632,11 @@
 	    value: function handleClick(event) {
 	      var value = event.target.innerHTML;
 	      this.setState({ title: value });
-	      this.setSquarespaceSelectValue(this.props.title, value);
+	      if (this.props.title === "Quantity") {
+	        this.setQuantityInputValue(value);
+	      } else {
+	        this.setSquarespaceSelectValue(this.props.title, value);
+	      }
 	      this.toggleSelect();
 	    }
 	  }, {
@@ -24637,6 +24650,9 @@
 	      this.setState({ title: this.props.options[0] });
 	      this.selectCollection = document.querySelectorAll("[data-variant-option-name]");
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
+	      this.quantityInputCollection = document.querySelectorAll("input[type=number]");
+	      this.quantityInputArray = [].concat(_toConsumableArray(this.quantityInputCollection));
+	      this.quantityInput = this.quantityInputArray[0];
 	    }
 	  }, {
 	    key: "setSquarespaceSelectValue",
@@ -24644,9 +24660,15 @@
 	      for (var i = 0; i < this.selectArray.length; i++) {
 	        if (this.selectArray[i].dataset.variantOptionName === select) {
 	          this.selectArray[i].value = value;
-	          this.selectArray[i].onChange();
+	          (0, _helpers.procEvent)(this.selectArray[i], "change");
 	        }
 	      }
+	    }
+	  }, {
+	    key: "setQuantityInputValue",
+	    value: function setQuantityInputValue(value) {
+	      this.quantityInput.value = value;
+	      (0, _helpers.procEvent)(this.quantityInput, "change");
 	    }
 	  }, {
 	    key: "render",
