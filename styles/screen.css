@@ -953,12 +953,12 @@ img {
   max-width: 530px;
   padding: 50px 16px;
   font-size: 0;
-  text-align: center;
-  text-align: left; }
+  text-align: center; }
   @media (min-width: 768px) {
     .product {
       max-width: 875px;
-      padding: 100px 32px; } }
+      padding: 100px 32px;
+      text-align: left; } }
   .product__item {
     display: inline-block;
     vertical-align: middle;
@@ -972,12 +972,14 @@ img {
         margin-bottom: 0;
         max-width: none;
         margin-right: 5.14286%; } }
-  @media (min-width: 768px) {
-    .product__info {
-      width: 60.57143%; } }
-  @media (min-width: 1024px) {
-    .product__info {
-      transform: translateY(-10%); } }
+  .product__info {
+    text-align: left; }
+    @media (min-width: 768px) {
+      .product__info {
+        width: 60.57143%; } }
+    @media (min-width: 1024px) {
+      .product__info {
+        transform: translateY(-10%); } }
   .product__title {
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal;
