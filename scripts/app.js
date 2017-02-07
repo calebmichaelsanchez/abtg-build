@@ -72,7 +72,6 @@
 	
 	  function onScroll() {
 	    latestKnownScroll = window.scrollY;
-	    console.log(latestKnownScroll);
 	    requestTick();
 	  }
 	
@@ -23643,7 +23642,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "hero", style: style },
-	        _react2.default.createElement("img", { className: "hero__inner", src: "/assets/header.svg" })
+	        _react2.default.createElement("img", { className: "hero__inner", src: "/assets/header-new.svg" })
 	      );
 	    }
 	  }]);
@@ -23788,6 +23787,10 @@
 	  var cents = price.slice(price.length - 2);
 	  return dollars + "." + cents;
 	}
+	
+	// ------------------------------------
+	// http://stackoverflow.com/questions/136617/how-do-i-programatically-force-an-onchange-event-on-an-input
+	// ------------------------------------
 	function procEvent(element, eventType) {
 	  // function to fire event on an element
 	  var event = new Event(eventType);
@@ -24051,7 +24054,8 @@
 	
 	    _this.state = {
 	      items: [],
-	      category: "regular"
+	      categories: [],
+	      category: "Regular"
 	    };
 	    _this.setFilter = _this.setFilter.bind(_this);
 	    return _this;
@@ -24063,7 +24067,11 @@
 	      var _this2 = this;
 	
 	      (0, _axios2.default)("/store?format=json").then(function (response) {
-	        _this2.setState({ items: response.data.items });
+	        console.log(response);
+	        _this2.setState({
+	          items: response.data.items,
+	          categories: response.data.collection.categories
+	        });
 	      }).catch(function (response) {
 	        console.log(response);
 	      });
@@ -24076,11 +24084,10 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      console.log(this.state.items);
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { category: this.state.category, setFilter: this.setFilter, items: this.state.items }) : null
+	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { categories: this.state.categories, category: this.state.category, setFilter: this.setFilter, items: this.state.items }) : null
 	      );
 	    }
 	  }]);
@@ -24177,11 +24184,12 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var titles = {
-	  "regular": "Regular Coffee",
-	  "flavored": "Flavored Coffee",
-	  "decaf": "Decaf Coffee",
-	  "decaf-flavored": "Flavored Decaf Coffee",
-	  "espresso": "Espresso"
+	  "Regular": "Regular Coffee",
+	  "Flavored": "Flavored Coffee",
+	  "Decaf": "Decaf Coffee",
+	  "Flavored Decaf": "Flavored Decaf Coffee",
+	  "Espresso": "Espresso",
+	  "coffee-club": "Coffee Club"
 	};
 	
 	var ProductsList = function (_Component) {
@@ -24214,14 +24222,14 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(_CategoryList2.default, { setFilter: setFilter }),
+	        _react2.default.createElement(_CategoryList2.default, { categories: this.props.categories, setFilter: setFilter }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "products" },
 	          _react2.default.createElement(
 	            "h2",
 	            null,
-	            titles[category]
+	            category
 	          ),
 	          items.filter(this.filterList(category)).map(function (item) {
 	            return _react2.default.createElement(_ProductsItem2.default, {
@@ -24402,48 +24410,15 @@
 	      return _react2.default.createElement(
 	        "ul",
 	        { className: "categories" },
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("regular");
-	            } },
-	          "Regular"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("flavored");
-	            } },
-	          "Flavored"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("decaf");
-	            } },
-	          "Decaf"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("decaf-flavored");
-	            } },
-	          "Flavored Decaf"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("espresso");
-	            } },
-	          "Espresso"
-	        ),
-	        _react2.default.createElement(
-	          "li",
-	          { className: "categories__item", onClick: function onClick() {
-	              return _this2.props.setFilter("coffee-club");
-	            } },
-	          "Coffee Club"
-	        )
+	        this.props.categories.map(function (item) {
+	          return _react2.default.createElement(
+	            "li",
+	            { key: item, className: "categories__item", onClick: function onClick() {
+	                return _this2.props.setFilter(item);
+	              } },
+	            item
+	          );
+	        })
 	      );
 	    }
 	  }]);
@@ -24472,7 +24447,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 212);
+	var _Price = __webpack_require__(/*! ./Price */ 212);
+	
+	var _Price2 = _interopRequireDefault(_Price);
+	
+	var _Select = __webpack_require__(/*! ./Select */ 213);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -24496,16 +24475,17 @@
 	
 	    _this.state = {
 	      imageStatus: "loading",
-	      price: null,
+	      price: "",
 	      options: {
 	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-	        Size: ["Select Size", "1/2 lb.", "1 lb.", "5 lb."],
-	        Grind: ["Select Grind", "Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
+	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
+	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
 	      }
 	    };
 	
 	    _this.imageLoaded = _this.imageLoaded.bind(_this);
 	    _this.imageErrored = _this.imageErrored.bind(_this);
+	    _this.updatePrice = _this.updatePrice.bind(_this);
 	    return _this;
 	  }
 	
@@ -24520,17 +24500,35 @@
 	      this.setState({ imageStatus: "errored" });
 	    }
 	  }, {
+	    key: "updatePrice",
+	    value: function updatePrice() {
+	      this.setState({ price: document.querySelectorAll(".sqs-money-native")[0].innerHTML });
+	    }
+	  }, {
+	    key: "addToCart",
+	    value: function addToCart() {
+	      document.querySelectorAll(".sqs-add-to-cart-button")[0].click();
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.updatePrice();
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
-	      console.log(this.props.item);
+	      var _this2 = this;
+	
 	      var _state = this.state,
 	          imageStatus = _state.imageStatus,
-	          options = _state.options;
+	          options = _state.options,
+	          price = _state.price;
 	      var _props$item = this.props.item,
 	          title = _props$item.title,
 	          assetUrl = _props$item.assetUrl,
 	          excerpt = _props$item.excerpt,
-	          variantOptionOrdering = _props$item.variantOptionOrdering;
+	          variantOptionOrdering = _props$item.variantOptionOrdering,
+	          variants = _props$item.variants;
 	
 	      return _react2.default.createElement(
 	        "div",
@@ -24556,15 +24554,31 @@
 	          ),
 	          _react2.default.createElement(
 	            "div",
+	            { className: "product__price" },
+	            "$",
+	            price
+	          ),
+	          _react2.default.createElement(
+	            "div",
 	            { className: "product__variants" },
-	            _react2.default.createElement(_Select2.default, { title: "Quantity", options: options["Quantity"] }),
+	            _react2.default.createElement(_Select2.default, {
+	              title: "Quantity",
+	              options: options["Quantity"],
+	              updatePrice: this.updatePrice
+	            }),
 	            variantOptionOrdering.map(function (select, index) {
 	              return _react2.default.createElement(_Select2.default, {
 	                key: index,
 	                title: select,
-	                options: options[select]
+	                options: options[select],
+	                updatePrice: _this2.updatePrice
 	              });
 	            })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "product__button", onClick: this.addToCart },
+	            "Add To Cart"
 	          )
 	        )
 	      );
@@ -24578,6 +24592,60 @@
 
 /***/ },
 /* 212 */
+/*!**************************************!*\
+  !*** ./js/store/components/Price.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Price = function (_Component) {
+	  _inherits(Price, _Component);
+	
+	  function Price() {
+	    _classCallCheck(this, Price);
+	
+	    return _possibleConstructorReturn(this, (Price.__proto__ || Object.getPrototypeOf(Price)).apply(this, arguments));
+	  }
+	
+	  _createClass(Price, [{
+	    key: "render",
+	    value: function render() {
+	      var price = this.props.price;
+	
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "product__price" },
+	        price
+	      );
+	    }
+	  }]);
+	
+	  return Price;
+	}(_react.Component);
+	
+	exports.default = Price;
+
+/***/ },
+/* 213 */
 /*!***************************************!*\
   !*** ./js/store/components/Select.js ***!
   \***************************************/
@@ -24638,6 +24706,7 @@
 	        this.setSquarespaceSelectValue(this.props.title, value);
 	      }
 	      this.toggleSelect();
+	      this.props.updatePrice();
 	    }
 	  }, {
 	    key: "toggleSelect",
@@ -24647,12 +24716,11 @@
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.setState({ title: this.props.options[0] });
+	      this.setState({ title: this.props.title });
 	      this.selectCollection = document.querySelectorAll("[data-variant-option-name]");
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
 	      this.quantityInputCollection = document.querySelectorAll("input[type=number]");
-	      this.quantityInputArray = [].concat(_toConsumableArray(this.quantityInputCollection));
-	      this.quantityInput = this.quantityInputArray[0];
+	      this.quantityInput = [].concat(_toConsumableArray(this.quantityInputCollection))[0];
 	    }
 	  }, {
 	    key: "setSquarespaceSelectValue",

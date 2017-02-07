@@ -1,4 +1,7 @@
 <nav class="nav">
+  <a href="/" class="nav__logo">
+    <img src="/assets/logo-small.svg" alt="Small ABeanToGo Logo">
+  </a>
   <ul class="nav__list">
     {.repeated section items}
 
