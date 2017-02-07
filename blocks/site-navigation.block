@@ -2,6 +2,9 @@
   <a href="/" class="nav__logo">
     <img src="/assets/logo-small.svg" alt="Small ABeanToGo Logo">
   </a>
+  <a href="#" class="nav__toggle">
+    <div class="nav__burger"></div>
+  </a>
   <ul class="nav__list">
     {.repeated section items}
 

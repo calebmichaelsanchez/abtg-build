@@ -62,13 +62,19 @@
   \*************************/
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	!function () {
 	  var html = document.documentElement;
 	  var welcome = document.getElementById("welcome");
+	  var toggle = document.querySelectorAll(".nav__toggle")[0];
 	  var latestKnownScroll = 0;
 	  var ticking = false;
+	
+	  function onClick(event) {
+	    event.preventDefault();
+	    html.classList.toggle("nav-active");
+	  }
 	
 	  function onScroll() {
 	    latestKnownScroll = window.scrollY;
@@ -97,6 +103,8 @@
 	  } else {
 	    window.addEventListener('scroll', onScroll, false);
 	  }
+	
+	  toggle.addEventListener("click", onClick, false);
 	}();
 
 /***/ },
@@ -24324,7 +24332,10 @@
 	        _react2.default.createElement("img", {
 	          onLoad: this.imageLoaded,
 	          onError: this.imageErrored,
-	          src: image,
+	          "data-src": image,
+	          "data-img": image,
+	          "data-type": "image",
+	          src: image + "?format=300w",
 	          className: "products__image"
 	        }),
 	        _react2.default.createElement(
@@ -24536,7 +24547,10 @@
 	        _react2.default.createElement("img", {
 	          onLoad: this.imageLoaded,
 	          onError: this.imageErrored,
-	          src: assetUrl,
+	          "data-src": assetUrl,
+	          "data-img": assetUrl,
+	          "data-type": "image",
+	          src: assetUrl + "?format=300w",
 	          className: "product__item product__image"
 	        }),
 	        _react2.default.createElement(
