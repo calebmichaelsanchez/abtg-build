@@ -444,7 +444,7 @@ h1 {
     display: block;
     width: 55px;
     height: 4px;
-    background-color: #cf4c49;
+    background-color: #ed1c25;
     margin-top: 25px;
     margin-bottom: 30px; }
 
@@ -470,7 +470,7 @@ h2 {
     left: 50%;
     width: 100px;
     height: 4px;
-    background-color: #cf4c49;
+    background-color: #ed1c25;
     transform: translateX(-50%);
     z-index: 1; }
 
@@ -487,7 +487,7 @@ h3 {
     display: block;
     width: 50px;
     height: 4px;
-    background-color: #cf4c49;
+    background-color: #ed1c25;
     margin-top: 20px;
     margin-bottom: 20px; }
 
@@ -497,7 +497,7 @@ h4 {
 .btn {
   display: inline-block;
   font-size: 12.5px;
-  color: #cf4c49;
+  color: #ed1c25;
   padding: 20px 35px;
   background-color: #fff;
   letter-spacing: .3rem;
@@ -508,7 +508,7 @@ h4 {
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
   font-stretch: normal; }
   .btn:hover {
-    background-color: #cf4c49;
+    background-color: #ed1c25;
     color: #fff; }
 
 em {
@@ -536,7 +536,7 @@ img {
   .nav-scrolled .nav {
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: #cf4c49; }
+    background-color: #ed1c25; }
   .nav__logo {
     position: absolute;
     display: block;
@@ -612,7 +612,7 @@ img {
 .footer__title {
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
   font-stretch: normal;
-  color: #cf4c49;
+  color: #ed1c25;
   letter-spacing: .3rem;
   text-transform: uppercase;
   margin-bottom: 10px; }
@@ -746,7 +746,7 @@ img {
       transform: translate(-50%, -50%);
       width: 5px;
       height: 5px;
-      background-color: #cf4c49;
+      background-color: #ed1c25;
       border-radius: 50%;
       z-index: 1; }
     .categories__item:last-of-type:after {
@@ -754,26 +754,33 @@ img {
 
 .products {
   width: 100%;
-  max-width: 940px;
   margin-left: auto;
   margin-right: auto;
   font-size: 0;
   text-align: left;
   padding-top: 125px;
-  padding-bottom: 125px; }
+  padding-bottom: 125px;
+  max-width: 350px; }
+  @media (min-width: 640px) {
+    .products {
+      max-width: 940px; } }
   .products__item {
     position: relative;
     display: inline-block;
+    width: 100%;
     text-align: center;
-    width: 33.33%;
     font-size: 16px;
     color: #fff;
     text-decoration: none;
     margin-bottom: 50px;
-    transition: 600ms ease; }
+    transition: opacity 600ms ease, transform 600ms ease, width 300ms ease; }
+    @media (min-width: 640px) {
+      .products__item {
+        width: 50%; } }
     @media (min-width: 1024px) {
       .products__item {
-        margin-bottom: 100px; } }
+        margin-bottom: 100px;
+        width: 33.33%; } }
     .products__item--loading {
       opacity: 0;
       transform: translateY(20px); }
@@ -796,6 +803,7 @@ img {
   .products__overlay {
     position: absolute;
     width: 90%;
+    max-width: 350px;
     top: 42%;
     left: 50%;
     padding: 30px 40px;
@@ -831,7 +839,7 @@ img {
         display: block;
         width: 50px;
         height: 4px;
-        background-color: #cf4c49;
+        background-color: #ed1c25;
         margin-top: 20px;
         margin-bottom: 20px; }
     .products__overlay-excerpt {
@@ -889,7 +897,7 @@ img {
       display: block;
       width: 55px;
       height: 4px;
-      background-color: #cf4c49;
+      background-color: #ed1c25;
       margin-top: 25px;
       margin-bottom: 30px; }
     .product__title:after {
@@ -925,7 +933,7 @@ img {
   .product__button {
     display: inline-block;
     font-size: 12.5px;
-    color: #cf4c49;
+    color: #ed1c25;
     padding: 20px 35px;
     background-color: #fff;
     letter-spacing: .3rem;
@@ -936,7 +944,7 @@ img {
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal; }
     .product__button:hover {
-      background-color: #cf4c49;
+      background-color: #ed1c25;
       color: #fff; }
 
 .select {
@@ -971,7 +979,7 @@ img {
       transition: opacity 400ms ease, visibility 0s 0s linear; }
   .select__item {
     font-size: 12.5px;
-    color: #cf4c49;
+    color: #ed1c25;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     padding: 8px 10px 8px;
@@ -979,7 +987,7 @@ img {
     cursor: pointer; }
     .select__item:hover {
       color: #fff;
-      background-color: #cf4c49; }
+      background-color: #ed1c25; }
 
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
