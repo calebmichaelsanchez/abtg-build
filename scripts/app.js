@@ -23860,10 +23860,12 @@
 	      var _this2 = this;
 	
 	      (0, _axios2.default)("/" + this.props.url + "?format=json").then(function (response) {
+	        console.log(response);
 	        _this2.setState({
 	          title: response.data.items[0].title,
 	          description: response.data.items[0].excerpt,
-	          fullUrl: response.data.items[0].fullUrl
+	          fullUrl: response.data.items[0].fullUrl,
+	          pageUrl: response.data.collection.fullUrl
 	        });
 	      }).catch(function (response) {
 	        console.log(response);
@@ -23876,14 +23878,15 @@
 	      var _state = this.state,
 	          title = _state.title,
 	          description = _state.description,
-	          fullUrl = _state.fullUrl;
+	          fullUrl = _state.fullUrl,
+	          pageUrl = _state.pageUrl;
 	
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "blurb" },
 	        _react2.default.createElement(
-	          "p",
-	          { className: "blurb__title blurb__title--i" },
+	          "a",
+	          { href: fullUrl, className: "blurb__title blurb__title--i" },
 	          _react2.default.createElement(
 	            "em",
 	            null,
@@ -23897,7 +23900,7 @@
 	        ),
 	        _react2.default.createElement(
 	          "a",
-	          { href: fullUrl, className: "btn" },
+	          { href: pageUrl, className: "btn" },
 	          button
 	        )
 	      );
@@ -23967,7 +23970,8 @@
 	        _this2.setState({
 	          title: response.data.upcoming[0].title,
 	          description: response.data.upcoming[0].excerpt,
-	          fullUrl: response.data.upcoming[0].fullUrl
+	          fullUrl: response.data.upcoming[0].fullUrl,
+	          pageUrl: response.data.collection.fullUrl
 	        });
 	      }).catch(function (response) {
 	        console.log(response);
@@ -23980,14 +23984,15 @@
 	      var _state = this.state,
 	          title = _state.title,
 	          description = _state.description,
-	          fullUrl = _state.fullUrl;
+	          fullUrl = _state.fullUrl,
+	          pageUrl = _state.pageUrl;
 	
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "blurb" },
 	        _react2.default.createElement(
-	          "p",
-	          { className: "blurb__title blurb__title--i" },
+	          "a",
+	          { href: fullUrl, className: "blurb__title blurb__title--i" },
 	          _react2.default.createElement(
 	            "em",
 	            null,
@@ -24001,7 +24006,7 @@
 	        ),
 	        _react2.default.createElement(
 	          "a",
-	          { href: fullUrl, className: "btn" },
+	          { href: pageUrl, className: "btn" },
 	          button
 	        )
 	      );
