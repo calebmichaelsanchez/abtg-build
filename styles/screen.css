@@ -1068,9 +1068,10 @@ img {
     min-width: 150px;
     margin: 0;
     padding: 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
     list-style: none;
     transition: opacity 400ms ease, visibility 0s 400ms linear; }
     .select--open .select__list {
@@ -1082,7 +1083,7 @@ img {
     color: #ed1c25;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
-    padding: 8px 10px 8px;
+    padding: 10px;
     transition: 400ms ease;
     cursor: pointer; }
     .select__item:hover {

@@ -24489,6 +24489,7 @@
 	      price: "",
 	      options: {
 	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+	        Type: ["Caffeinated", "Decaffeinated"],
 	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
 	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
 	      }
@@ -24766,7 +24767,9 @@
 	        { className: "select " + open },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "select__title", onClick: this.toggleSelect },
+	          {
+	            className: "select__title",
+	            onClick: this.toggleSelect },
 	          title
 	        ),
 	        _react2.default.createElement(
