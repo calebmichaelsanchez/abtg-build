@@ -1093,5 +1093,115 @@ img {
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
 
+.events {
+  width: 100%; }
+  .events__item {
+    display: block;
+    width: 100%;
+    padding: 80px;
+    background-color: #e8e3e3; }
+    .events__item:nth-of-type(even) {
+      background-color: #cdc3c3; }
+      .events__item:nth-of-type(even) .events__inner {
+        text-align: right;
+        direction: rtl; }
+      .events__item:nth-of-type(even) .events__image {
+        margin-right: 0;
+        margin-left: percentag(50/1135); }
+  .events__inner {
+    width: 100%;
+    max-width: 1135px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 0; }
+  .events__info, .events__image {
+    display: inline-block;
+    vertical-align: middle; }
+  .events__info {
+    width: 44.49339%; }
+  .events__title {
+    text-align: left;
+    color: #000;
+    margin-bottom: 25px;
+    letter-spacing: .15rem; }
+    .events__title:after {
+      left: 0;
+      transform: none; }
+  .events__image {
+    position: relative;
+    width: 42.29075%;
+    margin-right: 4.40529%; }
+    .events__image-inner {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; }
+  .events__date {
+    font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
+    font-stretch: normal;
+    font-size: 20px;
+    letter-spacing: .1rem;
+    font-style: italic;
+    margin-bottom: 20px; }
+  .events__button {
+    display: inline-block;
+    font-size: 12.5px;
+    color: #ed1c25;
+    padding: 20px 35px;
+    background-color: #fff;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+    margin-top: 30px;
+    transition: 600ms ease;
+    cursor: pointer;
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal; }
+    .events__button:hover {
+      background-color: #ed1c25;
+      color: #fff; }
+
+.event {
+  width: 100%;
+  background: url("/assets/wood-background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding: 50px 32px 100px; }
+  .event__inner {
+    width: 100%;
+    max-width: 1135px;
+    padding: 40px;
+    background-color: #cdc3c3;
+    margin-left: auto;
+    margin-right: auto; }
+  .event__image {
+    position: relative;
+    width: 100%; }
+    .event__image-inner {
+      width: 100%;
+      height: 0;
+      padding-bottom: 40%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; }
+  .event__info {
+    padding: 30px 16px 0; }
+  .event__title {
+    text-align: left;
+    color: #000;
+    margin-bottom: 25px;
+    letter-spacing: .15rem; }
+    .event__title:after {
+      left: 0;
+      transform: none; }
+  .event__date {
+    font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
+    font-stretch: normal;
+    font-size: 20px;
+    letter-spacing: .1rem;
+    font-style: italic;
+    margin-bottom: 20px; }
+
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
