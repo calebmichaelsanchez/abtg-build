@@ -24924,7 +24924,7 @@
 	        _this2.setState({
 	          upcoming: response.data.upcoming
 	        });
-	        if (response.date.upcoming.length % 2 === 0) {
+	        if (response.data.upcoming.length % 2 === 0) {
 	          _this2.calendar.classList.add("light");
 	        } else {
 	          _this2.calendar.classList.add("dark");
