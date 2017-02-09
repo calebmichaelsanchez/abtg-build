@@ -3,16 +3,18 @@
     {.repeated section items}
 
       <a class="blogs__item">
+        <div class="blogs__item-inner">
         <!-- main image (thumbnail) -->
-        {.main-image?}
-          <div class="blogs__image">
-            <div class="blogs__image-inner" style="background-image: url('{assetUrl}')"></div>
-          </div>
-        {.end}
-        <!-- post title -->
-        <h3 class="blogs__title">{title}</h3>
-        <!-- excerpt -->
-        {excerpt}
+          {.main-image?}
+            <div class="blogs__image">
+              <div class="blogs__image-inner" style="background-image: url('{assetUrl}')"></div>
+            </div>
+          {.end}
+          <!-- post title -->
+          <h3 class="blogs__title">{title}</h3>
+          <!-- excerpt -->
+          {excerpt}
+        </div>
       </a>
 
     {.or}
