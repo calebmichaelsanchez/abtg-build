@@ -1107,7 +1107,12 @@ img {
         direction: rtl; }
       .events__item:nth-of-type(even) .events__image {
         margin-right: 0;
-        margin-left: percentag(50/1135); }
+        margin-left: 4.40529%; }
+      .events__item:nth-of-type(even) .events__title {
+        text-align: right; }
+        .events__item:nth-of-type(even) .events__title:after {
+          left: initial;
+          right: 0; }
   .events__inner {
     width: 100%;
     max-width: 1135px;
@@ -1119,7 +1124,8 @@ img {
     display: inline-block;
     vertical-align: middle; }
   .events__info {
-    width: 44.49339%; }
+    width: 44.49339%;
+    direction: ltr; }
   .events__title {
     text-align: left;
     color: #000;
