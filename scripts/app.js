@@ -24910,7 +24910,6 @@
 	    _this.state = {
 	      upcoming: []
 	    };
-	    // this.setFilter = this.setFilter.bind(this);
 	    return _this;
 	  }
 	
@@ -24919,19 +24918,21 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
+	      this.calendar = document.querySelectorAll(".event-calendar")[0];
 	      (0, _axios2.default)("/events?format=json").then(function (response) {
 	        console.log(response);
 	        _this2.setState({
 	          upcoming: response.data.upcoming
 	        });
+	        if (response.date.upcoming.length % 2 === 0) {
+	          _this2.calendar.classList.add("light");
+	        } else {
+	          _this2.calendar.classList.add("dark");
+	        }
 	      }).catch(function (response) {
 	        console.log(response);
 	      });
 	    }
-	    // setFilter(category) {
-	    //   this.setState({ category: category });
-	    // }
-	
 	  }, {
 	    key: "render",
 	    value: function render() {

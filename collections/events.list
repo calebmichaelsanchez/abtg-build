@@ -1,4 +1,6 @@
 <div id="event-list"></div>
 <div class="event-calendar">
-  <squarespace:block-field id="calendar" columns="12"/>
+  <div class="event-calendar__inner">
+    <squarespace:block-field id="calendar" columns="12"/>
+  </div>
 </div>
