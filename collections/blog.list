@@ -5,7 +5,9 @@
       <a class="blogs__item">
         <!-- main image (thumbnail) -->
         {.main-image?}
-          <img class="blogs__image" {@|image-meta} />
+          <div class="blogs__image">
+            <div class="blogs__image-inner" style="background-image: url('{assetUrl}')"></div>
+          </div>
         {.end}
         <!-- post title -->
         <h3 class="blogs__title">{title}</h3>
