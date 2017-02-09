@@ -1,44 +1,44 @@
 <div class="blogs">
-  <!-- item loop -->
-  {.repeated section items}
+  <div class="blogs__inner"><!-- item loop -->
+    {.repeated section items}
 
-    <a class="blogs__item">
-      <!-- main image (thumbnail) -->
-      {.main-image?}
-        <img class="blogs__image" {@|image-meta} />
-      {.end}
-      <!-- post title -->
-      <h3 class="blogs__title">{title}</h3>
-      <!-- excerpt -->
-      {excerpt}
-    </a>
+      <a class="blogs__item">
+        <!-- main image (thumbnail) -->
+        {.main-image?}
+          <img class="blogs__image" {@|image-meta} />
+        {.end}
+        <!-- post title -->
+        <h3 class="blogs__title">{title}</h3>
+        <!-- excerpt -->
+        {excerpt}
+      </a>
 
-  {.or}
+    {.or}
 
-    <!-- no items means no blog posts -->
-    <p><em>No blog posts yet.</em></p>
+      <!-- no items means no blog posts -->
+      <p><em>No blog posts yet.</em></p>
 
-  {.end}
+    {.end}
 
-  <!-- pagination -->
-  {.if pagination}
-    <nav class="blog-list-pagination">
+    <!-- pagination -->
+    {.if pagination}
+      <nav class="blog-list-pagination">
 
-      <!-- newer page -->
-      {.if pagination.prevPage}
-        <a href="{pagination.prevPageUrl}">Newer</a>
-      {.or}
-        <a class="disabled">Newer</a>
-      {.end}
+        <!-- newer page -->
+        {.if pagination.prevPage}
+          <a href="{pagination.prevPageUrl}">Newer</a>
+        {.or}
+          <a class="disabled">Newer</a>
+        {.end}
 
-      <!-- older page -->
-      {.if pagination.nextPage}
-        <a href="{pagination.nextPageUrl}">Older</a>
-      {.or}
-        <a class="disabled">Older</a>
-      {.end}
+        <!-- older page -->
+        {.if pagination.nextPage}
+          <a href="{pagination.nextPageUrl}">Older</a>
+        {.or}
+          <a class="disabled">Older</a>
+        {.end}
 
-    </nav>
-  {.end}
-
+      </nav>
+    {.end}
+  </div>
 </div>
