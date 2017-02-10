@@ -1286,30 +1286,23 @@ h1.blurb__title:after {
       background-size: cover; }
   .blogs__title {
     font-weight: 400;
-    margin-top: 15px; }
-    .blogs__title:after {
+    margin-top: 15px;
+    margin-bottom: 10px; }
+  .blogs p {
+    font-size: 13.5px; }
+  .blogs__date {
+    font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
+    font-stretch: normal;
+    font-size: 16px;
+    letter-spacing: .1rem;
+    font-style: italic; }
+    .blogs__date:after {
       content: '';
       display: block;
       width: 35px;
       height: 4px;
       background-color: #ed1c25;
       margin: 10px 0 15px;
-      z-index: 1; }
-  .blogs p {
-    font-size: 13.5px; }
-  .blogs__date {
-    font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
-    font-stretch: normal;
-    font-size: 20px;
-    letter-spacing: .1rem;
-    font-style: italic; }
-    .blogs__date:after {
-      content: '';
-      display: block;
-      width: 100px;
-      height: 4px;
-      background-color: #ed1c25;
-      margin: 20px auto 20px 0;
       z-index: 1; }
 
 #sqs-shopping-cart-wrapper {
