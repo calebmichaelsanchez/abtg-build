@@ -12,7 +12,7 @@
       <!--POST TILE-->
       <div class="blog__info">
         <h2 class="blog__title">{title}</h2>
-        <div class="blog__date">{publishOn|date %A, %B %d}</div>
+        <div class="blog__date">{publishOn|date %B %d, %G}</div>
         <!--MAIN CONTENT-->
         <div class="blog__body">{body}</div>
       </div>
