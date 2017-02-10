@@ -12,6 +12,7 @@
           {.end}
           <!-- post title -->
           <h3 class="blogs__title">{title}</h3>
+          <div class="blogs__date">{publishOn|date %B %d, %G}</div>
           <!-- excerpt -->
           {excerpt}
         </div>
