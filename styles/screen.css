@@ -1223,8 +1223,11 @@ h1.blurb__title:after {
       width: 100px;
       height: 4px;
       background-color: #ed1c25;
-      margin: 20px auto 60px 0;
+      margin: 20px auto 20px 0;
       z-index: 1; }
+
+.event__body {
+  padding-top: 40px; }
 
 .event-calendar {
   width: 100%;
