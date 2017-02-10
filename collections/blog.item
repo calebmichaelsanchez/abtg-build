@@ -10,7 +10,7 @@
       </div>
       {.end}
       <!--POST TILE-->
-      <h2 class="title">{title}</h2>
+      <h2 class="blog__title">{title}</h2>
 
       <!--MAIN CONTENT-->
       <div class="blog__body">{body}</div>
