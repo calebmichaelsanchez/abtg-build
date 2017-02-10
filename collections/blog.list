@@ -2,7 +2,7 @@
   <div class="blogs__inner"><!-- item loop -->
     {.repeated section items}
 
-      <a class="blogs__item">
+      <a href="{fullUrl}" class="blogs__item">
         <div class="blogs__item-inner">
         <!-- main image (thumbnail) -->
           {.main-image?}
