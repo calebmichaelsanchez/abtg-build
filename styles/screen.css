@@ -1182,42 +1182,42 @@ h1.blurb__title:after {
       background-color: #ed1c25;
       color: #fff; }
 
-.event {
+.event, .blog {
   width: 100%;
   background: url("/assets/wood-background.jpg") no-repeat center center fixed;
   background-size: cover;
   padding: 50px 32px 100px; }
-  .event__inner {
+  .event__inner, .blog__inner {
     width: 100%;
     max-width: 1024px;
     padding: 40px;
     background-color: #cdc3c3;
     margin-left: auto;
     margin-right: auto; }
-  .event__image {
+  .event__image, .blog__image {
     position: relative;
     width: 100%; }
-    .event__image-inner {
+    .event__image-inner, .blog__image-inner {
       width: 100%;
       height: 0;
       padding-bottom: 40%;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover; }
-  .event__info {
+  .event__info, .blog__info {
     padding: 30px 16px 0; }
-  .event__title {
+  .event__title, .blog__title {
     text-align: left;
     color: #000;
     margin-bottom: 10px;
     letter-spacing: .15rem; }
-  .event__date {
+  .event__date, .blog__date {
     font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
     font-stretch: normal;
     font-size: 20px;
     letter-spacing: .1rem;
     font-style: italic; }
-    .event__date:after {
+    .event__date:after, .blog__date:after {
       content: '';
       display: block;
       width: 100px;

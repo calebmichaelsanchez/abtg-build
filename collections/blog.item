@@ -2,57 +2,25 @@
 {.section item}
 
   <!--WRAPPER-->
-  <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
-
-    <!--POST TILE-->
-    <h1 class="title" data-content-field="title">
-      {.passthrough?}
-        <a href="{sourceUrl}" target="_blank">{title}</a>
-      {.or}
-        {title}
+  <div class="blog">
+    <div class="blog__inner">
+      {.main-image?}
+      <div class="blog__image">
+        <div class="blog__image-inner" style="background-image: url('{assetUrl}')"></div>
+      </div>
       {.end}
-    </h1>
+      <!--POST TILE-->
+      <h2 class="title">{title}</h2>
 
-    <!--AUTHOR AND DATE-->
-    <p class="meta">
-      <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
-    </p>
+      <!--MAIN CONTENT-->
+      <div class="blog__body">{body}</div>
 
-    <!--MAIN CONTENT-->
-    {body}
+      <!--SHARE AND LIKE-->
+      {@|like-button}
+      {@|social-button}
+    </div>
 
-    <!--BLOG INJECTION-->
-    {postItemInjectCode}
-
-    <!--CATEGORIES-->
-    {.repeated section categories}
-      <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
-    {.end}
-
-    <!--TAGS-->
-    {.repeated section tags}
-      <a class="tag" href="{collection.fullUrl}?tag={@|url-encode}">{@}</a>{.alternates with},
-    {.end}
-
-    <!--SHARE AND LIKE-->
-    {@|like-button}
-    {@|social-button}
-
-
-    <!--LOCATION-->
-    {.section location}
-      {.section addressTitle}
-        {addressTitle}
-        {addressLine1}
-        {addressLine2}
-        {addressCountry}
-      {.end}
-    {.end}
-
-    <!--COMMENTS-->
-    {@|comments}
-
-  </article>
+  </div>
 
 {.end}
 
