@@ -1368,6 +1368,11 @@ h1.blurb__title:after {
     .blog-item-pagination a.disabled {
       display: none; }
 
+.blog-item-pagination a {
+  color: #000; }
+  .blog-item-pagination a:hover {
+    color: #000; }
+
 .contact__title:after {
   content: '';
   display: block;
