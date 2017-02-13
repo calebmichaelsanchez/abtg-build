@@ -1364,6 +1364,8 @@ h1.blurb__title:after {
     margin-right: 10px; }
     .blog-list-pagination a:hover {
       color: #fff; }
+    .blog-list-pagination a.disabled {
+      display: none; }
 
 .contact__title:after {
   content: '';
