@@ -169,6 +169,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -297,6 +298,8 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -1436,8 +1439,8 @@ html body input[type="submit"] {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 118%;
-      height: 118%;
+      width: 114%;
+      height: 114%;
       border-radius: 50%;
       border: 5px solid rgba(237, 28, 37, 0.75);
       transform: translate(-50%, -50%); }
