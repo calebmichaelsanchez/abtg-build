@@ -486,7 +486,7 @@ h4 {
 h6 {
   font-size: 40px;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.6rem;
   text-align: center; }
 
 .btn {
@@ -1391,6 +1391,9 @@ h1.blurb__title:after {
   background-color: #ed1c25;
   margin: 30px auto 15px;
   z-index: 1; }
+
+.form-wrapper .field-list .field .field-element {
+  color: #000; }
 
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
