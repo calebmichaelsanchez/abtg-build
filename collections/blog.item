@@ -14,10 +14,6 @@
       <!--MAIN CONTENT-->
       <div class="blog__body">{body}</div>
     </div>
-
-    <!--SHARE AND LIKE-->
-    {@|like-button}
-    {@|social-button}
   {.end}
   <!--PAGINATION-->
   {.section pagination}
