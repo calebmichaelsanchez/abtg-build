@@ -1368,6 +1368,9 @@ h1.blurb__title:after {
     .blog-item-pagination a.disabled {
       display: none; }
 
+.blog-list-pagination {
+  padding-top: 30px; }
+
 .blog-item-pagination {
   text-align: left; }
   .blog-item-pagination a {
