@@ -836,9 +836,11 @@ h1.blurb__title:after {
 
 .categories {
   width: 100%;
+  max-width: 75%;
   text-align: center;
   font-size: 0;
-  padding-top: 45px; }
+  padding: 45px 0 0 0;
+  margin: 0 auto; }
   .categories__item {
     display: inline-block;
     position: relative;
@@ -848,7 +850,8 @@ h1.blurb__title:after {
     color: #fff;
     cursor: pointer;
     padding-left: 15px;
-    padding-right: 15px; }
+    padding-right: 15px;
+    margin-bottom: 15px; }
     .categories__item:after {
       content: '';
       display: block;
