@@ -401,7 +401,16 @@ main#contact {
 
 .contact {
   width: 100%;
-  max-width: 640px; }
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #fff; }
+  @media (min-width: 768px) {
+    .contact {
+      padding-top: 100px;
+      padding-bottom: 100px; } }
 
 /******************************************************************************
  * Box Sizing
@@ -479,7 +488,7 @@ h4 {
 h6 {
   font-size: 40px; }
 
-.btn, .button {
+.btn {
   display: inline-block;
   font-size: 12.5px;
   color: #ed1c25;
@@ -492,7 +501,7 @@ h6 {
   cursor: pointer;
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
   font-stretch: normal; }
-  .btn:hover, .button:hover {
+  .btn:hover {
     background-color: #ed1c25;
     color: #fff; }
 
@@ -1320,3 +1329,26 @@ h1.blurb__title:after {
 
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
+
+html body .button.sqs-system.button.sqs-editable-button,
+body:not(.button-style-default).button-corner-style-square .sqs-editable-button,
+html body .form-wrapper input[type="submit"],
+html body input[type="submit"] {
+  font-size: 12.5px;
+  color: #ed1c25;
+  background-color: #fff;
+  letter-spacing: .3rem;
+  text-transform: uppercase;
+  transition: 600ms ease;
+  cursor: pointer;
+  border-radius: 0;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+  font-stretch: normal;
+  opacity: 1; }
+  html body .button.sqs-system.button.sqs-editable-button:hover,
+  body:not(.button-style-default).button-corner-style-square .sqs-editable-button:hover,
+  html body .form-wrapper input[type="submit"]:hover,
+  html body input[type="submit"]:hover {
+    background-color: #ed1c25;
+    color: #fff;
+    opacity: 1; }
