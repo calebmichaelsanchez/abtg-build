@@ -1349,22 +1349,23 @@ h1.blurb__title:after {
       margin: 10px 0 15px;
       z-index: 1; }
 
-.blog-list-pagination {
-  position: absolute;
+.blog-list-pagination,
+.blog-item-pagination {
+  position: relative;
   display: block;
   width: 100%;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center; }
-  .blog-list-pagination a {
+  .blog-list-pagination a,
+  .blog-item-pagination a {
     color: #fff;
     font-style: italic;
     margin-left: 10px;
     margin-right: 10px; }
-    .blog-list-pagination a:hover {
+    .blog-list-pagination a:hover,
+    .blog-item-pagination a:hover {
       color: #fff; }
-    .blog-list-pagination a.disabled {
+    .blog-list-pagination a.disabled,
+    .blog-item-pagination a.disabled {
       display: none; }
 
 .contact__title:after {
