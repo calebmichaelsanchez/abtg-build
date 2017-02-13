@@ -744,13 +744,13 @@ img {
     display: block;
     width: 100%;
     max-width: 615px; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .learn-more__item {
         float: right;
         clear: both; } }
     .learn-more__item:first-of-type {
       margin-bottom: 50px; }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .learn-more__item:first-of-type {
           float: left;
           margin-bottom: 180px; } }
@@ -760,7 +760,7 @@ img {
     top: -100px;
     left: 765px;
     width: 696px; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .learn-more__cup {
         display: block; } }
   .learn-more__beans {
@@ -769,7 +769,7 @@ img {
     top: 510px;
     right: 836px;
     width: 630px; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .learn-more__beans {
         display: block; } }
 
