@@ -395,6 +395,14 @@ main:not(#welcome) {
     main:not(#welcome) {
       padding-top: 75px; } }
 
+main#contact {
+  background: url("/assets/contact-background.jpg") no-repeat center center;
+  background-size: cover; }
+
+.contact {
+  width: 100%;
+  max-width: 640px; }
+
 /******************************************************************************
  * Box Sizing
 *******************************************************************************/
@@ -468,7 +476,10 @@ h3 {
 h4 {
   font-size: 14px; }
 
-.btn {
+h6 {
+  font-size: 40px; }
+
+.btn, .button {
   display: inline-block;
   font-size: 12.5px;
   color: #ed1c25;
@@ -481,7 +492,7 @@ h4 {
   cursor: pointer;
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
   font-stretch: normal; }
-  .btn:hover {
+  .btn:hover, .button:hover {
     background-color: #ed1c25;
     color: #fff; }
 
@@ -1260,6 +1271,8 @@ h1.blurb__title:after {
     @media (min-width: 1024px) {
       .blogs__inner {
         max-width: 1024px; } }
+    .blogs__inner:hover {
+      transform: translateY(-25px); }
   .blogs__item {
     display: inline-block;
     width: 100%;
