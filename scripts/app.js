@@ -24769,6 +24769,8 @@
 	
 	    _this.handleClick = _this.handleClick.bind(_this);
 	    _this.toggleSelect = _this.toggleSelect.bind(_this);
+	    _this.openSelect = _this.openSelect.bind(_this);
+	    _this.closeSelect = _this.closeSelect.bind(_this);
 	    _this.setSquarespaceSelectValue = _this.setSquarespaceSelectValue.bind(_this);
 	    _this.setQuantityInputValue = _this.setQuantityInputValue.bind(_this);
 	    return _this;
@@ -24791,6 +24793,16 @@
 	    key: "toggleSelect",
 	    value: function toggleSelect() {
 	      this.setState({ open: !this.state.open });
+	    }
+	  }, {
+	    key: "openSelect",
+	    value: function openSelect() {
+	      this.setState({ open: true });
+	    }
+	  }, {
+	    key: "closeSelect",
+	    value: function closeSelect() {
+	      this.setState({ open: false });
 	    }
 	  }, {
 	    key: "componentDidMount",
@@ -24828,7 +24840,16 @@
 	      var open = this.state.open ? "select--open" : "";
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "select " + open, onClick: this.toggleSelect },
+	        {
+	          className: "select " + open,
+	          onClick: this.toggleSelect,
+	          onMouseEnter: function onMouseEnter() {
+	            console.log("mouse enter");_this2.openSelect();
+	          },
+	          onMouseLeave: function onMouseLeave() {
+	            console.log("mouse leave");_this2.closeSelect();
+	          }
+	        },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "select__title" },
