@@ -675,6 +675,8 @@ img {
       background-color: #f04b47;
       opacity: 0;
       transition: opacity 400ms ease; }
+      .nav-scrolled .nav__link:after {
+        background-color: #fff; }
     .nav__link:hover:after {
       opacity: 1; }
 
@@ -1062,7 +1064,23 @@ h1.blurb__title:after {
   display: inline-block;
   text-align: left;
   vertical-align: top;
-  padding: 10px 25px 10px 0; }
+  padding: 10px 17px 10px 0;
+  margin-right: 25px;
+  cursor: pointer; }
+  .select:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 7px 4px 0 4px;
+    border-color: #fff transparent transparent transparent; }
   .select__title {
     font-size: 12.5px;
     color: #fff;
@@ -1264,11 +1282,13 @@ h1.blurb__title:after {
     max-width: 900px; }
 
 .blogs {
+  position: relative;
   width: 100%;
   background: url("/assets/wood-background.jpg") no-repeat center center fixed;
   background-size: cover;
   padding: 50px 32px 100px; }
   .blogs__inner {
+    position: relative;
     width: 100%;
     max-width: 550px;
     margin-left: auto;
@@ -1327,6 +1347,21 @@ h1.blurb__title:after {
       background-color: #ed1c25;
       margin: 10px 0 15px;
       z-index: 1; }
+
+.blog-list-pagination {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; }
+  .blog-list-pagination a {
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 10px; }
+    .blog-list-pagination a:hover {
+      color: #fff; }
 
 .contact__title:after {
   content: '';

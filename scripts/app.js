@@ -24828,12 +24828,10 @@
 	      var open = this.state.open ? "select--open" : "";
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "select " + open },
+	        { className: "select " + open, onClick: this.toggleSelect },
 	        _react2.default.createElement(
 	          "div",
-	          {
-	            className: "select__title",
-	            onClick: this.toggleSelect },
+	          { className: "select__title" },
 	          title
 	        ),
 	        _react2.default.createElement(
