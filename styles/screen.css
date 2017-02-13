@@ -677,7 +677,7 @@ img {
       transition: opacity 400ms ease; }
       .nav-scrolled .nav__link:after {
         background-color: #fff; }
-    .nav__link:hover:after {
+    .no-touch .nav__link:hover:after {
       opacity: 1; }
 
 .footer__banner {
