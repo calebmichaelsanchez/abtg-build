@@ -502,7 +502,7 @@ h6 {
   cursor: pointer;
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
   font-stretch: normal; }
-  .btn:hover {
+  .no-touch .btn:hover {
     background-color: #ed1c25;
     color: #fff; }
 
@@ -944,7 +944,7 @@ h1.blurb__title:after {
       transform: translate(-50%, -50%);
       background-color: rgba(205, 195, 195, 0.8);
       z-index: -1; }
-    .products__item:hover .products__overlay {
+    .no-touch .products__item:hover .products__overlay {
       opacity: 1; }
     .products__overlay-title {
       font-size: 18px;
@@ -1055,7 +1055,7 @@ h1.blurb__title:after {
     cursor: pointer;
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal; }
-    .product__button:hover {
+    .no-touch .product__button:hover {
       background-color: #ed1c25;
       color: #fff; }
 
@@ -1114,7 +1114,7 @@ h1.blurb__title:after {
     padding: 10px;
     transition: 400ms ease;
     cursor: pointer; }
-    .select__item:hover {
+    .no-touch .select__item:hover {
       color: #fff;
       background-color: #ed1c25; }
 
@@ -1217,7 +1217,7 @@ h1.blurb__title:after {
     cursor: pointer;
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal; }
-    .events__button:hover {
+    .no-touch .events__button:hover {
       background-color: #ed1c25;
       color: #fff; }
 
@@ -1307,7 +1307,7 @@ h1.blurb__title:after {
     padding: 15px;
     vertical-align: top;
     transition: transform 600ms ease; }
-    .blogs__item:hover {
+    .no-touch .blogs__item:hover {
       transform: translateY(-25px); }
     @media (min-width: 640px) {
       .blogs__item {
@@ -1361,7 +1361,7 @@ h1.blurb__title:after {
     font-style: italic;
     margin-left: 10px;
     margin-right: 10px; }
-    .blog-list-pagination a:hover,
+    .no-touch .blog-list-pagination a:hover, .no-touch
     .blog-item-pagination a:hover {
       color: #fff; }
     .blog-list-pagination a.disabled,
@@ -1375,7 +1375,7 @@ h1.blurb__title:after {
   text-align: left; }
   .blog-item-pagination a {
     color: #000; }
-    .blog-item-pagination a:hover {
+    .no-touch .blog-item-pagination a:hover {
       color: #000; }
 
 .contact__title:after {
