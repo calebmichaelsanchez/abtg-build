@@ -1301,13 +1301,14 @@ h1.blurb__title:after {
     @media (min-width: 1024px) {
       .blogs__inner {
         max-width: 1024px; } }
-    .blogs__inner:hover {
-      transform: translateY(-25px); }
   .blogs__item {
     display: inline-block;
     width: 100%;
     padding: 15px;
-    vertical-align: top; }
+    vertical-align: top;
+    transition: transform 600ms ease; }
+    .blogs__item:hover {
+      transform: translateY(-25px); }
     @media (min-width: 640px) {
       .blogs__item {
         width: 50%; } }
@@ -1358,6 +1359,7 @@ h1.blurb__title:after {
   text-align: center; }
   .blog-list-pagination a {
     color: #fff;
+    font-style: italic;
     margin-left: 10px;
     margin-right: 10px; }
     .blog-list-pagination a:hover {
