@@ -31,16 +31,16 @@
 
         <!-- newer page -->
         {.if pagination.prevPage}
-          <a href="{pagination.prevPageUrl}">Newer</a>
+          <a href="{pagination.prevPageUrl}">< Newer</a>
         {.or}
-          <a class="disabled">Newer</a>
+          <a class="disabled">< Newer</a>
         {.end}
 
         <!-- older page -->
         {.if pagination.nextPage}
-          <a href="{pagination.nextPageUrl}">Older</a>
+          <a href="{pagination.nextPageUrl}">Older ></a>
         {.or}
-          <a class="disabled">Older</a>
+          <a class="disabled">Older ></a>
         {.end}
 
       </nav>
