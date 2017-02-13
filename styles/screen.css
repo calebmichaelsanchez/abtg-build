@@ -669,7 +669,7 @@ img {
       position: absolute;
       top: 90%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-53%);
       width: 50%;
       height: 2px;
       background-color: #f04b47;
@@ -678,6 +678,8 @@ img {
       .nav-scrolled .nav__link:after {
         background-color: #fff; }
     .no-touch .nav__link:hover:after {
+      opacity: 1; }
+    .nav__item--active .nav__link:after {
       opacity: 1; }
 
 .footer__banner {
