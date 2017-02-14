@@ -23840,6 +23840,7 @@
 	exports.strip = strip;
 	exports.toDollars = toDollars;
 	exports.procEvent = procEvent;
+	exports.getBody = getBody;
 	function strip(html) {
 	  var tmp = document.createElement("DIV");
 	  tmp.innerHTML = html;
@@ -23862,6 +23863,12 @@
 	  // function to fire event on an element
 	  var event = new Event(eventType);
 	  element.dispatchEvent(event);
+	}
+	
+	function getBody(string) {
+	  var div = document.createElement("div");
+	  div.innerHTML = string;
+	  return div.firstChild;
 	}
 
 /***/ },
@@ -24261,7 +24268,7 @@
 	  "Decaf": "Decaf Coffee",
 	  "Flavored Decaf": "Flavored Decaf Coffee",
 	  "Espresso": "Espresso",
-	  "coffee-club": "Coffee Club"
+	  "Coffee Club": "Coffee Club"
 	};
 	
 	var ProductsList = function (_Component) {
@@ -24310,7 +24317,7 @@
 	              image: item.assetUrl,
 	              excerpt: item.excerpt,
 	              url: item.fullUrl,
-	              pricePerPound: (0, _helpers.toDollars)(item.variants[8].price)
+	              pricePerPound: (0, _helpers.toDollars)(item.variants[0].price)
 	            });
 	          })
 	        )
@@ -24413,9 +24420,8 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "products__price" },
-	            "$",
-	            pricePerPound,
-	            "/lb"
+	            "from $",
+	            pricePerPound
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -24540,6 +24546,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	function renderExcerpt() {}
+	
 	var ProductItem = function (_Component) {
 	  _inherits(ProductItem, _Component);
 	
@@ -24549,13 +24557,15 @@
 	    var _this = _possibleConstructorReturn(this, (ProductItem.__proto__ || Object.getPrototypeOf(ProductItem)).call(this, props));
 	
 	    _this.state = {
-	      imageStatus: "loading",
+	      imageStatus: "product--loading",
 	      price: "",
 	      options: {
 	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 	        Type: ["Caffeinated", "Decaffeinated"],
 	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
-	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"]
+	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"],
+	        Length: ["2 months", "6 months", "12 months"],
+	        Amount: ["2 lbs/mo", "4 lbs/mo"]
 	      }
 	    };
 	
@@ -24568,12 +24578,12 @@
 	  _createClass(ProductItem, [{
 	    key: "imageLoaded",
 	    value: function imageLoaded() {
-	      this.setState({ imageStatus: "loaded" });
+	      this.setState({ imageStatus: "product--loaded" });
 	    }
 	  }, {
 	    key: "imageErrored",
 	    value: function imageErrored() {
-	      this.setState({ imageStatus: "errored" });
+	      this.setState({ imageStatus: "product--errored" });
 	    }
 	  }, {
 	    key: "updatePrice",
@@ -24604,11 +24614,13 @@
 	          assetUrl = _props$item.assetUrl,
 	          excerpt = _props$item.excerpt,
 	          variantOptionOrdering = _props$item.variantOptionOrdering,
-	          variants = _props$item.variants;
+	          variants = _props$item.variants,
+	          categories = _props$item.categories;
 	
+	      console.log(variantOptionOrdering);
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "product product--" + imageStatus },
+	        { className: "product " + imageStatus },
 	        _react2.default.createElement("img", {
 	          onLoad: this.imageLoaded,
 	          onError: this.imageErrored,
@@ -24812,6 +24824,7 @@
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
 	      this.quantityInputCollection = document.querySelectorAll("input[type=number]");
 	      this.quantityInput = [].concat(_toConsumableArray(this.quantityInputCollection))[0];
+	      console.log(this.quantityInput);
 	    }
 	  }, {
 	    key: "setSquarespaceSelectValue",
@@ -24844,10 +24857,10 @@
 	          className: "select " + open,
 	          onClick: this.toggleSelect,
 	          onMouseEnter: function onMouseEnter() {
-	            console.log("mouse enter");_this2.openSelect();
+	            _this2.openSelect();
 	          },
 	          onMouseLeave: function onMouseLeave() {
-	            console.log("mouse leave");_this2.closeSelect();
+	            _this2.closeSelect();
 	          }
 	        },
 	        _react2.default.createElement(
@@ -25220,23 +25233,13 @@
 	  function EventItem() {
 	    _classCallCheck(this, EventItem);
 	
-	    var _this = _possibleConstructorReturn(this, (EventItem.__proto__ || Object.getPrototypeOf(EventItem)).call(this));
-	
-	    _this.getBody = _this.getBody.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, (EventItem.__proto__ || Object.getPrototypeOf(EventItem)).call(this));
 	  }
 	
 	  _createClass(EventItem, [{
-	    key: "getBody",
-	    value: function getBody(string) {
-	      var div = document.createElement("div");
-	      div.innerHTML = string;
-	      return div.firstChild;
-	    }
-	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.body.append(this.getBody(this.props.item.body));
+	      this.body.append((0, _helpers.getBody)(this.props.item.body));
 	      // This allows the squarespace image loader to
 	      // grab images that have been added to the
 	      // wysiwyg by clients

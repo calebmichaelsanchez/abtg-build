@@ -1044,9 +1044,15 @@ h1.blurb__title:after {
     display: none; }
     .product-cart-info .product-price {
       color: #fff; }
+  .product--coffee .product__body {
+    display: none; }
+  .product__body .btn {
+    margin-top: 10px; }
   .product__variants {
     font-size: 0;
     text-align: left; }
+    .product--coffee-club .product__variants {
+      display: none; }
   .product__button {
     display: inline-block;
     font-size: 12.5px;
@@ -1063,6 +1069,8 @@ h1.blurb__title:after {
     .no-touch .product__button:hover {
       background-color: #ed1c25;
       color: #fff; }
+    .product--coffee-club .product__button {
+      display: none; }
 
 .select {
   position: relative;
