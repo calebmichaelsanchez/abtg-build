@@ -57,7 +57,7 @@
 	
 	__webpack_require__(/*! ./store */ 208);
 	
-	__webpack_require__(/*! ./events */ 215);
+	__webpack_require__(/*! ./events */ 217);
 
 /***/ },
 /* 1 */
@@ -24528,11 +24528,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Price = __webpack_require__(/*! ./Price */ 213);
+	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 213);
+	
+	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+	
+	var _Price = __webpack_require__(/*! ./Price */ 215);
 	
 	var _Price2 = _interopRequireDefault(_Price);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 214);
+	var _Select = __webpack_require__(/*! ./Select */ 216);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -24559,13 +24563,13 @@
 	    _this.state = {
 	      imageStatus: "product--loading",
 	      price: "",
+	      quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 	      options: {
-	        Quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-	        Type: ["Caffeinated", "Decaffeinated"],
-	        Size: ["1/2 lb.", "1 lb.", "5 lb."],
-	        Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"],
-	        Length: ["2 months", "6 months", "12 months"],
-	        Amount: ["2 lbs/mo", "4 lbs/mo"]
+	        // Type: ["Caffeinated", "Decaffeinated"],
+	        // Size: ["1/2 lb.", "1 lb.", "5 lb."],
+	        // Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"],
+	        // Length: ["2 months", "6 months", "12 months"],
+	        // Amount: ["2 lbs/mo", "4 lbs/mo"]
 	      }
 	    };
 	
@@ -24599,6 +24603,37 @@
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      this.updatePrice();
+	      this.createOptions();
+	    }
+	  }, {
+	    key: "createOptions",
+	    value: function createOptions() {
+	      var _props$item = this.props.item,
+	          variantOptionOrdering = _props$item.variantOptionOrdering,
+	          variants = _props$item.variants;
+	
+	      var options = {};
+	      for (var h = 0; h < variantOptionOrdering.length; h++) {
+	        options[variantOptionOrdering[h]] = [];
+	      }
+	      for (var i = 0; i < variants.length; i++) {
+	        console.log(variants[i]);
+	        for (var j = 0; j < variants[i].optionValues.length; j++) {
+	          for (var k = 0; k < variantOptionOrdering.length; k++) {
+	            if (variants[i].optionValues[j].optionName === variantOptionOrdering[k]) {
+	              options[variantOptionOrdering[k]].push(variants[i].optionValues[j].value);
+	            }
+	          }
+	        }
+	      }
+	      for (var m = 0; m < variantOptionOrdering.length; m++) {
+	        options[variantOptionOrdering[m]] = options[variantOptionOrdering[m]].filter(function (item, index, inputArray) {
+	          return inputArray.indexOf(item) == index;
+	        });
+	      }
+	      var newState = (0, _immutabilityHelper2.default)(this.state.options, { $merge: options });
+	      this.setState({ options: newState });
+	      //this.setState({ options: this.state.options.concat([options])});
 	    }
 	  }, {
 	    key: "render",
@@ -24609,15 +24644,14 @@
 	          imageStatus = _state.imageStatus,
 	          options = _state.options,
 	          price = _state.price;
-	      var _props$item = this.props.item,
-	          title = _props$item.title,
-	          assetUrl = _props$item.assetUrl,
-	          excerpt = _props$item.excerpt,
-	          variantOptionOrdering = _props$item.variantOptionOrdering,
-	          variants = _props$item.variants,
-	          categories = _props$item.categories;
+	      var _props$item2 = this.props.item,
+	          title = _props$item2.title,
+	          assetUrl = _props$item2.assetUrl,
+	          excerpt = _props$item2.excerpt,
+	          variantOptionOrdering = _props$item2.variantOptionOrdering,
+	          variants = _props$item2.variants,
+	          categories = _props$item2.categories;
 	
-	      console.log(variantOptionOrdering);
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "product " + imageStatus },
@@ -24654,16 +24688,15 @@
 	            { className: "product__variants" },
 	            _react2.default.createElement(_Select2.default, {
 	              title: "Quantity",
-	              options: options["Quantity"],
+	              options: this.state.quantity,
 	              updatePrice: this.updatePrice
 	            }),
 	            variantOptionOrdering.map(function (select, index) {
-	              return _react2.default.createElement(_Select2.default, {
-	                key: index,
-	                title: select,
-	                options: options[select],
-	                updatePrice: _this2.updatePrice
-	              });
+	              if (Object.keys(_this2.state.options).length === 0 && _this2.state.options.constructor === Object) {
+	                return null;
+	              } else {
+	                return _react2.default.createElement(_Select2.default, { key: index, title: select, options: options[select], updatePrice: _this2.updatePrice });
+	              }
 	            })
 	          ),
 	          _react2.default.createElement(
@@ -24683,6 +24716,260 @@
 
 /***/ },
 /* 213 */
+/*!****************************************!*\
+  !*** ./~/immutability-helper/index.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var invariant = __webpack_require__(/*! invariant */ 214);
+	
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var splice = Array.prototype.splice;
+	
+	var assign = Object.assign || function assign(target, source) {
+	  var keys = getAllKeys(source);
+	  for (var i = 0; i < keys.length; i++) {
+	    var key = keys[i];
+	    if (hasOwnProperty.call(source, key)) {
+	      target[key] = source[key];
+	    }
+	  }
+	  return target;
+	}
+	
+	var getAllKeys = typeof Object.getOwnPropertySymbols === 'function' ?
+	  function(obj) { return Object.keys(obj).concat(Object.getOwnPropertySymbols(obj)) } :
+	  function(obj) { return Object.keys(obj) }
+	;
+	
+	function copy(object) {
+	  if (object instanceof Array) {
+	    return object.slice();
+	  } else if (object && typeof object === 'object') {
+	    return assign(new object.constructor(), object);
+	  } else {
+	    return object;
+	  }
+	}
+	
+	
+	function newContext() {
+	  var commands = assign({}, defaultCommands);
+	  update.extend = function(directive, fn) {
+	    commands[directive] = fn;
+	  }
+	
+	  return update;
+	
+	  function update(object, spec) {
+	    invariant(
+	      !Array.isArray(spec),
+	      'update(): You provided an invalid spec to update(). The spec may ' +
+	      'not contain an array except as the value of $set, $push, $unshift, ' +
+	      '$splice or any custom command allowing an array value.'
+	    );
+	
+	    invariant(
+	      typeof spec === 'object' && spec !== null,
+	      'update(): You provided an invalid spec to update(). The spec and ' +
+	      'every included key path must be plain objects containing one of the ' +
+	      'following commands: %s.',
+	      Object.keys(commands).join(', ')
+	    );
+	
+	    var nextObject = object;
+	    var specKeys = getAllKeys(spec)
+	    var index, key;
+	    for (index = 0; index < specKeys.length; index++) {
+	      var key = specKeys[index];
+	      if (hasOwnProperty.call(commands, key)) {
+	        nextObject = commands[key](spec[key], nextObject, spec, object);
+	      } else {
+	        var nextValueForKey = update(object[key], spec[key]);
+	        if (nextValueForKey !== nextObject[key]) {
+	          if (nextObject === object) {
+	            nextObject = copy(object);
+	          }
+	          nextObject[key] = nextValueForKey;
+	        }
+	      }
+	    }
+	    return nextObject;
+	  }
+	
+	}
+	
+	var defaultCommands = {
+	  $push: function(value, original, spec) {
+	    invariantPushAndUnshift(original, spec, '$push');
+	    return original.concat(value);
+	  },
+	  $unshift: function(value, original, spec) {
+	    invariantPushAndUnshift(original, spec, '$unshift');
+	    return value.concat(original);
+	  },
+	  $splice: function(value, nextObject, spec, object) {
+	    var originalValue = nextObject === object ? copy(object) : nextObject;
+	    invariantSplices(originalValue, spec);
+	    value.forEach(function(args) {
+	      invariantSplice(args);
+	      splice.apply(originalValue, args);
+	    });
+	    return originalValue;
+	  },
+	  $set: function(value, original, spec) {
+	    invariantSet(spec);
+	    return value;
+	  },
+	  $merge: function(value, nextObject, spec, object) {
+	    var originalValue = nextObject === object ? copy(object) : nextObject;
+	    invariantMerge(originalValue, value);
+	    getAllKeys(value).forEach(function(key) {
+	      originalValue[key] = value[key];
+	    });
+	    return originalValue;
+	  },
+	  $apply: function(value, original) {
+	    invariantApply(value);
+	    return value(original);
+	  }
+	};
+	
+	
+	
+	module.exports = newContext();
+	module.exports.newContext = newContext;
+	
+	
+	// invariants
+	
+	function invariantPushAndUnshift(value, spec, command) {
+	  invariant(
+	    Array.isArray(value),
+	    'update(): expected target of %s to be an array; got %s.',
+	    command,
+	    value
+	  );
+	  var specValue = spec[command];
+	  invariant(
+	    Array.isArray(specValue),
+	    'update(): expected spec of %s to be an array; got %s. ' +
+	    'Did you forget to wrap your parameter in an array?',
+	    command,
+	    specValue
+	  );
+	}
+	
+	function invariantSplices(value, spec) {
+	  invariant(
+	    Array.isArray(value),
+	    'Expected $splice target to be an array; got %s',
+	    value
+	  );
+	  invariantSplice(spec['$splice']);
+	}
+	
+	function invariantSplice(value) {
+	  invariant(
+	    Array.isArray(value),
+	    'update(): expected spec of $splice to be an array of arrays; got %s. ' +
+	    'Did you forget to wrap your parameters in an array?',
+	    value
+	  );
+	}
+	
+	function invariantApply(fn) {
+	  invariant(
+	    typeof fn === 'function',
+	    'update(): expected spec of $apply to be a function; got %s.',
+	    fn
+	  );
+	}
+	
+	function invariantSet(spec) {
+	  invariant(
+	    Object.keys(spec).length === 1,
+	    'Cannot have more than one key in an object with $set'
+	  );
+	}
+	
+	function invariantMerge(target, specValue) {
+	  invariant(
+	    specValue && typeof specValue === 'object',
+	    'update(): $merge expects a spec of type \'object\'; got %s',
+	    specValue
+	  );
+	  invariant(
+	    target && typeof target === 'object',
+	    'update(): $merge expects a target of type \'object\'; got %s',
+	    target
+	  );
+	}
+
+
+/***/ },
+/* 214 */
+/*!********************************!*\
+  !*** ./~/invariant/browser.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	'use strict';
+	
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+	
+	var invariant = function(condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+	
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error(
+	        'Minified exception occurred; use the non-minified dev environment ' +
+	        'for the full error message and additional helpful warnings.'
+	      );
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error(
+	        format.replace(/%s/g, function() { return args[argIndex++]; })
+	      );
+	      error.name = 'Invariant Violation';
+	    }
+	
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+	
+	module.exports = invariant;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 6)))
+
+/***/ },
+/* 215 */
 /*!**************************************!*\
   !*** ./js/store/components/Price.js ***!
   \**************************************/
@@ -24736,7 +25023,7 @@
 	exports.default = Price;
 
 /***/ },
-/* 214 */
+/* 216 */
 /*!***************************************!*\
   !*** ./js/store/components/Select.js ***!
   \***************************************/
@@ -24824,7 +25111,6 @@
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
 	      this.quantityInputCollection = document.querySelectorAll("input[type=number]");
 	      this.quantityInput = [].concat(_toConsumableArray(this.quantityInputCollection))[0];
-	      console.log(this.quantityInput);
 	    }
 	  }, {
 	    key: "setSquarespaceSelectValue",
@@ -24893,7 +25179,7 @@
 	exports.default = Select;
 
 /***/ },
-/* 215 */
+/* 217 */
 /*!****************************!*\
   !*** ./js/events/index.js ***!
   \****************************/
@@ -24915,11 +25201,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 216);
+	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 218);
 	
 	var _EventsList2 = _interopRequireDefault(_EventsList);
 	
-	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 218);
+	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 220);
 	
 	var _EventItem2 = _interopRequireDefault(_EventItem);
 	
@@ -25032,7 +25318,7 @@
 	}
 
 /***/ },
-/* 216 */
+/* 218 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsList.js ***!
   \********************************************/
@@ -25050,7 +25336,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 217);
+	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 219);
 	
 	var _EventsItem2 = _interopRequireDefault(_EventsItem);
 	
@@ -25102,7 +25388,7 @@
 	exports.default = EventsList;
 
 /***/ },
-/* 217 */
+/* 219 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsItem.js ***!
   \********************************************/
@@ -25199,7 +25485,7 @@
 	exports.default = EventsItem;
 
 /***/ },
-/* 218 */
+/* 220 */
 /*!*******************************************!*\
   !*** ./js/events/components/EventItem.js ***!
   \*******************************************/
