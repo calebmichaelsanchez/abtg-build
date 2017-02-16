@@ -739,17 +739,22 @@ img {
   display: block;
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 960px;
   background-color: #cdc3c3;
-  padding: 11.79487% 7.98611%; }
+  padding: 100px 16px; }
   .learn-more:after {
     content: '';
     display: table;
     clear: both; }
+  @media (min-width: 768px) {
+    .learn-more {
+      padding: 100px 0; } }
   .learn-more__item {
     display: block;
     width: 100%;
-    max-width: 615px; }
+    max-width: 615px;
+    margin-left: auto;
+    margin-right: auto; }
     @media (min-width: 1024px) {
       .learn-more__item {
         float: right;
@@ -772,7 +777,7 @@ img {
   .learn-more__beans {
     display: block;
     position: absolute;
-    top: 510px;
+    bottom: -350px;
     right: 836px;
     width: 630px; }
     @media (min-width: 1024px) {

@@ -23870,12 +23870,12 @@
 	  _createClass(BlogBlurb, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props);
 	      var button = this.props.button;
 	      var _props$data$items$ = this.props.data.items[0],
 	          title = _props$data$items$.title,
 	          excerpt = _props$data$items$.excerpt,
-	          fullUrl = _props$data$items$.fullUrl,
-	          pageUrl = _props$data$items$.pageUrl;
+	          fullUrl = _props$data$items$.fullUrl;
 	
 	      return _react2.default.createElement(
 	        "div",
@@ -23896,7 +23896,7 @@
 	        ),
 	        _react2.default.createElement(
 	          "a",
-	          { href: pageUrl, className: "btn" },
+	          { href: "/blog", className: "btn" },
 	          button
 	        )
 	      );
