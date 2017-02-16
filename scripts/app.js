@@ -55,9 +55,9 @@
 	
 	__webpack_require__(/*! ./home */ 3);
 	
-	__webpack_require__(/*! ./store */ 208);
+	__webpack_require__(/*! ./store */ 209);
 	
-	__webpack_require__(/*! ./events */ 217);
+	__webpack_require__(/*! ./events */ 218);
 
 /***/ },
 /* 1 */
@@ -193,17 +193,9 @@
 	
 	var _Hero2 = _interopRequireDefault(_Hero);
 	
-	var _PageBlurb = __webpack_require__(/*! ../components/PageBlurb.js */ 204);
+	var _Blurb = __webpack_require__(/*! ../components/Blurb */ 204);
 	
-	var _PageBlurb2 = _interopRequireDefault(_PageBlurb);
-	
-	var _BlogBlurb = __webpack_require__(/*! ../components/BlogBlurb.js */ 206);
-	
-	var _BlogBlurb2 = _interopRequireDefault(_BlogBlurb);
-	
-	var _EventBlurb = __webpack_require__(/*! ../components/EventBlurb.js */ 207);
-	
-	var _EventBlurb2 = _interopRequireDefault(_EventBlurb);
+	var _Blurb2 = _interopRequireDefault(_Blurb);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -254,12 +246,12 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "learn-more__item" },
-	            _react2.default.createElement(_PageBlurb2.default, { url: "store", button: "Shop Now", type: "PageBlurbItem" })
+	            _react2.default.createElement(_Blurb2.default, { url: "store", button: "Shop Now", type: "PageBlurb" })
 	          ),
 	          _react2.default.createElement(
 	            "div",
 	            { className: "learn-more__item" },
-	            _react2.default.createElement(_PageBlurb2.default, { url: "about", button: "Learn More", type: "PageBlurbItem" })
+	            _react2.default.createElement(_Blurb2.default, { url: "about", button: "Learn More", type: "PageBlurb" })
 	          ),
 	          _react2.default.createElement("img", { src: "/assets/home-coffee-mug.png", className: "learn-more__cup" }),
 	          _react2.default.createElement("img", { src: "/assets/home-beans.png", className: "learn-more__beans" })
@@ -279,12 +271,12 @@
 	            _react2.default.createElement(
 	              "div",
 	              { className: "featured-blogs__item" },
-	              _react2.default.createElement(_EventBlurb2.default, { url: "events", button: "See Events", type: "EventBlurbItem" })
+	              _react2.default.createElement(_Blurb2.default, { type: "EventBlurb", url: "events", button: "See Events" })
 	            ),
 	            _react2.default.createElement(
 	              "div",
 	              { className: "featured-blogs__item" },
-	              _react2.default.createElement(_BlogBlurb2.default, { url: "blog", button: "See Blog", type: "BlogBlurbItem" })
+	              _react2.default.createElement(_Blurb2.default, { url: "blog", button: "See Blog", type: "BlogBlurb" })
 	            )
 	          )
 	        )
@@ -23726,8 +23718,115 @@
 
 /***/ },
 /* 204 */
+/*!********************************!*\
+  !*** ./js/components/Blurb.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 181);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _BlogBlurb2 = __webpack_require__(/*! ./BlogBlurb */ 205);
+	
+	var _BlogBlurb3 = _interopRequireDefault(_BlogBlurb2);
+	
+	var _EventBlurb2 = __webpack_require__(/*! ./EventBlurb */ 207);
+	
+	var _EventBlurb3 = _interopRequireDefault(_EventBlurb2);
+	
+	var _PageBlurb2 = __webpack_require__(/*! ./PageBlurb */ 208);
+	
+	var _PageBlurb3 = _interopRequireDefault(_PageBlurb2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Blurb = function (_Component) {
+	  _inherits(Blurb, _Component);
+	
+	  function Blurb(props) {
+	    _classCallCheck(this, Blurb);
+	
+	    var _this = _possibleConstructorReturn(this, (Blurb.__proto__ || Object.getPrototypeOf(Blurb)).call(this, props));
+	
+	    _this.state = {
+	      data: {}
+	    };
+	    _this.renderBlurb = _this.renderBlurb.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(Blurb, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      _axios2.default.get("/" + this.props.url + "?format=json").then(function (response) {
+	        _this2.setState({ data: response.data });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: "renderBlurb",
+	    value: function renderBlurb(type) {
+	      var components = {
+	        'BlogBlurb': function BlogBlurb() {
+	          return _BlogBlurb3.default;
+	        },
+	        'EventBlurb': function EventBlurb() {
+	          return _EventBlurb3.default;
+	        },
+	        'PageBlurb': function PageBlurb() {
+	          return _PageBlurb3.default;
+	        }
+	      };
+	      return components[type]();
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _props = this.props,
+	          button = _props.button,
+	          type = _props.type;
+	
+	      var Component = this.renderBlurb(type);
+	
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        Object.keys(this.state.data).length === 0 && this.state.data.constructor === Object ? null : _react2.default.createElement(Component, { data: this.state.data, button: button })
+	      );
+	    }
+	  }]);
+	
+	  return Blurb;
+	}(_react.Component);
+	
+	exports.default = Blurb;
+
+/***/ },
+/* 205 */
 /*!************************************!*\
-  !*** ./js/components/PageBlurb.js ***!
+  !*** ./js/components/BlogBlurb.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -23747,7 +23846,7 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _helpers = __webpack_require__(/*! ../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23757,76 +23856,58 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var PageBlurb = function (_Component) {
-	  _inherits(PageBlurb, _Component);
+	var BlogBlurb = function (_Component) {
+	  _inherits(BlogBlurb, _Component);
 	
-	  function PageBlurb(props) {
-	    _classCallCheck(this, PageBlurb);
+	  function BlogBlurb() {
+	    _classCallCheck(this, BlogBlurb);
 	
-	    var _this = _possibleConstructorReturn(this, (PageBlurb.__proto__ || Object.getPrototypeOf(PageBlurb)).call(this, props));
-	
-	    _this.state = {
-	      title: "",
-	      description: "",
-	      fullUrl: ""
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (BlogBlurb.__proto__ || Object.getPrototypeOf(BlogBlurb)).call(this));
 	  }
 	
-	  _createClass(PageBlurb, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      _axios2.default.get("/" + this.props.url + "?format=json").then(function (response) {
-	        _this2.setState({
-	          title: response.data.collection.title,
-	          description: response.data.collection.description,
-	          fullUrl: response.data.collection.fullUrl
-	        });
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    }
-	  }, {
+	  _createClass(BlogBlurb, [{
 	    key: "render",
 	    value: function render() {
 	      var button = this.props.button;
-	      var _state = this.state,
-	          title = _state.title,
-	          description = _state.description,
-	          fullUrl = _state.fullUrl;
-	
+	      var _props$data$items$ = this.props.data.items[0],
+	          title = _props$data$items$.title,
+	          excerpt = _props$data$items$.excerpt,
+	          fullUrl = _props$data$items$.fullUrl,
+	          pageUrl = _props$data$items$.pageUrl;
 	
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "blurb" },
 	        _react2.default.createElement(
-	          "h1",
-	          { className: "blurb__title" },
-	          title
+	          "a",
+	          { href: fullUrl, className: "blurb__title blurb__title--i" },
+	          _react2.default.createElement(
+	            "em",
+	            null,
+	            title
+	          )
 	        ),
 	        _react2.default.createElement(
 	          "p",
 	          { className: "blurb__description" },
-	          (0, _helpers.strip)(description)
+	          (0, _helpers.strip)(excerpt)
 	        ),
 	        _react2.default.createElement(
 	          "a",
-	          { href: fullUrl, className: "btn" },
+	          { href: pageUrl, className: "btn" },
 	          button
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return PageBlurb;
+	  return BlogBlurb;
 	}(_react.Component);
 	
-	exports.default = PageBlurb;
+	exports.default = BlogBlurb;
 
 /***/ },
-/* 205 */
+/* 206 */
 /*!****************************!*\
   !*** ./js/util/helpers.js ***!
   \****************************/
@@ -23872,113 +23953,6 @@
 	}
 
 /***/ },
-/* 206 */
-/*!************************************!*\
-  !*** ./js/components/BlogBlurb.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _axios = __webpack_require__(/*! axios */ 181);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _helpers = __webpack_require__(/*! ../util/helpers */ 205);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var BlogBlurb = function (_Component) {
-	  _inherits(BlogBlurb, _Component);
-	
-	  function BlogBlurb() {
-	    _classCallCheck(this, BlogBlurb);
-	
-	    var _this = _possibleConstructorReturn(this, (BlogBlurb.__proto__ || Object.getPrototypeOf(BlogBlurb)).call(this));
-	
-	    _this.state = {
-	      title: "",
-	      description: "",
-	      fullUrl: ""
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(BlogBlurb, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      (0, _axios2.default)("/" + this.props.url + "?format=json").then(function (response) {
-	        console.log(response);
-	        _this2.setState({
-	          title: response.data.items[0].title,
-	          description: response.data.items[0].excerpt,
-	          fullUrl: response.data.items[0].fullUrl,
-	          pageUrl: response.data.collection.fullUrl
-	        });
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var button = this.props.button;
-	      var _state = this.state,
-	          title = _state.title,
-	          description = _state.description,
-	          fullUrl = _state.fullUrl,
-	          pageUrl = _state.pageUrl;
-	
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "blurb" },
-	        _react2.default.createElement(
-	          "a",
-	          { href: fullUrl, className: "blurb__title blurb__title--i" },
-	          _react2.default.createElement(
-	            "em",
-	            null,
-	            title
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          { className: "blurb__description" },
-	          (0, _helpers.strip)(description)
-	        ),
-	        _react2.default.createElement(
-	          "a",
-	          { href: pageUrl, className: "btn" },
-	          button
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return BlogBlurb;
-	}(_react.Component);
-	
-	exports.default = BlogBlurb;
-
-/***/ },
 /* 207 */
 /*!*************************************!*\
   !*** ./js/components/EventBlurb.js ***!
@@ -24001,7 +23975,7 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _helpers = __webpack_require__(/*! ../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24017,65 +23991,51 @@
 	  function EventBlurb() {
 	    _classCallCheck(this, EventBlurb);
 	
-	    var _this = _possibleConstructorReturn(this, (EventBlurb.__proto__ || Object.getPrototypeOf(EventBlurb)).call(this));
-	
-	    _this.state = {
-	      title: "",
-	      description: "",
-	      fullUrl: ""
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (EventBlurb.__proto__ || Object.getPrototypeOf(EventBlurb)).call(this));
 	  }
 	
 	  _createClass(EventBlurb, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      (0, _axios2.default)("/" + this.props.url + "?format=json").then(function (response) {
-	        _this2.setState({
-	          title: response.data.upcoming[0].title,
-	          description: response.data.upcoming[0].excerpt,
-	          fullUrl: response.data.upcoming[0].fullUrl,
-	          pageUrl: response.data.collection.fullUrl
-	        });
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    }
-	  }, {
 	    key: "render",
 	    value: function render() {
 	      var button = this.props.button;
-	      var _state = this.state,
-	          title = _state.title,
-	          description = _state.description,
-	          fullUrl = _state.fullUrl,
-	          pageUrl = _state.pageUrl;
 	
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "blurb" },
-	        _react2.default.createElement(
-	          "a",
-	          { href: fullUrl, className: "blurb__title blurb__title--i" },
+	      if (this.props.data.upcoming.length > 0) {
+	        var _props$data$upcoming$ = this.props.data.upcoming[0],
+	            title = _props$data$upcoming$.title,
+	            description = _props$data$upcoming$.description,
+	            fullUrl = _props$data$upcoming$.fullUrl,
+	            pageUrl = _props$data$upcoming$.pageUrl;
+	
+	        return _react2.default.createElement(
+	          "div",
+	          { className: "blurb" },
 	          _react2.default.createElement(
-	            "em",
-	            null,
-	            title
+	            "a",
+	            { href: fullUrl, className: "blurb__title blurb__title--i" },
+	            _react2.default.createElement(
+	              "em",
+	              null,
+	              title
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { className: "blurb__description" },
+	            (0, _helpers.strip)(description)
+	          ),
+	          _react2.default.createElement(
+	            "a",
+	            { href: pageUrl, className: "btn" },
+	            button
 	          )
-	        ),
-	        _react2.default.createElement(
+	        );
+	      } else {
+	        return _react2.default.createElement(
 	          "p",
-	          { className: "blurb__description" },
-	          (0, _helpers.strip)(description)
-	        ),
-	        _react2.default.createElement(
-	          "a",
-	          { href: pageUrl, className: "btn" },
-	          button
-	        )
-	      );
+	          null,
+	          "Check back for more events!"
+	        );
+	      }
 	    }
 	  }]);
 	
@@ -24086,6 +24046,85 @@
 
 /***/ },
 /* 208 */
+/*!************************************!*\
+  !*** ./js/components/PageBlurb.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 181);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _helpers = __webpack_require__(/*! ../util/helpers */ 206);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PageBlurb = function (_Component) {
+	  _inherits(PageBlurb, _Component);
+	
+	  function PageBlurb(props) {
+	    _classCallCheck(this, PageBlurb);
+	
+	    return _possibleConstructorReturn(this, (PageBlurb.__proto__ || Object.getPrototypeOf(PageBlurb)).call(this, props));
+	  }
+	
+	  _createClass(PageBlurb, [{
+	    key: "render",
+	    value: function render() {
+	      var button = this.props.button;
+	      var _props$data$collectio = this.props.data.collection,
+	          title = _props$data$collectio.title,
+	          description = _props$data$collectio.description,
+	          fullUrl = _props$data$collectio.fullUrl;
+	
+	
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "blurb" },
+	        _react2.default.createElement(
+	          "h1",
+	          { className: "blurb__title" },
+	          title
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          { className: "blurb__description" },
+	          (0, _helpers.strip)(description)
+	        ),
+	        _react2.default.createElement(
+	          "a",
+	          { href: fullUrl, className: "btn" },
+	          button
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PageBlurb;
+	}(_react.Component);
+	
+	exports.default = PageBlurb;
+
+/***/ },
+/* 209 */
 /*!***************************!*\
   !*** ./js/store/index.js ***!
   \***************************/
@@ -24107,11 +24146,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 209);
+	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 210);
 	
 	var _ProductsList2 = _interopRequireDefault(_ProductsList);
 	
-	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 212);
+	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 213);
 	
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 	
@@ -24163,6 +24202,7 @@
 	    key: "setFilter",
 	    value: function setFilter(type, filter) {
 	      if (type === "category") {
+	        // http://stackoverflow.com/questions/31400468/react-js-you-called-setstate-with-a-callback-that-isnt-callable
 	        this.setState({ category: filter }, this.updateTags(filter));
 	      } else {
 	        this.setState({ tag: filter });
@@ -24170,26 +24210,24 @@
 	    }
 	  }, {
 	    key: "updateTags",
-	    value: function updateTags(category) {
+	    value: function updateTags(filter) {
 	      var tags = [];
-	      for (var i = 0; i < this.state.items.length; i++) {
-	        // loop through all of the products
-	        for (var j = 0; j < this.state.items[i].categories.length; j++) {
-	          // loop through the categories of each product
-	          for (var k = 0; k < this.state.items[i].tags.length; k++) {
-	            // loop through the tags of each product
-	            if (this.state.items[i].categories[j] === category) {
-	              // check to see if the products categories mactch
-	              // the category that has been set by this.setFilter
-	              if (tags.indexOf(this.state.items[i].tags[k]) === -1) {
-	                // check to see if the tag is already in the tags array
-	                // push tags to the tags array
-	                tags.push(this.state.items[i].tags[k]);
-	              }
+	      // loop through all of the products
+	      this.state.items.forEach(function (item) {
+	        // check to see if the products categories mactch
+	        // the category that has been set by this.setFilter
+	        if (item.categories.indexOf(filter) !== -1) {
+	          // loop through the tags of each product
+	          item.tags.forEach(function (tag) {
+	            // http://stackoverflow.com/questions/1988349/array-push-if-does-not-exist
+	            // check to see if the tag is already in the tags array
+	            if (tags.indexOf(tag) === -1) {
+	              // push tags to the tags array
+	              tags.push(tag);
 	            }
-	          }
+	          });
 	        }
-	      }
+	      });
 	      this.setState({ tags: tags });
 	      if (tags.length > 0) {
 	        this.setFilter("tag", tags[0]);
@@ -24263,7 +24301,7 @@
 	}
 
 /***/ },
-/* 209 */
+/* 210 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsList.js ***!
   \*********************************************/
@@ -24281,15 +24319,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 210);
+	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 211);
 	
 	var _ProductsItem2 = _interopRequireDefault(_ProductsItem);
 	
-	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 211);
+	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 212);
 	
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24372,7 +24410,7 @@
 	exports.default = ProductsList;
 
 /***/ },
-/* 210 */
+/* 211 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsItem.js ***!
   \*********************************************/
@@ -24390,7 +24428,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24489,7 +24527,7 @@
 	exports.default = ProductsItem;
 
 /***/ },
-/* 211 */
+/* 212 */
 /*!*********************************************!*\
   !*** ./js/store/components/CategoryList.js ***!
   \*********************************************/
@@ -24598,7 +24636,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 212 */
+/* 213 */
 /*!********************************************!*\
   !*** ./js/store/components/ProductItem.js ***!
   \********************************************/
@@ -24616,19 +24654,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 213);
+	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 214);
 	
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 	
-	var _Price = __webpack_require__(/*! ./Price */ 215);
+	var _Price = __webpack_require__(/*! ./Price */ 216);
 	
 	var _Price2 = _interopRequireDefault(_Price);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 216);
+	var _Select = __webpack_require__(/*! ./Select */ 217);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24798,13 +24836,13 @@
 	exports.default = ProductItem;
 
 /***/ },
-/* 213 */
+/* 214 */
 /*!****************************************!*\
   !*** ./~/immutability-helper/index.js ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var invariant = __webpack_require__(/*! invariant */ 214);
+	var invariant = __webpack_require__(/*! invariant */ 215);
 	
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var splice = Array.prototype.splice;
@@ -24991,7 +25029,7 @@
 
 
 /***/ },
-/* 214 */
+/* 215 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -25052,7 +25090,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 6)))
 
 /***/ },
-/* 215 */
+/* 216 */
 /*!**************************************!*\
   !*** ./js/store/components/Price.js ***!
   \**************************************/
@@ -25106,7 +25144,7 @@
 	exports.default = Price;
 
 /***/ },
-/* 216 */
+/* 217 */
 /*!***************************************!*\
   !*** ./js/store/components/Select.js ***!
   \***************************************/
@@ -25124,7 +25162,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25262,7 +25300,7 @@
 	exports.default = Select;
 
 /***/ },
-/* 217 */
+/* 218 */
 /*!****************************!*\
   !*** ./js/events/index.js ***!
   \****************************/
@@ -25284,11 +25322,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 218);
+	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 219);
 	
 	var _EventsList2 = _interopRequireDefault(_EventsList);
 	
-	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 220);
+	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 221);
 	
 	var _EventItem2 = _interopRequireDefault(_EventItem);
 	
@@ -25401,7 +25439,7 @@
 	}
 
 /***/ },
-/* 218 */
+/* 219 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsList.js ***!
   \********************************************/
@@ -25419,7 +25457,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 219);
+	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 220);
 	
 	var _EventsItem2 = _interopRequireDefault(_EventsItem);
 	
@@ -25471,7 +25509,7 @@
 	exports.default = EventsList;
 
 /***/ },
-/* 219 */
+/* 220 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsItem.js ***!
   \********************************************/
@@ -25489,7 +25527,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25568,7 +25606,7 @@
 	exports.default = EventsItem;
 
 /***/ },
-/* 220 */
+/* 221 */
 /*!*******************************************!*\
   !*** ./js/events/components/EventItem.js ***!
   \*******************************************/
@@ -25586,7 +25624,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _helpers = __webpack_require__(/*! ../../util/helpers */ 205);
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
