@@ -55,9 +55,11 @@
 	
 	__webpack_require__(/*! ./home */ 3);
 	
-	__webpack_require__(/*! ./store */ 209);
+	__webpack_require__(/*! ./about */ 209);
 	
-	__webpack_require__(/*! ./events */ 218);
+	__webpack_require__(/*! ./store */ 211);
+	
+	__webpack_require__(/*! ./events */ 220);
 
 /***/ },
 /* 1 */
@@ -24126,6 +24128,153 @@
 /***/ },
 /* 209 */
 /*!***************************!*\
+  !*** ./js/about/index.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 35);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _axios = __webpack_require__(/*! axios */ 181);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _helpers = __webpack_require__(/*! ../util/helpers */ 206);
+	
+	var _AboutContent = __webpack_require__(/*! ./components/AboutContent */ 210);
+	
+	var _AboutContent2 = _interopRequireDefault(_AboutContent);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AboutContainer = function (_Component) {
+	  _inherits(AboutContainer, _Component);
+	
+	  function AboutContainer() {
+	    _classCallCheck(this, AboutContainer);
+	
+	    var _this = _possibleConstructorReturn(this, (AboutContainer.__proto__ || Object.getPrototypeOf(AboutContainer)).call(this));
+	
+	    _this.state = {
+	      mainContent: ""
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(AboutContainer, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      (0, _axios2.default)("/about?format=json").then(function (response) {
+	        console.log(response);
+	        _this2.setState({
+	          mainContent: response.data.mainContent });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "about" },
+	        this.state.mainContent === "" ? null : _react2.default.createElement(_AboutContent2.default, { body: this.state.mainContent })
+	      );
+	    }
+	  }]);
+	
+	  return AboutContainer;
+	}(_react.Component);
+	
+	var About = document.getElementById("about");
+	
+	if (About) {
+	  _reactDom2.default.render(_react2.default.createElement(AboutContainer, null), About);
+	}
+
+/***/ },
+/* 210 */
+/*!*********************************************!*\
+  !*** ./js/about/components/AboutContent.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _helpers = __webpack_require__(/*! ../../util/helpers */ 206);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AboutContent = function (_Component) {
+	  _inherits(AboutContent, _Component);
+	
+	  function AboutContent() {
+	    _classCallCheck(this, AboutContent);
+	
+	    return _possibleConstructorReturn(this, (AboutContent.__proto__ || Object.getPrototypeOf(AboutContent)).call(this));
+	  }
+	
+	  _createClass(AboutContent, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.body.append((0, _helpers.getBody)(this.props.body));
+	      // This allows the squarespace image loader to
+	      // grab images that have been added to the
+	      // wysiwyg by clients
+	      (0, _helpers.procEvent)(window.document, "DOMContentLoaded");
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement("div", { className: "about__inner", ref: function ref(body) {
+	          _this2.body = body;
+	        } });
+	    }
+	  }]);
+	
+	  return AboutContent;
+	}(_react.Component);
+	
+	exports.default = AboutContent;
+
+/***/ },
+/* 211 */
+/*!***************************!*\
   !*** ./js/store/index.js ***!
   \***************************/
 /***/ function(module, exports, __webpack_require__) {
@@ -24146,11 +24295,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 210);
+	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 212);
 	
 	var _ProductsList2 = _interopRequireDefault(_ProductsList);
 	
-	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 213);
+	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 215);
 	
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 	
@@ -24301,7 +24450,7 @@
 	}
 
 /***/ },
-/* 210 */
+/* 212 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsList.js ***!
   \*********************************************/
@@ -24319,11 +24468,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 211);
+	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 213);
 	
 	var _ProductsItem2 = _interopRequireDefault(_ProductsItem);
 	
-	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 212);
+	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 214);
 	
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 	
@@ -24410,7 +24559,7 @@
 	exports.default = ProductsList;
 
 /***/ },
-/* 211 */
+/* 213 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsItem.js ***!
   \*********************************************/
@@ -24527,7 +24676,7 @@
 	exports.default = ProductsItem;
 
 /***/ },
-/* 212 */
+/* 214 */
 /*!*********************************************!*\
   !*** ./js/store/components/CategoryList.js ***!
   \*********************************************/
@@ -24636,7 +24785,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 213 */
+/* 215 */
 /*!********************************************!*\
   !*** ./js/store/components/ProductItem.js ***!
   \********************************************/
@@ -24654,15 +24803,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 214);
+	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 216);
 	
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 	
-	var _Price = __webpack_require__(/*! ./Price */ 216);
+	var _Price = __webpack_require__(/*! ./Price */ 218);
 	
 	var _Price2 = _interopRequireDefault(_Price);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 217);
+	var _Select = __webpack_require__(/*! ./Select */ 219);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -24836,13 +24985,13 @@
 	exports.default = ProductItem;
 
 /***/ },
-/* 214 */
+/* 216 */
 /*!****************************************!*\
   !*** ./~/immutability-helper/index.js ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var invariant = __webpack_require__(/*! invariant */ 215);
+	var invariant = __webpack_require__(/*! invariant */ 217);
 	
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var splice = Array.prototype.splice;
@@ -25029,7 +25178,7 @@
 
 
 /***/ },
-/* 215 */
+/* 217 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -25090,7 +25239,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 6)))
 
 /***/ },
-/* 216 */
+/* 218 */
 /*!**************************************!*\
   !*** ./js/store/components/Price.js ***!
   \**************************************/
@@ -25144,7 +25293,7 @@
 	exports.default = Price;
 
 /***/ },
-/* 217 */
+/* 219 */
 /*!***************************************!*\
   !*** ./js/store/components/Select.js ***!
   \***************************************/
@@ -25300,7 +25449,7 @@
 	exports.default = Select;
 
 /***/ },
-/* 218 */
+/* 220 */
 /*!****************************!*\
   !*** ./js/events/index.js ***!
   \****************************/
@@ -25322,11 +25471,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 219);
+	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 221);
 	
 	var _EventsList2 = _interopRequireDefault(_EventsList);
 	
-	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 221);
+	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 223);
 	
 	var _EventItem2 = _interopRequireDefault(_EventItem);
 	
@@ -25439,7 +25588,7 @@
 	}
 
 /***/ },
-/* 219 */
+/* 221 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsList.js ***!
   \********************************************/
@@ -25457,7 +25606,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 220);
+	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 222);
 	
 	var _EventsItem2 = _interopRequireDefault(_EventsItem);
 	
@@ -25509,7 +25658,7 @@
 	exports.default = EventsList;
 
 /***/ },
-/* 220 */
+/* 222 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsItem.js ***!
   \********************************************/
@@ -25606,7 +25755,7 @@
 	exports.default = EventsItem;
 
 /***/ },
-/* 221 */
+/* 223 */
 /*!*******************************************!*\
   !*** ./js/events/components/EventItem.js ***!
   \*******************************************/

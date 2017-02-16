@@ -1415,6 +1415,20 @@ h1.blurb__title:after {
     .no-touch .blog-item-pagination a:hover {
       color: #000; }
 
+.about {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: 50px 16px; }
+  @media (min-width: 768px) {
+    .about {
+      padding: 100px 32px; } }
+  .about__inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 640px; }
+
 .contact__title:after {
   content: '';
   display: block;
