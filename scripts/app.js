@@ -24134,9 +24134,12 @@
 	    _this.state = {
 	      items: [],
 	      categories: [],
-	      category: "Regular"
+	      tags: [],
+	      category: "Coffee Beans",
+	      tag: "Regular"
 	    };
 	    _this.setFilter = _this.setFilter.bind(_this);
+	    _this.updateTags = _this.updateTags.bind(_this);
 	    return _this;
 	  }
 	
@@ -24149,7 +24152,8 @@
 	        console.log(response);
 	        _this2.setState({
 	          items: response.data.items,
-	          categories: response.data.collection.categories
+	          categories: response.data.collection.categories,
+	          tags: response.data.collection.tags
 	        });
 	      }).catch(function (response) {
 	        console.log(response);
@@ -24157,8 +24161,41 @@
 	    }
 	  }, {
 	    key: "setFilter",
-	    value: function setFilter(category) {
-	      this.setState({ category: category });
+	    value: function setFilter(type, filter) {
+	      if (type === "category") {
+	        this.setState({ category: filter }, this.updateTags(filter));
+	      } else {
+	        this.setState({ tag: filter });
+	      }
+	    }
+	  }, {
+	    key: "updateTags",
+	    value: function updateTags(category) {
+	      var tags = [];
+	      for (var i = 0; i < this.state.items.length; i++) {
+	        // loop through all of the products
+	        for (var j = 0; j < this.state.items[i].categories.length; j++) {
+	          // loop through the categories of each product
+	          for (var k = 0; k < this.state.items[i].tags.length; k++) {
+	            // loop through the tags of each product
+	            if (this.state.items[i].categories[j] === category) {
+	              // check to see if the products categories mactch
+	              // the category that has been set by this.setFilter
+	              if (tags.indexOf(this.state.items[i].tags[k]) === -1) {
+	                // check to see if the tag is already in the tags array
+	                // push tags to the tags array
+	                tags.push(this.state.items[i].tags[k]);
+	              }
+	            }
+	          }
+	        }
+	      }
+	      this.setState({ tags: tags });
+	      if (tags.length > 0) {
+	        this.setFilter("tag", tags[0]);
+	      } else {
+	        this.setFilter("tag", "");
+	      }
 	    }
 	  }, {
 	    key: "render",
@@ -24166,7 +24203,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { categories: this.state.categories, category: this.state.category, setFilter: this.setFilter, items: this.state.items }) : null
+	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { categories: this.state.categories, category: this.state.category, tags: this.state.tags, tag: this.state.tag, updateTags: this.updateTags, setFilter: this.setFilter, items: this.state.items }) : null
 	      );
 	    }
 	  }]);
@@ -24262,15 +24299,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var titles = {
-	  "Regular": "Regular Coffee",
-	  "Flavored": "Flavored Coffee",
-	  "Decaf": "Decaf Coffee",
-	  "Flavored Decaf": "Flavored Decaf Coffee",
-	  "Espresso": "Espresso",
-	  "Coffee Club": "Coffee Club"
-	};
-	
 	var ProductsList = function (_Component) {
 	  _inherits(ProductsList, _Component);
 	
@@ -24285,10 +24313,22 @@
 	
 	  _createClass(ProductsList, [{
 	    key: "filterList",
-	    value: function filterList(category) {
-	      return function (item) {
-	        if (item.categories.indexOf(category) !== -1) return item;
-	      };
+	    value: function filterList(type, filter) {
+	      if (type === "category") {
+	        return function (item) {
+	          if (item.categories.indexOf(filter) !== -1) return item;
+	        };
+	      } else {
+	        if (filter === "") {
+	          return function (item) {
+	            return item;
+	          };
+	        } else {
+	          return function (item) {
+	            if (item.tags.indexOf(filter) !== -1) return item;
+	          };
+	        }
+	      }
 	    }
 	  }, {
 	    key: "render",
@@ -24296,21 +24336,22 @@
 	      var _props = this.props,
 	          category = _props.category,
 	          setFilter = _props.setFilter,
-	          items = _props.items;
+	          items = _props.items,
+	          tag = _props.tag;
 	
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(_CategoryList2.default, { categories: this.props.categories, setFilter: setFilter }),
+	        _react2.default.createElement(_CategoryList2.default, { categories: this.props.categories, tags: this.props.tags, setFilter: setFilter }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "products" },
 	          _react2.default.createElement(
 	            "h2",
 	            null,
-	            category
+	            tag
 	          ),
-	          items.filter(this.filterList(category)).map(function (item) {
+	          items.filter(this.filterList("category", category)).filter(this.filterList("tag", tag)).map(function (item) {
 	            return _react2.default.createElement(_ProductsItem2.default, {
 	              key: item.id,
 	              title: item.title,
@@ -24480,26 +24521,73 @@
 	  function CategoryList() {
 	    _classCallCheck(this, CategoryList);
 	
-	    return _possibleConstructorReturn(this, (CategoryList.__proto__ || Object.getPrototypeOf(CategoryList)).call(this));
+	    var _this = _possibleConstructorReturn(this, (CategoryList.__proto__ || Object.getPrototypeOf(CategoryList)).call(this));
+	
+	    _this.state = {
+	      tagsActive: false,
+	      categoryClickTarget: ""
+	    };
+	    _this.toggleTags = _this.toggleTags.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(CategoryList, [{
+	    key: "toggleTags",
+	    value: function toggleTags(event) {
+	      console.dir(event.target.innerHTML);
+	      if (this.state.categoryClickTarget === event.target.innerHTML) {
+	        this.setState({ tagsActive: !this.state.tagsActive });
+	        //this.setState({ categoryClickTarget: event.target.innerHTML });
+	      } else {
+	        this.setState({ tagsActive: true });
+	        this.setState({ categoryClickTarget: event.target.innerHTML });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var tagsActive = void 0;
+	      this.state.tagsActive ? tagsActive = "tags--active" : tagsActive = "";
 	      return _react2.default.createElement(
-	        "ul",
-	        { className: "categories" },
-	        this.props.categories.map(function (item) {
-	          return _react2.default.createElement(
-	            "li",
-	            { key: item, className: "categories__item", onClick: function onClick() {
-	                return _this2.props.setFilter(item);
-	              } },
-	            item
-	          );
-	        })
+	        "div",
+	        { className: "filters" },
+	        _react2.default.createElement(
+	          "ul",
+	          { className: "categories" },
+	          this.props.categories.map(function (item) {
+	            return _react2.default.createElement(
+	              "li",
+	              {
+	                key: item,
+	                className: "categories__item",
+	                onClick: function onClick(event) {
+	                  _this2.props.setFilter("category", item);
+	                  _this2.toggleTags(event);
+	                }
+	              },
+	              item
+	            );
+	          })
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "tags " + tagsActive },
+	          _react2.default.createElement(
+	            "ul",
+	            { className: "tags__list" },
+	            this.props.tags.map(function (item) {
+	              return _react2.default.createElement(
+	                "li",
+	                { key: item, className: "tags__item", onClick: function onClick() {
+	                    return _this2.props.setFilter("tag", item);
+	                  } },
+	                item
+	              );
+	            })
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -24564,13 +24652,7 @@
 	      imageStatus: "product--loading",
 	      price: "",
 	      quantity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-	      options: {
-	        // Type: ["Caffeinated", "Decaffeinated"],
-	        // Size: ["1/2 lb.", "1 lb.", "5 lb."],
-	        // Grind: ["Whole Bean", "Electric Percolator", "French Press", "Drip", "Auto Drip", "Fine", "Espresso", "Turkish"],
-	        // Length: ["2 months", "6 months", "12 months"],
-	        // Amount: ["2 lbs/mo", "4 lbs/mo"]
-	      }
+	      options: {}
 	    };
 	
 	    _this.imageLoaded = _this.imageLoaded.bind(_this);
@@ -24617,20 +24699,21 @@
 	        options[variantOptionOrdering[h]] = [];
 	      }
 	      for (var i = 0; i < variants.length; i++) {
-	        console.log(variants[i]);
 	        for (var j = 0; j < variants[i].optionValues.length; j++) {
 	          for (var k = 0; k < variantOptionOrdering.length; k++) {
 	            if (variants[i].optionValues[j].optionName === variantOptionOrdering[k]) {
-	              options[variantOptionOrdering[k]].push(variants[i].optionValues[j].value);
+	              if (options[variantOptionOrdering[k]].indexOf(variants[i].optionValues[j].value) === -1) {
+	                options[variantOptionOrdering[k]].push(variants[i].optionValues[j].value);
+	              }
 	            }
 	          }
 	        }
 	      }
-	      for (var m = 0; m < variantOptionOrdering.length; m++) {
-	        options[variantOptionOrdering[m]] = options[variantOptionOrdering[m]].filter(function (item, index, inputArray) {
-	          return inputArray.indexOf(item) == index;
-	        });
-	      }
+	      // for (var m = 0; m < variantOptionOrdering.length; m++) {
+	      //   options[variantOptionOrdering[m]] = options[variantOptionOrdering[m]].filter( function( item, index, inputArray ) {
+	      //     return inputArray.indexOf(item) == index;
+	      //   });
+	      // }
 	      var newState = (0, _immutabilityHelper2.default)(this.state.options, { $merge: options });
 	      this.setState({ options: newState });
 	      //this.setState({ options: this.state.options.concat([options])});

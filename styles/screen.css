@@ -682,37 +682,41 @@ img {
     .nav__item--active .nav__link:after {
       opacity: 1; }
 
-.footer__banner {
-  width: 100%;
-  height: 250px;
-  background: url("/assets/footer-chalk-board-angle.jpg") no-repeat center center;
-  background-size: cover; }
-.footer__info {
-  text-align: center;
-  font-size: 0;
-  max-width: 920px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto; }
-.footer__item {
-  display: inline-block;
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 14px; }
-  @media (min-width: 1024px) {
-    .footer__item {
-      width: 50%; } }
-  .footer__item p, .footer__item a {
+.footer {
+  position: relative;
+  z-index: 10;
+  background-color: #cdc3c3; }
+  .footer__banner {
+    width: 100%;
+    height: 250px;
+    background: url("/assets/footer-chalk-board-angle.jpg") no-repeat center center;
+    background-size: cover; }
+  .footer__info {
+    text-align: center;
+    font-size: 0;
+    max-width: 920px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto; }
+  .footer__item {
+    display: inline-block;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 14px; }
-.footer__title {
-  font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
-  font-stretch: normal;
-  color: #ed1c25;
-  letter-spacing: .3rem;
-  text-transform: uppercase;
-  margin-bottom: 10px; }
+    @media (min-width: 1024px) {
+      .footer__item {
+        width: 50%; } }
+    .footer__item p, .footer__item a {
+      font-size: 14px; }
+  .footer__title {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal;
+    color: #ed1c25;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+    margin-bottom: 10px; }
 
 .hero {
   width: 100%;
@@ -832,42 +836,62 @@ h1.blurb__title:after {
   z-index: 1; }
 
 #store {
-  background: url("/assets/coffee-background.jpg") no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover; }
+  position: relative; }
+  #store:after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("/assets/coffee-background.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: 1; }
+
+.store {
+  position: relative;
+  z-index: 20; }
 
 .categories {
   width: 100%;
-  max-width: 75%;
   text-align: center;
   font-size: 0;
-  padding: 45px 0 0 0;
+  padding: 0;
   margin: 0 auto; }
   .categories__item {
     display: inline-block;
     position: relative;
-    font-size: 17px;
+    font-size: 14px;
     letter-spacing: 0.25rem;
     text-transform: uppercase;
+    font-weight: 700;
     color: #fff;
     cursor: pointer;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 15px; }
-    .categories__item:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      transform: translate(-50%, -50%);
-      width: 5px;
-      height: 5px;
-      background-color: #ed1c25;
-      border-radius: 50%;
-      z-index: 1; }
-    .categories__item:last-of-type:after {
-      display: none; }
+    padding: 30px 30px;
+    transition: 400ms ease; }
+
+.tags {
+  display: none;
+  width: 100%; }
+  .tags--active {
+    display: block; }
+  .tags__list {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+    font-size: 0; }
+  .tags__item {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal;
+    display: inline-block;
+    padding: 0 20px 20px;
+    font-size: 12.5px;
+    letter-spacing: .15rem;
+    color: #fff;
+    cursor: pointer; }
 
 .products {
   width: 100%;
