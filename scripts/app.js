@@ -24323,7 +24323,7 @@
 	      items: [],
 	      categories: [],
 	      tags: [],
-	      category: "Coffee Beans",
+	      category: "Coffee",
 	      tag: "Regular"
 	    };
 	    _this.setFilter = _this.setFilter.bind(_this);
@@ -24337,12 +24337,13 @@
 	      var _this2 = this;
 	
 	      (0, _axios2.default)("/store?format=json").then(function (response) {
-	        console.log(response);
 	        _this2.setState({
 	          items: response.data.items,
 	          categories: response.data.collection.categories,
 	          tags: response.data.collection.tags
 	        });
+	      }).then(function () {
+	        _this2.updateTags(_this2.state.category);
 	      }).catch(function (response) {
 	        console.log(response);
 	      });
@@ -24359,13 +24360,13 @@
 	    }
 	  }, {
 	    key: "updateTags",
-	    value: function updateTags(filter) {
+	    value: function updateTags(category) {
 	      var tags = [];
 	      // loop through all of the products
 	      this.state.items.forEach(function (item) {
-	        // check to see if the products categories mactch
-	        // the category that has been set by this.setFilter
-	        if (item.categories.indexOf(filter) !== -1) {
+	        // check to see if filter is in categories array
+	        // if it is then add the tag for that product
+	        if (item.categories.indexOf(category) !== -1) {
 	          // loop through the tags of each product
 	          item.tags.forEach(function (tag) {
 	            // http://stackoverflow.com/questions/1988349/array-push-if-does-not-exist
@@ -24390,7 +24391,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { categories: this.state.categories, category: this.state.category, tags: this.state.tags, tag: this.state.tag, updateTags: this.updateTags, setFilter: this.setFilter, items: this.state.items }) : null
+	        this.state.items.length > 0 ? _react2.default.createElement(_ProductsList2.default, { categories: this.state.categories, category: this.state.category, tags: this.state.tags, tag: this.state.tag, setFilter: this.setFilter, items: this.state.items }) : null
 	      );
 	    }
 	  }]);
@@ -24529,7 +24530,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(_CategoryList2.default, { categories: this.props.categories, tags: this.props.tags, setFilter: setFilter }),
+	        _react2.default.createElement(_CategoryList2.default, { category: this.props.category, categories: this.props.categories, tags: this.props.tags, setFilter: setFilter }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "products" },
@@ -24711,24 +24712,30 @@
 	    var _this = _possibleConstructorReturn(this, (CategoryList.__proto__ || Object.getPrototypeOf(CategoryList)).call(this));
 	
 	    _this.state = {
-	      tagsActive: false,
-	      categoryClickTarget: ""
+	      tagsActive: true,
+	      categoryClickTarget: "Coffee",
+	      activeIndex: 0
 	    };
 	    _this.toggleTags = _this.toggleTags.bind(_this);
+	    _this.handleClick = _this.handleClick.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(CategoryList, [{
 	    key: "toggleTags",
 	    value: function toggleTags(event) {
-	      console.dir(event.target.innerHTML);
 	      if (this.state.categoryClickTarget === event.target.innerHTML) {
 	        this.setState({ tagsActive: !this.state.tagsActive });
-	        //this.setState({ categoryClickTarget: event.target.innerHTML });
 	      } else {
 	        this.setState({ tagsActive: true });
 	        this.setState({ categoryClickTarget: event.target.innerHTML });
 	      }
+	    }
+	  }, {
+	    key: "handleClick",
+	    value: function handleClick(index) {
+	      // http://stackoverflow.com/questions/40792164/change-active-element-in-a-list-using-react
+	      this.setState({ activeIndex: index });
 	    }
 	  }, {
 	    key: "render",
@@ -24743,15 +24750,17 @@
 	        _react2.default.createElement(
 	          "ul",
 	          { className: "categories" },
-	          this.props.categories.map(function (item) {
+	          this.props.categories.map(function (item, index) {
+	            var className = _this2.state.activeIndex === index ? "categories__item categories__item--active" : "categories__item";
 	            return _react2.default.createElement(
 	              "li",
 	              {
-	                key: item,
-	                className: "categories__item",
+	                key: index,
+	                className: className,
 	                onClick: function onClick(event) {
 	                  _this2.props.setFilter("category", item);
 	                  _this2.toggleTags(event);
+	                  _this2.handleClick(index);
 	                }
 	              },
 	              item
