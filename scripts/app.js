@@ -24834,8 +24834,6 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	function renderExcerpt() {}
-	
 	var ProductItem = function (_Component) {
 	  _inherits(ProductItem, _Component);
 	
@@ -24891,28 +24889,22 @@
 	          variants = _props$item.variants;
 	
 	      var options = {};
-	      for (var h = 0; h < variantOptionOrdering.length; h++) {
-	        options[variantOptionOrdering[h]] = [];
-	      }
-	      for (var i = 0; i < variants.length; i++) {
-	        for (var j = 0; j < variants[i].optionValues.length; j++) {
-	          for (var k = 0; k < variantOptionOrdering.length; k++) {
-	            if (variants[i].optionValues[j].optionName === variantOptionOrdering[k]) {
-	              if (options[variantOptionOrdering[k]].indexOf(variants[i].optionValues[j].value) === -1) {
-	                options[variantOptionOrdering[k]].push(variants[i].optionValues[j].value);
+	      variantOptionOrdering.forEach(function (item) {
+	        options[item] = [];
+	      });
+	      variants.forEach(function (variant) {
+	        variant.optionValues.forEach(function (optionValue) {
+	          variantOptionOrdering.forEach(function (variantOptionOrder) {
+	            if (optionValue.optionName === variantOptionOrder) {
+	              if (options[variantOptionOrder].indexOf(optionValue.value) === -1) {
+	                options[variantOptionOrder].push(optionValue.value);
 	              }
 	            }
-	          }
-	        }
-	      }
-	      // for (var m = 0; m < variantOptionOrdering.length; m++) {
-	      //   options[variantOptionOrdering[m]] = options[variantOptionOrdering[m]].filter( function( item, index, inputArray ) {
-	      //     return inputArray.indexOf(item) == index;
-	      //   });
-	      // }
+	          });
+	        });
+	      });
 	      var newState = (0, _immutabilityHelper2.default)(this.state.options, { $merge: options });
 	      this.setState({ options: newState });
-	      //this.setState({ options: this.state.options.concat([options])});
 	    }
 	  }, {
 	    key: "render",
