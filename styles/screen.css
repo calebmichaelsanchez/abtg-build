@@ -1057,9 +1057,6 @@ h1.blurb__title:after {
     @media (min-width: 768px) {
       .product__info {
         width: 60.57143%; } }
-    @media (min-width: 1024px) {
-      .product__info {
-        transform: translateY(-10%); } }
   .product__title {
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal;
