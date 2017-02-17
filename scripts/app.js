@@ -24867,8 +24867,8 @@
 	    }
 	  }, {
 	    key: "updatePrice",
-	    value: function updatePrice() {
-	      this.setState({ price: document.querySelectorAll(".sqs-money-native")[0].innerHTML });
+	    value: function updatePrice(prefix) {
+	      this.setState({ price: prefix + "$" + document.querySelectorAll(".sqs-money-native")[0].innerHTML });
 	    }
 	  }, {
 	    key: "addToCart",
@@ -24878,7 +24878,7 @@
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.updatePrice();
+	      this.updatePrice("from ");
 	      this.createOptions();
 	    }
 	  }, {
@@ -24951,7 +24951,6 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "product__price" },
-	            "$",
 	            price
 	          ),
 	          _react2.default.createElement(
@@ -25357,7 +25356,7 @@
 	        this.setSquarespaceSelectValue(this.props.title, value);
 	      }
 	      this.toggleSelect();
-	      this.props.updatePrice();
+	      this.props.updatePrice("");
 	    }
 	  }, {
 	    key: "toggleSelect",

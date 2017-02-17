@@ -425,14 +425,14 @@ main#contact {
 .site-title-heading:after {
   display: none; }
 
-p {
+p, ul {
   font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.075rem;
   font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
   font-stretch: normal; }
   @media (min-width: 1024px) {
-    p {
+    p, ul {
       font-size: 20px; } }
 
 a {
@@ -751,9 +751,11 @@ img {
     .learn-more {
       padding: 100px 0; } }
   .learn-more__item {
+    position: relative;
     display: block;
     width: 100%;
     max-width: 615px;
+    z-index: 5;
     margin-left: auto;
     margin-right: auto; }
     @media (min-width: 1024px) {
@@ -765,13 +767,14 @@ img {
       @media (min-width: 1024px) {
         .learn-more__item:first-of-type {
           float: left;
-          margin-bottom: 180px; } }
+          margin-bottom: 100px; } }
   .learn-more__cup {
     display: none;
     position: absolute;
     top: -100px;
     left: 765px;
-    width: 696px; }
+    width: 696px;
+    z-index: 1; }
     @media (min-width: 1024px) {
       .learn-more__cup {
         display: block; } }
@@ -780,7 +783,8 @@ img {
     position: absolute;
     bottom: -350px;
     right: 836px;
-    width: 630px; }
+    width: 630px;
+    z-index: 1; }
     @media (min-width: 1024px) {
       .learn-more__beans {
         display: block; } }
@@ -866,6 +870,8 @@ h1.blurb__title:after {
   padding: 0;
   margin: 0 auto; }
   .categories__item {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal;
     display: inline-block;
     position: relative;
     font-size: 14px;
