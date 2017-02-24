@@ -772,17 +772,17 @@ img {
     display: none;
     position: absolute;
     top: -100px;
-    left: 765px;
+    left: 615px;
     width: 696px;
     z-index: 1; }
     @media (min-width: 1024px) {
       .learn-more__cup {
         display: block; } }
   .learn-more__beans {
-    display: block;
+    display: none;
     position: absolute;
-    bottom: -350px;
-    right: 836px;
+    bottom: -470px;
+    right: 655px;
     width: 630px;
     z-index: 1; }
     @media (min-width: 1024px) {
