@@ -836,6 +836,8 @@ img {
 
 .blurb__title--i {
   text-transform: uppercase; }
+.blurb__description:nth-of-type(2) {
+  margin-top: 40px; }
 
 h1.blurb__title:after {
   content: '';
@@ -1457,7 +1459,7 @@ h1.blurb__title:after {
     background-position: center center;
     background-size: cover;
     text-align: center;
-    background-image: url("/assets/home-men-in-window.jpg"); }
+    background-image: url("/assets/about-hero.jpg"); }
     .about .hero__inner {
       display: block;
       position: absolute;
@@ -1466,8 +1468,13 @@ h1.blurb__title:after {
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
-      font-stretch: normal; }
+      font-family: "Crimson Text", Times, Times New Roman, Georgia, sans-serif;
+      font-stretch: normal;
+      font-size: 35px;
+      color: #fff;
+      letter-spacing: .4rem;
+      font-style: italic;
+      text-transform: uppercase; }
   .about__inner {
     margin-left: auto;
     margin-right: auto;
@@ -1477,6 +1484,122 @@ h1.blurb__title:after {
     @media (min-width: 768px) {
       .about__inner {
         padding: 100px 32px; } }
+  .about__beans {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 50px 16px;
+    background-color: #e8e3e3; }
+    @media (min-width: 768px) {
+      .about__beans {
+        padding: 100px 72px; } }
+    .about__beans-inner {
+      position: relative;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto; }
+    .about__beans-image {
+      position: absolute;
+      display: block;
+      top: 66%;
+      left: 680px;
+      max-width: none;
+      transform: translateY(-50%);
+      z-index: 1; }
+    .about__beans .blurb {
+      position: relative;
+      max-width: 630px;
+      margin-left: auto;
+      margin-right: auto; }
+      @media (min-width: 768px) {
+        .about__beans .blurb {
+          margin-left: 0; } }
+  .about__roaster {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-color: #cdc3c3;
+    text-align: right;
+    font-size: 0; }
+    .about__roaster:before {
+      content: '';
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 38.88889%;
+      height: 100%;
+      background: url("/assets/about-roaster.jpg") no-repeat center center;
+      background-size: cover; }
+      @media (min-width: 768px) {
+        .about__roaster:before {
+          display: block; } }
+    .about__roaster-inner {
+      display: inline-block;
+      text-align: left;
+      width: 100%;
+      vertical-align: top;
+      padding: 50px 16px; }
+      @media (min-width: 768px) {
+        .about__roaster-inner {
+          width: 61.11111%;
+          padding: 100px 72px; } }
+    .about__roaster .blurb {
+      position: relative;
+      max-width: 630px;
+      margin-left: auto;
+      margin-right: auto; }
+      .about__roaster .blurb:after {
+        content: '';
+        display: block;
+        width: 55px;
+        height: 4px;
+        background-color: #ed1c25;
+        margin: 25px 0 0;
+        z-index: 1; }
+      @media (min-width: 768px) {
+        .about__roaster .blurb {
+          margin-left: 0; } }
+  .about__bags {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 50px 16px;
+    background-color: #cdc3c3;
+    text-align: right;
+    font-size: 0; }
+    @media (min-width: 768px) {
+      .about__bags {
+        padding: 100px 72px; } }
+    .about__bags:before {
+      content: '';
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 51.38889%;
+      height: 100%;
+      background: url("/assets/about-burlap.jpg") no-repeat center center;
+      background-size: cover; }
+      @media (min-width: 768px) {
+        .about__bags:before {
+          display: block; } }
+    .about__bags-inner {
+      display: inline-block;
+      text-align: left;
+      width: 100%;
+      vertical-align: top; }
+      @media (min-width: 768px) {
+        .about__bags-inner {
+          width: 48.61111%; } }
+    .about__bags .blurb {
+      position: relative;
+      max-width: 630px;
+      margin-left: auto;
+      margin-right: auto; }
+      @media (min-width: 768px) {
+        .about__bags .blurb {
+          margin-left: 0; } }
 
 .contact__title:after {
   content: '';
