@@ -1564,13 +1564,9 @@ h1.blurb__title:after {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding: 50px 16px;
     background-color: #cdc3c3;
     text-align: right;
     font-size: 0; }
-    @media (min-width: 768px) {
-      .about__bags {
-        padding: 100px 72px; } }
     .about__bags:before {
       content: '';
       display: none;
@@ -1588,10 +1584,12 @@ h1.blurb__title:after {
       display: inline-block;
       text-align: left;
       width: 100%;
-      vertical-align: top; }
+      vertical-align: top;
+      padding: 50px 16px; }
       @media (min-width: 768px) {
         .about__bags-inner {
-          width: 48.61111%; } }
+          width: 48.61111%;
+          padding: 100px 72px; } }
     .about__bags .blurb {
       position: relative;
       max-width: 630px;
