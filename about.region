@@ -1,0 +1,8 @@
+<main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
+  <section class="about">
+    <div class="hero">
+      <div class="hero__inner">Master Roasted. Never Burnt.</div>
+    </div>
+    <div class="about__inner">{squarespace.main-content}</div>
+  </section>
+</main>
