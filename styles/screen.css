@@ -1577,6 +1577,9 @@ h1.blurb__title:after {
       height: 100%;
       background: url("/assets/about-burlap.jpg") no-repeat center center;
       background-size: cover; }
+      @media (min-width: 768px) {
+        .about__bags:before {
+          display: block; } }
     .about__bags-inner {
       display: inline-block;
       text-align: left;
@@ -1585,6 +1588,7 @@ h1.blurb__title:after {
       padding: 50px 16px; }
       @media (min-width: 768px) {
         .about__bags-inner {
+          width: 48.61111%;
           padding: 100px 72px; } }
     .about__bags .blurb {
       position: relative;
