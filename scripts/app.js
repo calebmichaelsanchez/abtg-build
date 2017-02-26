@@ -238,7 +238,7 @@
 	
 	      return _react2.default.createElement(
 	        "div",
-	        null,
+	        { className: "welcome" },
 	        _react2.default.createElement(_Hero2.default, { image: image }),
 	        _react2.default.createElement(
 	          "div",
