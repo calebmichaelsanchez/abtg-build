@@ -25262,13 +25262,9 @@
 	        "div",
 	        {
 	          className: "select " + open,
-	          onClick: this.toggleSelect,
-	          onMouseEnter: function onMouseEnter() {
-	            _this2.openSelect();
-	          },
-	          onMouseLeave: function onMouseLeave() {
-	            _this2.closeSelect();
-	          }
+	          onClick: this.toggleSelect
+	          // onMouseEnter={() => { this.openSelect();  }}
+	          // onMouseLeave={() => { this.closeSelect(); }}
 	        },
 	        _react2.default.createElement(
 	          "div",
