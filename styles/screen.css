@@ -169,6 +169,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -297,6 +298,8 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -1577,7 +1580,7 @@ h1.blurb__title:after {
       height: 100%;
       background: url("/assets/about-burlap.jpg") no-repeat center center;
       background-size: cover; }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .about__bags:before {
           display: block; } }
     .about__bags-inner {
@@ -1586,7 +1589,7 @@ h1.blurb__title:after {
       width: 100%;
       vertical-align: top;
       padding: 50px 16px; }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .about__bags-inner {
           width: 48.61111%;
           padding: 100px 72px; } }
@@ -1595,7 +1598,7 @@ h1.blurb__title:after {
       max-width: 630px;
       margin-left: auto;
       margin-right: auto; }
-      @media (min-width: 768px) {
+      @media (min-width: 1024px) {
         .about__bags .blurb {
           margin-left: 0; } }
   .about__logo {
