@@ -1598,6 +1598,36 @@ h1.blurb__title:after {
       @media (min-width: 768px) {
         .about__bags .blurb {
           margin-left: 0; } }
+  .about__logo {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 50px 16px;
+    background-color: #e8e3e3; }
+    @media (min-width: 768px) {
+      .about__logo {
+        padding: 100px 72px; } }
+    .about__logo-inner {
+      position: relative;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto; }
+    .about__logo-image {
+      position: absolute;
+      display: block;
+      top: 66%;
+      left: 680px;
+      max-width: none;
+      transform: translateY(-50%);
+      z-index: 1; }
+    .about__logo .blurb {
+      position: relative;
+      max-width: 630px;
+      margin-left: auto;
+      margin-right: auto; }
+      @media (min-width: 768px) {
+        .about__logo .blurb {
+          margin-left: 0; } }
 
 .contact__title:after {
   content: '';

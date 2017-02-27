@@ -30,6 +30,7 @@
       <div class="about__logo-inner">
         <div class="blurb">
           <div class="blurb__description"><squarespace:block-field id="about4" columns="12"/></div>
+          <img class="about__beans-image" src="/assets/about-logo.png" alt="Logo">
         </div>
       </div>
     </div>
