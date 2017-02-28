@@ -1,6 +1,11 @@
       <!--Footer with open block field -->
       <footer class="footer">
         <div class="footer__banner"></div>
+        <div class="footer__social">
+          <div class="footer__social-inner">
+            <squarespace:block-field id="footerSocial" columns="12"/>
+          </div>
+        </div>
         <div class="footer__info">
           <div class="footer__item">
             <div class="footer__title">Goodrich</div>
