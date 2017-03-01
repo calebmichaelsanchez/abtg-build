@@ -928,12 +928,29 @@ h1.blurb__title:after {
   .tags__item {
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
     font-stretch: normal;
+    position: relative;
     display: inline-block;
     padding: 0 15px 20px;
     font-size: 12.5px;
     letter-spacing: .15rem;
     color: #fff;
     cursor: pointer; }
+    .tags__item:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translateX(-53%);
+      width: 50%;
+      height: 2px;
+      background-color: #ed1c25;
+      opacity: 0;
+      transition: opacity 400ms ease; }
+    .no-touch .tags__item:hover:after {
+      opacity: 1; }
+    .tags__item--active:after {
+      opacity: 1; }
 
 .products {
   width: 100%;

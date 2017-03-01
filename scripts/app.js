@@ -24565,7 +24565,8 @@
 	    _this.state = {
 	      tagsActive: true,
 	      categoryClickTarget: "Coffee",
-	      activeIndex: 0
+	      activeCategoryIndex: 0,
+	      activeTagIndex: 0
 	    };
 	    _this.toggleTags = _this.toggleTags.bind(_this);
 	    _this.handleClick = _this.handleClick.bind(_this);
@@ -24584,9 +24585,13 @@
 	    }
 	  }, {
 	    key: "handleClick",
-	    value: function handleClick(index) {
+	    value: function handleClick(index, type) {
 	      // http://stackoverflow.com/questions/40792164/change-active-element-in-a-list-using-react
-	      this.setState({ activeIndex: index });
+	      if (type === "category") {
+	        this.setState({ activeCategoryIndex: index });
+	      } else {
+	        this.setState({ activeTagIndex: index });
+	      }
 	    }
 	  }, {
 	    key: "render",
@@ -24602,7 +24607,7 @@
 	          "ul",
 	          { className: "categories" },
 	          this.props.categories.map(function (item, index) {
-	            var className = _this2.state.activeIndex === index ? "categories__item categories__item--active" : "categories__item";
+	            var className = _this2.state.activeCategoryIndex === index ? "categories__item categories__item--active" : "categories__item";
 	            return _react2.default.createElement(
 	              "li",
 	              {
@@ -24611,9 +24616,9 @@
 	                onClick: function onClick(event) {
 	                  _this2.props.setFilter("category", item);
 	                  _this2.toggleTags(event);
-	                  _this2.handleClick(index);
-	                }
-	              },
+	                  _this2.handleClick(index, "category");
+	                  _this2.handleClick(0, "tag");
+	                } },
 	              item
 	            );
 	          })
@@ -24624,11 +24629,16 @@
 	          _react2.default.createElement(
 	            "ul",
 	            { className: "tags__list" },
-	            this.props.tags.map(function (item) {
+	            this.props.tags.map(function (item, index) {
+	              var className = _this2.state.activeTagIndex === index ? "tags__item tags__item--active" : "tags__item";
 	              return _react2.default.createElement(
 	                "li",
-	                { key: item, className: "tags__item", onClick: function onClick() {
-	                    return _this2.props.setFilter("tag", item);
+	                {
+	                  key: item,
+	                  className: className,
+	                  onClick: function onClick() {
+	                    _this2.props.setFilter("tag", item);
+	                    _this2.handleClick(index, "tag");
 	                  } },
 	                item
 	              );
