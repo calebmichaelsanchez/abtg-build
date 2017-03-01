@@ -844,6 +844,69 @@ img {
   .featured-blogs__item:first-of-type {
     margin-bottom: 50px; }
 
+.monthly {
+  width: 100%;
+  background: url("/assets/home-monthly-origin.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 50px 16px;
+  overflow: hidden; }
+  @media (min-width: 768px) {
+    .monthly {
+      padding: 100px 16px; } }
+  .monthly__inner {
+    width: 100%;
+    max-width: 875px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0;
+    text-align: center; }
+  .monthly__item {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    z-index: 2; }
+  .monthly__image {
+    display: none; }
+    @media (min-width: 768px) {
+      .monthly__image {
+        display: inline-block;
+        width: 34.28571%;
+        margin-bottom: 0;
+        max-width: none; } }
+  .monthly__info {
+    text-align: left;
+    width: 100%;
+    max-width: 615px;
+    margin-left: auto;
+    margin-right: auto; }
+    @media (min-width: 768px) {
+      .monthly__info {
+        width: 60.57143%;
+        margin-right: 5.14286%;
+        margin-left: 0; } }
+  .monthly__title, .monthly__description {
+    color: #fff; }
+  .monthly__title {
+    letter-spacing: 0.25rem;
+    margin-bottom: 75px; }
+  .monthly__description {
+    position: relative;
+    z-index: 2; }
+    .monthly__description:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 300vw;
+      height: 150%;
+      top: 53%;
+      left: -50%;
+      transform: translateY(-50%);
+      background: #ed1c25;
+      z-index: -1; }
+  .monthly__button {
+    margin-top: 75px; }
+
 .blurb__title--i {
   text-transform: uppercase; }
 .blurb__description:nth-of-type(2) {
@@ -964,7 +1027,7 @@ h1.blurb__title:after {
   @media (min-width: 640px) {
     .products {
       max-width: 940px; } }
-  .products h2:after {
+  .products > h2:after {
     content: '';
     display: block;
     width: 100px;
@@ -972,6 +1035,10 @@ h1.blurb__title:after {
     background-color: #ed1c25;
     margin: 20px auto 80px;
     z-index: 1; }
+  .products > p {
+    text-align: center;
+    color: #fff;
+    font-style: italic; }
   .products__item {
     position: relative;
     display: inline-block;
