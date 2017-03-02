@@ -1974,8 +1974,5 @@ html body input[type="submit"] {
     #confirmed-page {
       padding: 100px 16px; } }
 
-.yui3-squarespacecalendar .flyoutitem-title {
-  font-size: 13px !important; }
-  @media (min-width: 768px) {
-    .yui3-squarespacecalendar .flyoutitem-title {
-      font-size: 16 !important; } }
+.yui3-squarespacecalendar .flyoutitem-title a {
+  font-size: 16 !important; }
