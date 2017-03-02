@@ -24344,7 +24344,7 @@
 	              { className: "wellwith__description" },
 	              "COMING SOON",
 	              _react2.default.createElement("br", null),
-	              "Shadrach Meshach and ABeanToGo will soon be partnering with WellWith with the goal of helping people in need accross the globe, so stay stuned for more and check out WellWith while your at it!"
+	              "ABeanToGo and WellWith will soon be partnering with the goal of helping people in need accross the globe, so stay tuned for more and check out WellWith while your at it!"
 	            ),
 	            _react2.default.createElement(
 	              "a",
