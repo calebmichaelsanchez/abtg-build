@@ -1965,4 +1965,8 @@ html body input[type="submit"] {
 #confirmed-page {
   max-width: 960px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding: 50px 16px; }
+  @media (min-width: 768px) {
+    #confirmed-page {
+      padding: 100px 16px; } }
