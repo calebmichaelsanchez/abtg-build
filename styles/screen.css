@@ -1823,6 +1823,8 @@ html body input[type="submit"] {
 
 .sqs-fullpage-shopping-cart-content.empty .empty-message {
   text-align: center;
+  display: block;
+  width: 100%;
   font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.075rem;
