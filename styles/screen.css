@@ -1826,7 +1826,7 @@ html body input[type="submit"] {
       width: 100px;
       height: 4px;
       background-color: #ed1c25;
-      margin: 20px auto 80px;
+      margin: 20px auto 40px;
       z-index: 1; }
 
 .sqs-fullpage-shopping-cart-content.empty .empty-message {
