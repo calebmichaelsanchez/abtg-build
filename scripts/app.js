@@ -23706,7 +23706,7 @@
 	      var image = this.props.image;
 	
 	      var style = {
-	        backgroundImage: "url(" + image + ")"
+	        backgroundImage: "url(" + image + "?format=original)"
 	      };
 	      return _react2.default.createElement(
 	        "div",
@@ -24348,7 +24348,7 @@
 	            ),
 	            _react2.default.createElement(
 	              "a",
-	              { href: "http://wellwith.com", className: "wellwith__button" },
+	              { target: "_blank", href: "http://wellwith.com", className: "wellwith__button" },
 	              "Learn More"
 	            ),
 	            _react2.default.createElement("img", { className: "wellwith__image", src: "/assets/wellwith-thermos.png" })
