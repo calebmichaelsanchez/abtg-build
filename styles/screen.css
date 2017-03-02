@@ -1818,14 +1818,16 @@ html body input[type="submit"] {
   margin-left: auto;
   margin-right: auto;
   max-width: 960px; }
-  #sqs-shopping-cart-wrapper h2:after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background-color: #ed1c25;
-    margin: 20px auto 80px;
-    z-index: 1; }
+  #sqs-shopping-cart-wrapper h2 {
+    color: #000; }
+    #sqs-shopping-cart-wrapper h2:after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background-color: #ed1c25;
+      margin: 20px auto 80px;
+      z-index: 1; }
 
 .sqs-fullpage-shopping-cart-content.empty .empty-message {
   text-align: center;
