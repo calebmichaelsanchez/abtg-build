@@ -23697,16 +23697,33 @@
 	  function Hero(props) {
 	    _classCallCheck(this, Hero);
 	
-	    return _possibleConstructorReturn(this, (Hero.__proto__ || Object.getPrototypeOf(Hero)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Hero.__proto__ || Object.getPrototypeOf(Hero)).call(this, props));
+	
+	    _this.state = {
+	      isMobile: false
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Hero, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var html = document.documentElement;
+	      if (html.classList.contains("no-touch")) {
+	        this.setState({ isMobile: false });
+	      } else {
+	        this.setState({ isMobile: true });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var image = this.props.image;
 	
+	      var queryString = void 0;
+	      this.state.isMobile ? queryString = "1000w" : queryString = "original";
 	      var style = {
-	        backgroundImage: "url(" + image + "?format=original)"
+	        backgroundImage: "url(" + image + "?format=" + queryString + ")"
 	      };
 	      return _react2.default.createElement(
 	        "div",
