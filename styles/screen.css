@@ -957,7 +957,7 @@ img {
         margin-right: 0;
         margin-left: auto; } }
   .wellwith__description {
-    color: #000; }
+    color: #118d8d; }
   .wellwith__title {
     margin-bottom: 60px; }
     @media (min-width: 768px) {
@@ -972,7 +972,7 @@ img {
     font-size: 12.5px;
     color: #fff;
     padding: 20px 35px;
-    background-color: #ed1c25;
+    background-color: #118d8d;
     letter-spacing: .3rem;
     text-transform: uppercase;
     margin-top: 30px;
@@ -982,7 +982,7 @@ img {
     font-stretch: normal; }
     .no-touch .wellwith__button:hover {
       background-color: #fff;
-      color: #ed1c25; }
+      color: #118d8d; }
 
 .blurb__title--i {
   text-transform: uppercase; }
