@@ -1845,7 +1845,11 @@ html body input[type="submit"] {
     transition: 600ms ease;
     cursor: pointer;
     font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
-    font-stretch: normal; }
+    font-stretch: normal;
+    display: block;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto; }
     .no-touch .sqs-fullpage-shopping-cart-content.empty .empty-message a:hover {
       background-color: #ed1c25;
       color: #fff; }
