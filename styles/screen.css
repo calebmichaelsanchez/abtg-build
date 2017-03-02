@@ -1003,10 +1003,10 @@ h1.blurb__title:after {
       content: '';
       display: block;
       position: absolute;
-      top: 70%;
+      top: 65%;
       left: 50%;
-      transform: translateX(-53%);
-      width: 50%;
+      transform: translateX(-50%);
+      width: 40%;
       height: 2px;
       background-color: #ed1c25;
       opacity: 0;
@@ -1119,6 +1119,7 @@ h1.blurb__title:after {
       line-height: 1.45; }
 
 .product {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -1212,6 +1213,28 @@ h1.blurb__title:after {
       color: #fff; }
     .product--coffee-club .product__button {
       display: none; }
+  .product__link {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    z-index: 1;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: .25rem;
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    font-stretch: normal; }
+    @media (min-width: 1024px) {
+      .product__link {
+        display: inline-block; } }
+    .product__link img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px; }
 
 .select {
   position: relative;

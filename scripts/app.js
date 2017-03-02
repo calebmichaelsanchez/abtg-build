@@ -24953,6 +24953,12 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "product " + imageStatus },
+	        _react2.default.createElement(
+	          "a",
+	          { href: "/store", className: "product__link" },
+	          _react2.default.createElement("img", { src: "/assets/store-back-button.png" }),
+	          "Back"
+	        ),
 	        _react2.default.createElement("img", {
 	          onLoad: this.imageLoaded,
 	          onError: this.imageErrored,
