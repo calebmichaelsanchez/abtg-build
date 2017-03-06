@@ -24361,7 +24361,7 @@
 	              { className: "wellwith__description" },
 	              "COMING SOON",
 	              _react2.default.createElement("br", null),
-	              "ABeanToGo and WellWith will soon be partnering as local leaders to help bring awareness to a growing problem accross the globe. Stay tuned for further details, and in the meantime, pour another cup of fresh roasted coffee and learn more about WellWith by clicking below!"
+	              "ABeanToGo and WellWith will soon be partnering as local leaders to help bring awareness to a growing problem across the globe. Stay tuned for further details, and in the meantime, pour another cup of fresh roasted coffee and learn more about WellWith by clicking below!"
 	            ),
 	            _react2.default.createElement(
 	              "a",
