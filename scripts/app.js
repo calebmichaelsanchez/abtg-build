@@ -55,9 +55,9 @@
 	
 	__webpack_require__(/*! ./home */ 3);
 	
-	__webpack_require__(/*! ./store */ 212);
+	__webpack_require__(/*! ./store */ 213);
 	
-	__webpack_require__(/*! ./events */ 221);
+	__webpack_require__(/*! ./events */ 222);
 
 /***/ },
 /* 1 */
@@ -201,9 +201,9 @@
 	
 	var _MonthlyOrigin2 = _interopRequireDefault(_MonthlyOrigin);
 	
-	var _WellWith = __webpack_require__(/*! ./components/WellWith */ 211);
+	var _WellWithContainer = __webpack_require__(/*! ./components/WellWithContainer */ 211);
 	
-	var _WellWith2 = _interopRequireDefault(_WellWith);
+	var _WellWithContainer2 = _interopRequireDefault(_WellWithContainer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -289,7 +289,7 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement(_WellWith2.default, null)
+	        _react2.default.createElement(_WellWithContainer2.default, null)
 	      );
 	    }
 	  }]);
@@ -23972,6 +23972,7 @@
 	  element.dispatchEvent(event);
 	}
 	
+	// http://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro
 	function getBody(string) {
 	  var div = document.createElement("div");
 	  div.innerHTML = string;
@@ -24309,9 +24310,87 @@
 
 /***/ },
 /* 211 */
-/*!****************************************!*\
-  !*** ./js/home/components/WellWith.js ***!
-  \****************************************/
+/*!*************************************************!*\
+  !*** ./js/home/components/WellWithContainer.js ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 181);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _WellWithItem = __webpack_require__(/*! ./WellWithItem */ 212);
+	
+	var _WellWithItem2 = _interopRequireDefault(_WellWithItem);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var WellWithContainer = function (_Component) {
+	  _inherits(WellWithContainer, _Component);
+	
+	  function WellWithContainer() {
+	    _classCallCheck(this, WellWithContainer);
+	
+	    var _this = _possibleConstructorReturn(this, (WellWithContainer.__proto__ || Object.getPrototypeOf(WellWithContainer)).call(this));
+	
+	    _this.state = {
+	      items: []
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(WellWithContainer, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      (0, _axios2.default)("/wellwith?format=json").then(function (response) {
+	        _this2.setState({
+	          items: response.data.items
+	        });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        this.state.items.length > 0 ? _react2.default.createElement(_WellWithItem2.default, { item: this.state.items[0] }) : null
+	      );
+	    }
+	  }]);
+	
+	  return WellWithContainer;
+	}(_react.Component);
+	
+	exports.default = WellWithContainer;
+
+/***/ },
+/* 212 */
+/*!********************************************!*\
+  !*** ./js/home/components/WellWithItem.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24334,18 +24413,23 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var WellWith = function (_Component) {
-	  _inherits(WellWith, _Component);
+	var WellWithItem = function (_Component) {
+	  _inherits(WellWithItem, _Component);
 	
-	  function WellWith() {
-	    _classCallCheck(this, WellWith);
+	  function WellWithItem() {
+	    _classCallCheck(this, WellWithItem);
 	
-	    return _possibleConstructorReturn(this, (WellWith.__proto__ || Object.getPrototypeOf(WellWith)).call(this));
+	    return _possibleConstructorReturn(this, (WellWithItem.__proto__ || Object.getPrototypeOf(WellWithItem)).call(this));
 	  }
 	
-	  _createClass(WellWith, [{
+	  _createClass(WellWithItem, [{
 	    key: "render",
 	    value: function render() {
+	      var _props$item = this.props.item,
+	          body = _props$item.body,
+	          assetUrl = _props$item.assetUrl;
+	
+	      console.log(body);
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "wellwith" },
@@ -24355,33 +24439,26 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "wellwith__item wellwith__info" },
-	            _react2.default.createElement("img", { className: "wellwith__title", src: "/assets/wellwith.png" }),
-	            _react2.default.createElement(
-	              "p",
-	              { className: "wellwith__description" },
-	              "COMING SOON",
-	              _react2.default.createElement("br", null),
-	              "ABeanToGo and WellWith will soon be partnering as local leaders to help bring awareness to a growing problem across the globe. Stay tuned for further details, and in the meantime, pour another cup of fresh roasted coffee and learn more about WellWith by clicking below!"
-	            ),
+	            _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: body } }),
 	            _react2.default.createElement(
 	              "a",
 	              { target: "_blank", href: "http://wellwith.com", className: "wellwith__button" },
 	              "Learn More"
 	            ),
-	            _react2.default.createElement("img", { className: "wellwith__image", src: "/assets/wellwith-thermos.png" })
+	            _react2.default.createElement("img", { className: "wellwith__image", src: assetUrl })
 	          )
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return WellWith;
+	  return WellWithItem;
 	}(_react.Component);
 	
-	exports.default = WellWith;
+	exports.default = WellWithItem;
 
 /***/ },
-/* 212 */
+/* 213 */
 /*!***************************!*\
   !*** ./js/store/index.js ***!
   \***************************/
@@ -24403,11 +24480,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 213);
+	var _ProductsList = __webpack_require__(/*! ./components/ProductsList */ 214);
 	
 	var _ProductsList2 = _interopRequireDefault(_ProductsList);
 	
-	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 216);
+	var _ProductItem = __webpack_require__(/*! ./components/ProductItem */ 217);
 	
 	var _ProductItem2 = _interopRequireDefault(_ProductItem);
 	
@@ -24559,7 +24636,7 @@
 	}
 
 /***/ },
-/* 213 */
+/* 214 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsList.js ***!
   \*********************************************/
@@ -24577,11 +24654,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 214);
+	var _ProductsItem = __webpack_require__(/*! ./ProductsItem */ 215);
 	
 	var _ProductsItem2 = _interopRequireDefault(_ProductsItem);
 	
-	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 215);
+	var _CategoryList = __webpack_require__(/*! ./CategoryList */ 216);
 	
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 	
@@ -24672,7 +24749,7 @@
 	exports.default = ProductsList;
 
 /***/ },
-/* 214 */
+/* 215 */
 /*!*********************************************!*\
   !*** ./js/store/components/ProductsItem.js ***!
   \*********************************************/
@@ -24789,7 +24866,7 @@
 	exports.default = ProductsItem;
 
 /***/ },
-/* 215 */
+/* 216 */
 /*!*********************************************!*\
   !*** ./js/store/components/CategoryList.js ***!
   \*********************************************/
@@ -24916,7 +24993,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 216 */
+/* 217 */
 /*!********************************************!*\
   !*** ./js/store/components/ProductItem.js ***!
   \********************************************/
@@ -24934,15 +25011,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 217);
+	var _immutabilityHelper = __webpack_require__(/*! immutability-helper */ 218);
 	
 	var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
 	
-	var _Price = __webpack_require__(/*! ./Price */ 219);
+	var _Price = __webpack_require__(/*! ./Price */ 220);
 	
 	var _Price2 = _interopRequireDefault(_Price);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 220);
+	var _Select = __webpack_require__(/*! ./Select */ 221);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -25113,13 +25190,13 @@
 	exports.default = ProductItem;
 
 /***/ },
-/* 217 */
+/* 218 */
 /*!****************************************!*\
   !*** ./~/immutability-helper/index.js ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var invariant = __webpack_require__(/*! invariant */ 218);
+	var invariant = __webpack_require__(/*! invariant */ 219);
 	
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var splice = Array.prototype.splice;
@@ -25306,7 +25383,7 @@
 
 
 /***/ },
-/* 218 */
+/* 219 */
 /*!********************************!*\
   !*** ./~/invariant/browser.js ***!
   \********************************/
@@ -25367,7 +25444,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 6)))
 
 /***/ },
-/* 219 */
+/* 220 */
 /*!**************************************!*\
   !*** ./js/store/components/Price.js ***!
   \**************************************/
@@ -25421,7 +25498,7 @@
 	exports.default = Price;
 
 /***/ },
-/* 220 */
+/* 221 */
 /*!***************************************!*\
   !*** ./js/store/components/Select.js ***!
   \***************************************/
@@ -25573,7 +25650,7 @@
 	exports.default = Select;
 
 /***/ },
-/* 221 */
+/* 222 */
 /*!****************************!*\
   !*** ./js/events/index.js ***!
   \****************************/
@@ -25595,11 +25672,11 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 222);
+	var _EventsList = __webpack_require__(/*! ./components/EventsList */ 223);
 	
 	var _EventsList2 = _interopRequireDefault(_EventsList);
 	
-	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 224);
+	var _EventItem = __webpack_require__(/*! ./components/EventItem */ 225);
 	
 	var _EventItem2 = _interopRequireDefault(_EventItem);
 	
@@ -25712,7 +25789,7 @@
 	}
 
 /***/ },
-/* 222 */
+/* 223 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsList.js ***!
   \********************************************/
@@ -25730,7 +25807,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 223);
+	var _EventsItem = __webpack_require__(/*! ./EventsItem */ 224);
 	
 	var _EventsItem2 = _interopRequireDefault(_EventsItem);
 	
@@ -25782,7 +25859,7 @@
 	exports.default = EventsList;
 
 /***/ },
-/* 223 */
+/* 224 */
 /*!********************************************!*\
   !*** ./js/events/components/EventsItem.js ***!
   \********************************************/
@@ -25879,7 +25956,7 @@
 	exports.default = EventsItem;
 
 /***/ },
-/* 224 */
+/* 225 */
 /*!*******************************************!*\
   !*** ./js/events/components/EventItem.js ***!
   \*******************************************/
@@ -25919,7 +25996,6 @@
 	  _createClass(EventItem, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.body.append((0, _helpers.getBody)(this.props.item.body));
 	      // This allows the squarespace image loader to
 	      // grab images that have been added to the
 	      // wysiwyg by clients
@@ -25928,8 +26004,6 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this2 = this;
-	
 	      var _props$item = this.props.item,
 	          title = _props$item.title,
 	          assetUrl = _props$item.assetUrl,
@@ -25938,9 +26012,7 @@
 	
 	      var startDate = new Date(structuredContent.startDate);
 	      var endDate = new Date(structuredContent.endDate);
-	      var style = {
-	        backgroundImage: "url(" + assetUrl + ")"
-	      };
+	      var style = { backgroundImage: "url(" + assetUrl + ")" };
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "event" },
@@ -25965,9 +26037,7 @@
 	              { className: "event__date" },
 	              startDate.customFormat("#MMMM# #DD#, #h#:#mm#") + " - " + endDate.customFormat("#h#:#mm#")
 	            ),
-	            _react2.default.createElement("div", { className: "event__body", ref: function ref(body) {
-	                _this2.body = body;
-	              } })
+	            _react2.default.createElement("div", { className: "event__body", dangerouslySetInnerHTML: { __html: body } })
 	          )
 	        )
 	      );
