@@ -25169,9 +25169,8 @@
 	            variantOptionOrdering.map(function (select, index) {
 	              if (Object.keys(_this2.state.options).length === 0 && _this2.state.options.constructor === Object) {
 	                return null;
-	              } else {
-	                return _react2.default.createElement(_Select2.default, { key: index, title: select, options: options[select], updatePrice: _this2.updatePrice });
 	              }
+	              return _react2.default.createElement(_Select2.default, { key: index, title: select, options: options[select], updatePrice: _this2.updatePrice });
 	            })
 	          ),
 	          _react2.default.createElement(
@@ -25581,11 +25580,17 @@
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.setState({ title: this.props.title });
+	      this.setState({ title: this.props.options[0] });
 	      this.selectCollection = document.querySelectorAll("[data-variant-option-name]");
 	      this.selectArray = [].concat(_toConsumableArray(this.selectCollection));
 	      this.quantityInputCollection = document.querySelectorAll("input[type=number]");
 	      this.quantityInput = [].concat(_toConsumableArray(this.quantityInputCollection))[0];
+	      if (this.props.title === "Quantity") {
+	        this.setQuantityInputValue(1);
+	      } else {
+	        this.setSquarespaceSelectValue(this.props.title, this.props.options[0]);
+	      }
+	      this.props.updatePrice("");
 	    }
 	  }, {
 	    key: "setSquarespaceSelectValue",
@@ -25612,14 +25617,10 @@
 	      var options = this.props.options;
 	
 	      var open = this.state.open ? "select--open" : "";
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        "div",
-	        {
-	          className: "select " + open,
-	          onClick: this.toggleSelect
-	          // onMouseEnter={() => { this.openSelect();  }}
-	          // onMouseLeave={() => { this.closeSelect(); }}
-	        },
+	        { className: "select " + open, onClick: this.toggleSelect },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "select__title" },
@@ -25631,11 +25632,7 @@
 	          options.map(function (item, index) {
 	            return _react2.default.createElement(
 	              "li",
-	              {
-	                key: item + "-" + index,
-	                className: "select__item",
-	                onClick: _this2.handleClick
-	              },
+	              { key: item + "-" + index, className: "select__item", onClick: _this2.handleClick },
 	              item
 	            );
 	          })
