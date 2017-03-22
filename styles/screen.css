@@ -956,6 +956,8 @@ img {
         width: 70.28571%;
         margin-right: 0;
         margin-left: auto; } }
+    .wellwith__info p {
+      color: #118d8d; }
   .wellwith__description {
     color: #118d8d; }
   .wellwith__title {
