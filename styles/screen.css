@@ -702,9 +702,15 @@ img {
       .nav-scrolled .nav__link:after {
         background-color: #fff; }
     .no-touch .nav__link:hover:after {
-      opacity: 1; }
+      opacity: 0; }
+      @media (min-width: 640px) {
+        .no-touch .nav__link:hover:after {
+          opacity: 1; } }
     .nav__item--active .nav__link:after {
-      opacity: 1; }
+      opacity: 0; }
+      @media (min-width: 640px) {
+        .nav__item--active .nav__link:after {
+          opacity: 1; } }
 
 #welcome + .footer .footer__banner,
 #about + .footer .footer__banner {
