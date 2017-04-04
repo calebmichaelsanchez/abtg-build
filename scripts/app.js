@@ -127,8 +127,11 @@
 	  var html = document.documentElement;
 	  var welcome = document.getElementById("welcome");
 	  var toggle = document.querySelectorAll(".nav__toggle")[0];
+	  var bar = document.querySelectorAll(".sqs-announcement-bar")[0];
 	  var latestKnownScroll = 0;
 	  var ticking = false;
+	
+	  console.log(bar);
 	
 	  function onClick(event) {
 	    event.preventDefault();

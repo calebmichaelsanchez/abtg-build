@@ -418,9 +418,6 @@ main#contact {
 *:after {
   box-sizing: inherit; }
 
-.sqs-announcement-bar + .site-container {
-  padding-top: 33px; }
-
 .site-container {
   overflow-x: hidden;
   overflow-y: auto; }
