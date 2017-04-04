@@ -434,6 +434,17 @@ main#contact {
     @media (min-width: 1024px) {
       .sqs-announcement-bar + .site-container main#welcome {
         padding-top: 33px; } }
+  .sqs-announcement-bar + .site-container main:not(#welcome) {
+    padding-top: 111px; }
+    @media screen and (min-width: 556px) {
+      .sqs-announcement-bar + .site-container main:not(#welcome) {
+        padding-top: 96px; } }
+    @media (min-width: 640px) {
+      .sqs-announcement-bar + .site-container main:not(#welcome) {
+        padding-top: 114px; } }
+    @media (min-width: 1024px) {
+      .sqs-announcement-bar + .site-container main:not(#welcome) {
+        padding-top: 111px; } }
   .sqs-announcement-bar + .site-container nav {
     top: 51px; }
     @media screen and (min-width: 556px) {
