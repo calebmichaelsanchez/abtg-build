@@ -420,9 +420,8 @@ main#contact {
 
 .site-container {
   overflow-x: hidden;
-  overflow-y: auto; }
-  .site-container:not(#welcome) + .sqs-announcement-bar {
-    margin-bottom: 35px; }
+  overflow-y: auto;
+  padding-top: 33px; }
 
 .site-title-heading:after {
   display: none; }
@@ -523,7 +522,7 @@ img {
 .nav {
   position: fixed;
   display: block;
-  top: 0;
+  top: 33px;
   left: 0;
   width: 100%;
   padding-top: 30px;
