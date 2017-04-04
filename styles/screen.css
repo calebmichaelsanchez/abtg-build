@@ -524,7 +524,7 @@ img {
 .nav {
   position: fixed;
   display: block;
-  top: 33px;
+  top: 0;
   left: 0;
   width: 100%;
   padding-top: 30px;
