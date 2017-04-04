@@ -421,6 +421,8 @@ main#contact {
 .site-container {
   overflow-x: hidden;
   overflow-y: auto; }
+  .site-container:not(#welcome) + .sqs-announcement-bar {
+    margin-bottom: 35px; }
 
 .site-title-heading:after {
   display: none; }
