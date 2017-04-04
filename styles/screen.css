@@ -424,12 +424,12 @@ main#contact {
   left: 0;
   width: 100%; }
   .sqs-announcement-bar + .site-container main:not(#welcome) {
-    padding-top: 93px; }
-    @media (min-width: 640px) {
-      .sqs-announcement-bar + .site-container main:not(#welcome) {
-        padding-top: 111px; } }
+    padding-top: 111px; }
   .sqs-announcement-bar + .site-container .nav {
-    top: 33px; }
+    top: 51px; }
+    @media screen and (min-width: 565) {
+      .sqs-announcement-bar + .site-container .nav {
+        top: 33px; } }
   .sqs-announcement-bar-hidden + .site-container main:not(#welcome) {
     padding-top: 60px; }
     @media (min-width: 640px) {
