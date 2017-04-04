@@ -421,7 +421,8 @@ main#contact {
 .sqs-announcement-bar {
   position: fixed;
   top: 0;
-  left: 0; }
+  left: 0;
+  width: 100%; }
   .sqs-announcement-bar + .site-container .nav {
     top: 33px; }
   .sqs-announcement-bar-hidden + .site-container .nav {
