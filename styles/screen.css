@@ -423,25 +423,6 @@ main#contact {
   top: 0;
   left: 0;
   width: 100%; }
-  .sqs-announcement-bar + .site-container main:not(#poopoo) {
-    padding-top: 111px; }
-    @media screen and (min-width: 566px) {
-      .sqs-announcement-bar + .site-container main:not(#poopoo) {
-        padding-top: 114px; } }
-  .sqs-announcement-bar + .site-container .nav {
-    top: 51px; }
-    @media screen and (min-width: 566px) {
-      .sqs-announcement-bar + .site-container .nav {
-        top: 36px; } }
-  .sqs-announcement-bar-hidden + .site-container main#welcome {
-    padding-top: 0; }
-  .sqs-announcement-bar-hidden + .site-container main:not(#welcome) {
-    padding-top: 60px; }
-    @media (min-width: 640px) {
-      .sqs-announcement-bar-hidden + .site-container main:not(#welcome) {
-        padding-top: 78px; } }
-  .sqs-announcement-bar-hidden + .site-container .nav {
-    top: 0; }
 
 .site-container {
   overflow-x: hidden;
