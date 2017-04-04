@@ -427,7 +427,7 @@ main#contact {
     padding-top: 111px; }
   .sqs-announcement-bar + .site-container .nav {
     top: 51px; }
-    @media screen and (min-width: 565) {
+    @media screen and (min-width: 565px) {
       .sqs-announcement-bar + .site-container .nav {
         top: 33px; } }
   .sqs-announcement-bar-hidden + .site-container main:not(#welcome) {
