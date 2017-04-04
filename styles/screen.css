@@ -418,10 +418,12 @@ main#contact {
 *:after {
   box-sizing: inherit; }
 
+.sqs-announcement-bar + .site-container {
+  padding-top: 33px; }
+
 .site-container {
   overflow-x: hidden;
-  overflow-y: auto;
-  padding-top: 33px; }
+  overflow-y: auto; }
 
 .site-title-heading:after {
   display: none; }
