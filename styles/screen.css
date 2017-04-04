@@ -418,6 +418,15 @@ main#contact {
 *:after {
   box-sizing: inherit; }
 
+.sqs-announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0; }
+  .sqs-announcement-bar + .site-container .nav {
+    top: 33px; }
+  .sqs-announcement-bar-hidden + .site-container .nav {
+    top: 0; }
+
 .site-container {
   overflow-x: hidden;
   overflow-y: auto; }

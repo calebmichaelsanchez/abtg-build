@@ -131,8 +131,6 @@
 	  var latestKnownScroll = 0;
 	  var ticking = false;
 	
-	  console.log(bar);
-	
 	  function onClick(event) {
 	    event.preventDefault();
 	    html.classList.toggle("nav-active");
