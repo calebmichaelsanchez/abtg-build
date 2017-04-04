@@ -423,7 +423,7 @@ main#contact {
   top: 0;
   left: 0;
   width: 100%; }
-  .sqs-announcement-bar + .site-container main:not(#welcome) {
+  .sqs-announcement-bar + .site-container main {
     padding-top: 111px; }
   .sqs-announcement-bar + .site-container .nav {
     top: 51px; }
