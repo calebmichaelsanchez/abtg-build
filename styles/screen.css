@@ -1912,9 +1912,6 @@ main#wholesale {
       color: #ed1c25; }
   .touch .wholesale {
     color: #000; }
-  @media (min-width: 768px) {
-    .wholesale {
-      padding: 100px 0; } }
   .wholesale__title:after {
     content: '';
     display: block;
@@ -1923,6 +1920,12 @@ main#wholesale {
     background-color: #ed1c25;
     margin: 30px auto 15px;
     z-index: 1; }
+  @media (min-width: 768px) {
+    .wholesale {
+      padding: 100px 0; } }
+  @media (min-width: 1024px) {
+    .wholesale p, .wholesale a {
+      font-size: 1.375rem; } }
   .wholesale .form-wrapper .field-list .field select,
   .wholesale .form-wrapper .field-list .field .field-element {
     color: #000; }
