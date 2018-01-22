@@ -1906,7 +1906,8 @@ main#wholesale {
   padding: 50px 16px;
   color: #fff; }
   .wholesale a {
-    text-decoration: underline; }
+    text-decoration: underline;
+    color: #fff; }
     .wholesale a:hover {
       color: #ed1c25; }
   .touch .wholesale {
