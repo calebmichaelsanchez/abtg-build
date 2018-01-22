@@ -10350,8 +10350,10 @@ var Home = function (_Component) {
 
     _this.state = {
       data: {},
-      image: ""
+      image: "",
+      popup: false
     };
+    _this.renderPopup = _this.renderPopup.bind(_this);
     return _this;
   }
 
@@ -10365,6 +10367,21 @@ var Home = function (_Component) {
       }).catch(function (response) {
         console.log(response);
       });
+
+      var popup = window.localStorage.getItem('popup');
+      if (popup == null || !popup) {
+        this.setState({ popup: true });
+      } else {
+        this.setState({ popup: false });
+      }
+    }
+  }, {
+    key: "renderPopup",
+    value: function renderPopup() {
+      if (!this.state.popup) {
+        return null;
+      }
+      return _react2.default.createElement(_Popup2.default, { wait: 1000 });
     }
   }, {
     key: "render",
@@ -10374,7 +10391,7 @@ var Home = function (_Component) {
       return _react2.default.createElement(
         "div",
         { className: "welcome" },
-        _react2.default.createElement(_Popup2.default, { wait: 1000 }),
+        this.renderPopup(),
         _react2.default.createElement(_Hero2.default, { image: image }),
         _react2.default.createElement(
           "div",
@@ -24493,45 +24510,52 @@ var Popup = function (_Component) {
       visibility: false
     };
 
-    _this.toggleVisibility = _this.toggleVisibility.bind(_this);
+    _this.showPopup = _this.showPopup.bind(_this);
+    _this.hidePopup = _this.hidePopup.bind(_this);
     return _this;
   }
 
   _createClass(Popup, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
 
       setTimeout(function () {
-        _this2.toggleVisibility();
+        _this2.showPopup();
       }, this.props.wait);
+      window.localStorage.setItem('popup', 'hidden');
     }
   }, {
-    key: "toggleVisibility",
-    value: function toggleVisibility() {
-      this.setState({ visibility: !this.state.visibility });
+    key: 'showPopup',
+    value: function showPopup() {
+      this.setState({ visibility: true });
     }
   }, {
-    key: "render",
+    key: 'hidePopup',
+    value: function hidePopup() {
+      this.setState({ visibility: false });
+    }
+  }, {
+    key: 'render',
     value: function render() {
       var visibilityClass = void 0;
       this.state.visibility ? visibilityClass = "popup--visible" : visibilityClass = "popup--hidden";
       return _react2.default.createElement(
-        "div",
-        { className: "popup " + visibilityClass },
+        'div',
+        { className: 'popup ' + visibilityClass },
         _react2.default.createElement(
-          "div",
-          { className: "popup__container" },
+          'div',
+          { className: 'popup__container' },
           _react2.default.createElement(
-            "div",
-            { className: "popup__inner" },
+            'div',
+            { className: 'popup__inner' },
             _react2.default.createElement(
-              "div",
-              { className: "popup__image" },
+              'div',
+              { className: 'popup__image' },
               _react2.default.createElement(
-                "div",
-                { className: "popup__close", onClick: this.toggleVisibility },
-                "X"
+                'div',
+                { className: 'popup__close', onClick: this.hidePopup },
+                'X'
               )
             )
           )
