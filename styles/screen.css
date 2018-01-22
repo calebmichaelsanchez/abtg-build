@@ -1935,9 +1935,9 @@ main#wholesale {
     background-color: #ed1c25;
     margin: 30px auto 15px;
     z-index: 1; }
-
-.form-wrapper .field-list .field .field-element {
-  color: #000; }
+  .wholesale .form-wrapper .field-list .field select,
+  .wholesale .form-wrapper .field-list .field .field-element {
+    color: #000; }
 
 #sqs-shopping-cart-wrapper {
   padding: 100px 32px; }
