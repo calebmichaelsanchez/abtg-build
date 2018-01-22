@@ -10374,7 +10374,7 @@ var Home = function (_Component) {
       return _react2.default.createElement(
         "div",
         { className: "welcome" },
-        _react2.default.createElement(_Popup2.default, { wait: 5000 }),
+        _react2.default.createElement(_Popup2.default, { wait: 1000 }),
         _react2.default.createElement(_Hero2.default, { image: image }),
         _react2.default.createElement(
           "div",
