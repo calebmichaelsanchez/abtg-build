@@ -1905,6 +1905,8 @@ main#wholesale {
   margin-right: auto;
   padding: 50px 16px;
   color: #fff; }
+  .wholesale a {
+    color: #ed1c25; }
   .touch .wholesale {
     color: #000; }
   @media (min-width: 768px) {
