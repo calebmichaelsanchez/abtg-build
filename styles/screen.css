@@ -1034,7 +1034,7 @@ img {
   overflow: hidden; }
   @media (min-width: 768px) {
     .sponsorships {
-      padding: 100px 16px; } }
+      padding: 75px 16px; } }
   .sponsorships__inner {
     width: 100%;
     max-width: 960px;
