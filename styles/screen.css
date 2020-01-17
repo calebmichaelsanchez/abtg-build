@@ -1963,21 +1963,21 @@ main#wholesale, main#coffee-cart {
   .touch main#wholesale, .touch main#coffee-cart {
     background: none; }
 
-.wholesale {
+.wholesale, .coffee-cart {
   width: 100%;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   padding: 50px 16px;
   color: #fff; }
-  .wholesale a {
+  .wholesale a, .coffee-cart a {
     text-decoration: underline;
     color: #fff; }
-    .wholesale a:hover {
+    .wholesale a:hover, .coffee-cart a:hover {
       color: #ed1c25; }
-  .touch .wholesale {
+  .touch .wholesale, .touch .coffee-cart {
     color: #000; }
-  .wholesale__title:after {
+  .wholesale__title:after, .coffee-cart__title:after {
     content: '';
     display: block;
     width: 75%;
@@ -1986,13 +1986,14 @@ main#wholesale, main#coffee-cart {
     margin: 30px auto 15px;
     z-index: 1; }
   @media (min-width: 768px) {
-    .wholesale {
+    .wholesale, .coffee-cart {
       padding: 100px 0; } }
   @media (min-width: 1024px) {
-    .wholesale p, .wholesale a {
+    .wholesale p, .wholesale a, .coffee-cart p, .coffee-cart a {
       font-size: 1.375rem; } }
   .wholesale .form-wrapper .field-list .field select,
-  .wholesale .form-wrapper .field-list .field .field-element {
+  .wholesale .form-wrapper .field-list .field .field-element, .coffee-cart .form-wrapper .field-list .field select,
+  .coffee-cart .form-wrapper .field-list .field .field-element {
     color: #000; }
 
 .popup {
