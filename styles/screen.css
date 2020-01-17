@@ -1955,12 +1955,12 @@ main#contact {
 .form-wrapper .field-list .field .field-element {
   color: #000; }
 
-main#wholesale {
+main#wholesale, main#coffee-cart {
   background: url("/assets/contact-background.jpg") no-repeat center center;
   background-size: cover; }
-  .no-touch main#wholesale {
+  .no-touch main#wholesale, .no-touch main#coffee-cart {
     background-attachment: fixed; }
-  .touch main#wholesale {
+  .touch main#wholesale, .touch main#coffee-cart {
     background: none; }
 
 .wholesale {
