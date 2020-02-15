@@ -598,7 +598,7 @@ img {
     z-index: 10;
     opacity: 1;
     transition: opacity 600ms ease; }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .nav__logo {
         opacity: 0; } }
     .nav-scrolled .nav__logo {
