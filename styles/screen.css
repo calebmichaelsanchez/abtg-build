@@ -476,6 +476,9 @@ a {
     a {
       font-size: 20px;
       font-size: 1.75vw; } }
+  #sqs-cart-root a {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
+    color: #ed1c25; }
 
 h1 {
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", sans;
