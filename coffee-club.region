@@ -1,4 +1,4 @@
-<main id="{collectionurlId}" class="content-container" role="main">
+<main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
   <section class="coffee-club">
     
   </section>
