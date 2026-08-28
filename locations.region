@@ -2,9 +2,12 @@
   <section class="locations">
     <div class="hero">
       <div class="hero__inner">
-        <h1>Our Locationss</h1>
+        <h1>Our Locations</h1>
         <p>Find your nearest ABeanToGo and start your day the right way</p>
       </div>
+    </div>
+    <div class="locations__container">
+      {squarespace.main-content}
     </div>
   </section>
 </main>

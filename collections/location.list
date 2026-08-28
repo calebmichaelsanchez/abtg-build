@@ -1,1 +1,30 @@
-<div>Location</div>
+<div class="locations__inner">
+  {.repeated section items}
+    <div class="locations__item">
+      <div class="locations__item-inter">
+        {.main-image?}
+          <div class="locations__image">
+            <div class="locations__image-inner" style="background-image: url('{assetUrl}'"></div>
+          </div>
+        {.end}
+        <h3 class="locations__title">{title}</h3>
+        <p>
+          <ul class="locations__info">
+            <li class="locations__info-item">
+              {storeAddress}
+            </li>
+            <li class="locations__info-item">
+              {storeAddress2}
+            </li>
+            <li class="locations__info-item">
+              {storePhone}
+            </li>
+          </ul>
+          <br class="locations__info-divider"></br>{storeHours}
+        </p>
+        <a href="{directions}" class="btn">Get directions to {title}</a>
+      </div>
+    </div>
+  {.or}
+  {.end}
+</div>

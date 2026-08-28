@@ -28,7 +28,7 @@
       </footer>
 
     </div>
-    <a href="#mobile-ordering" class="mobile-ordering-btn">Mobile Ordering</a>
+    <a href="#mobile-ordering" class="mobile-ordering-btn slide-link">Mobile Ordering</a>
     <!-- combo and minify scripts when not logged in -->
     <!-- React does not like being combo-ed!!!!!!!!! -->
     <squarespace:script src="app.js" />
