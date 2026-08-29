@@ -1,0 +1,43 @@
+<main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
+  <section class="menu">
+    <div class="hero">
+      <div class="hero__inner">
+        <h1>Our Menu</h1>
+        <p>Take a look at our delicious offerings.</p>
+      </div>
+    </div>
+    <div class="menu__container">
+      <div class="menu__inner">
+        <div class="menu__item">
+          <div class="menu__item-inner">
+            <div class="menu__info menu__info--left">
+              <h2 class="menu__title">Coffee</h2>
+              <ul class="menu__item-name">
+                <li class="menu__item-name-item">Fresh Brew</li>
+                <li class="menu__item-name-item">Pour Over</li>
+              </ul>
+            </div>
+            <div class="menu__info menu__info--right">
+              <ul class="menu__sizes">
+                <li class="menu__sizes-item">12oz</li>
+                <li class="menu__sizes-item">16oz</li>
+                <li class="menu__sizes-item">20oz</li>
+              </ul>
+              <ul class="menu__prices">
+                <li class="menu__prices-item">$3.50</li>
+                <li class="menu__prices-item">$3.75</li>
+                <li class="menu__prices-item">$4.00</li>
+              </ul>
+              <ul class="menu__prices">
+                <li class="menu__prices-item"></li>
+                <li class="menu__prices-item">$5.25</li>
+                <li class="menu__prices-item"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {squarespace.main-content}
+    </div>
+  </section>
+</main>
