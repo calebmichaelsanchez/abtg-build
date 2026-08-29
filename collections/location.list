@@ -27,7 +27,7 @@
         <!-- <p>
           {customContent.storeHours}<span class="locations__span"> | </span>{customContent.storeHours2}
         </p> -->
-        <a href="{directions}" class="locations__btn">Directions to {title}</a>
+        <a href="{customContent.directions}" class="locations__btn">Directions to {title}</a>
       </div>
     </div>
   {.or}
