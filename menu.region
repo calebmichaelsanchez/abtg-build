@@ -120,7 +120,7 @@
             <!-- left side of section -->
             <div class="menu__info menu__info--left">
               <!-- title of section -->
-              <h3 class="menu__title">Specialty Espresso</h3>
+              <h3 class="menu__title">Specialty</h3>
               <!-- names of items in section -->
               <ul class="menu__item-name">
                 <li class="menu__item-name-item">Flat White</li>
@@ -332,8 +332,8 @@
                 <li class="menu__item-name-item">Cookies</li>
                 <li class="menu__item-name-item">Scones</li>
                 <li class="menu__item-name-item">Savory Scones</li>
-                <li class="menu__item-name-item">Peanut Butter Protein bar</li>
-                <li class="menu__item-name-item">Dairy Free Trek Bar</li>
+                <li class="menu__item-name-item">PB Protein bar</li>
+                <li class="menu__item-name-item">Trek Bar <span>(dairy free)</span></li>
               </ul>
             </div>
             <!-- right side of section -->
@@ -442,7 +442,7 @@
             </div>
           </div>
           <!-- extra description space section -->
-          <div class="menu__description">Smoothie flavors: strawberry banana, peach</div>
+          <div class="menu__description">Smoothie flavors (strawberry banana, peach)</div>
         </div>
         <!-- individual menu section -->
         <div class="menu__item">
