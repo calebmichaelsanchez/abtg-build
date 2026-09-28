@@ -1,6 +1,7 @@
 <!-- section inner container -->
 <div class="menu__container__inner">
   {.repeated section items}
+  <script>console.log({@|json-pretty})</script>
   <!-- menu item -->
   <div class="menu__item">
     <div class="menu__item-inner">
@@ -15,7 +16,7 @@
         <!-- title of section -->
         <h3 class="menu__title">{title}</h3>
         <!-- names of items in section -->
-        {squarespace.main-content}
+        {squarespace-post-entry}
       </div>
     </div>
     <!-- extra description space section -->
