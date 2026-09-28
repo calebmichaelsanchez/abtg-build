@@ -1,6 +1,6 @@
 <!-- section inner container -->
 <div class="menu__container__inner">
-  {repeated section items}
+  {.repeated section items}
   <!-- menu item -->
   <div class="menu__item">
     <div class="menu__item-inner">
