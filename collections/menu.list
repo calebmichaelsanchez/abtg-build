@@ -1,0 +1,25 @@
+<!-- section inner container -->
+<div class="menu__container__inner">
+  {repeated section items}
+  <!-- menu item -->
+  <div class="menu__item">
+    <div class="menu__item-inner">
+      <!-- menu image -->
+      {.main-image?}
+        <div class="menu__image">
+          <div class="menu__image-inner" style="background-image: url('{assetUrl}'"></div>
+        </div>
+      {.end}
+      <!-- left side of section -->
+      <div class="menu__info">
+        <!-- title of section -->
+        <h3 class="menu__title">{title}</h3>
+        <!-- names of items in section -->
+        {squarespace.main-content}
+      </div>
+    </div>
+    <!-- extra description space section -->
+    <div class="menu__description">{excerpt}</div>
+  </div>
+  {.end}
+</div>
