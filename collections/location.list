@@ -10,13 +10,13 @@
         <h3 class="locations__title">{title}</h3>
         <ul class="locations__info">
           <li class="locations__info-item">
-            {location.addressLine1}
+            <a href="{customContent.directions}">{location.addressLine1}</a>
           </li>
           <li class="locations__info-item">
-            {location.addressLine2}
+            <a href="{customContent.directions}">{location.addressLine2}</a>
           </li>
           <li class="locations__info-item">
-            {customContent.storePhone}
+            <a href="tel:{customContent.storePhone}">{customContent.storePhone}</a>
           </li>
         </ul>
         <div class="locations__divider"></div>
