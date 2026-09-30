@@ -7,6 +7,7 @@
     <!-- include system scripts, page meta, and header code injection -->
     {squarespace-headers}
   </head>
+  <script>console.log("pee pee");</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYLT2KGQBB"></script>
   <script>
