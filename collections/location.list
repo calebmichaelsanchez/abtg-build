@@ -24,9 +24,6 @@
           <li class="locations__info-item">{customContent.storeHours}</li>
           <li class="locations__info-item">{customContent.storeHours2}</li>
         </ul>
-        <!-- <p>
-          {customContent.storeHours}<span class="locations__span"> | </span>{customContent.storeHours2}
-        </p> -->
         <a href="{customContent.directions}" class="locations__btn">Directions to {title}</a>
       </div>
     </div>
