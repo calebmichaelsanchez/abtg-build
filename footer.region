@@ -1,6 +1,6 @@
       <!--Footer with open block field -->
       <footer class="footer">
-        <div id="mobile-ordering" class="hero-divider hero-divider--two">
+        <div id="mobile-ordering" class="hero-divider hero-divider--no-height hero-divider--no-border">
           <div class="hero-divider__inner">
             <h2>Order online and pick up&nbsp;in&nbsp;store!</h2>
             <p>Use your app to order ahead and pick up at your convenience in store or in our drive-thru.</p>

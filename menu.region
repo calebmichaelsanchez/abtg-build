@@ -1,7 +1,7 @@
 <main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
   <section class="menu">
-    <div class="hero">
-      <div class="hero__inner">
+    <div class="hero-divider hero-divider--no-border">
+      <div class="hero-divider__inner">
         <h1>Our Menu</h1>
         <p>Take a look at our delicious&nbsp;offerings.</p>
       </div>
