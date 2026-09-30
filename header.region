@@ -7,6 +7,15 @@
     <!-- include system scripts, page meta, and header code injection -->
     {squarespace-headers}
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYLT2KGQBB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RYLT2KGQBB');
+  </script>
   <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
     <header class="header">
       <!-- site navigation -->
