@@ -13,7 +13,7 @@
     </div>
     <div class="hero-divider hero-divider--no-height hero-divider--one">
       <div class="hero-divider__inner">
-        <h2>Regular & Flavored</h2>
+        <h2 class="no-padding">Regular & Flavored</h2>
       </div>
     </div>
     <div class="subscription">
@@ -22,7 +22,7 @@
     </div>
     <div class="hero-divider hero-divider--no-height hero-divider--one">
       <div class="hero-divider__inner">
-        <h2>Decaf Regular & Flavored</h2>
+        <h2 class="no-padding">Decaf Regular & Flavored</h2>
       </div>
     </div>
     <div class="subscription">
