@@ -1,6 +1,6 @@
 <main id="{collection.urlId}" class="content-container" role="main" data-content-field="main-content">
   <section class="coffee-club">
-    <div class="hero-divider hero-divider--one">
+    <div class="hero-divider">
       <div class="hero-divider__inner">
         <h1>Fresh coffee.<br />Straight to your&nbsp;door.</h1>
       </div>
