@@ -10,6 +10,5 @@
     <div class="menu__container">
       {squarespace.main-content}
     </div>
-    </div>
   </section>
 </main>

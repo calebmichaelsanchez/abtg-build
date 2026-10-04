@@ -11,7 +11,7 @@
         <p>With our Coffee Club program you can choose to have your favorite ABeanToGo coffee delivered to you weekly, bi-weekly, or monthly, without the hassle of ordering every time.</p>
       </div>
     </div>
-    <div class="hero-divider hero-divider--no-height hero-divider--one">
+    <div class="hero-divider hero-divider--no-height hero-divider--one hero-divider--no-border">
       <div class="hero-divider__inner">
         <h2 class="no-padding">Regular & Flavored</h2>
       </div>
@@ -20,7 +20,7 @@
       <div id="subscription__regular" class="subscription__regular"></div>
       <div id="subscription__flavored" class="subscription__flavored"></div>
     </div>
-    <div class="hero-divider hero-divider--no-height hero-divider--one">
+    <div class="hero-divider hero-divider--no-height hero-divider--one hero-divider--no-border">
       <div class="hero-divider__inner">
         <h2 class="no-padding">Decaf Regular & Flavored</h2>
       </div>

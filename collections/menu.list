@@ -1,7 +1,6 @@
 <!-- section inner container -->
-<div class="menu__container__inner">
+<div class="menu__inner">
   {.repeated section items}
-  <script>console.log({@|json-pretty})</script>
   <!-- menu item -->
   <div class="menu__item">
     <!-- menu image -->
