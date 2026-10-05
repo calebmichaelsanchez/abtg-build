@@ -1,5 +1,6 @@
 <div class="locations__inner">
   {.repeated section items}
+  <script>console.log({@|json-pretty});</script>
     <div class="locations__item">
       <div class="locations__item-inner">
         {.main-image?}
@@ -24,6 +25,9 @@
           <li class="locations__info-item">{customContent.storeHours}</li>
           <li class="locations__info-item">{customContent.storeHours2}</li>
         </ul>
+        {.if starred}
+          <p>Drive-thru available</p>
+        {.end}
         <a href="{customContent.directions}" class="locations__btn">Directions to {title}</a>
       </div>
     </div>
