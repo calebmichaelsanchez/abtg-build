@@ -3,12 +3,14 @@
   <script>console.log({@|json-pretty});</script>
     <div class="locations__item">
       <div class="locations__item-inner">
+        <a href="{fullUrl}">
         {.main-image?}
           <div class="locations__image">
             <div class="locations__image-inner" style="background-image: url('{assetUrl}'"></div>
           </div>
         {.end}
         <h3 class="locations__title">{title}</h3>
+        </a>
         <ul class="locations__info">
           <li class="locations__info-item">
             <a href="{customContent.directions}">{location.addressLine1}</a>

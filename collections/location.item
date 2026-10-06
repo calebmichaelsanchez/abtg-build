@@ -1,0 +1,4 @@
+<div class="locations__inner">
+  <script>console.log({@|json-pretty});</script>
+  <h1>{title}</h1>
+</div>
