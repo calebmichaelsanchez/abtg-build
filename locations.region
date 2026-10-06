@@ -2,8 +2,20 @@
   <section class="locations">
     <div class="hero-divider hero-divider--no-border">
       <div class="hero-divider__inner">
-        <h1>Our Locations</h1>
-        <p>Find your nearest ABeanToGo and start your day the&nbsp;right&nbsp;way</p>
+        <h1>
+          {.if item }
+            {item.title}
+          {.or}
+            {collection.title}
+          {.end}
+        </h1>
+        <p>
+          {.if item}
+           {item.excerpt}
+          {.or}
+            {collection.description}
+          {.end}  
+        </p>
       </div>
     </div>
     <div class="locations__container">
